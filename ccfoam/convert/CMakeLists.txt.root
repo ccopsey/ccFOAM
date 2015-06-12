@@ -38,7 +38,7 @@ endif()
 
 option(FOAM_64BIT_LABEL_SIZE 
   "Compile ${PROJECT_NAME} with 64-bit ints."
-  ON)
+  OFF)
 mark_as_advanced(FOAM_64BIT_LABEL_SIZE)
 if(FOAM_64BIT_LABEL_SIZE)
   set(FOAM_LABEL_SIZE 64)
@@ -68,7 +68,7 @@ find_package(ZLIB REQUIRED)
 
 add_definitions(
   -D${FOAM_PRECISION}
-  -DWM_LABEL_SIZE=$(FOAM_LABEL_SIZE)
+  -DWM_LABEL_SIZE=${FOAM_LABEL_SIZE}
   -DNoRepository
   -DCGAL_NO_DEPRECATION_WARNINGS
 )
