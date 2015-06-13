@@ -48,4 +48,4 @@ cmake ${LAH} ${GRAPHVIZ} . \
 
 #cat ${GRAPHVIZ_PATH}
 
-make -j ${CORES} ${TARGET}
+make -k -j ${CORES} ${TARGET}

@@ -31,6 +31,7 @@ include_directories(../../../../../src/transportModels)
 include_directories(../../../../../src/transportModels/incompressible/singlePhaseTransportModel)
 include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
 include(../../../../../src/TurbulenceModels/incompressible/include.cmake)
+include(../../../../../src/TurbulenceModels/phaseIncompressible/include.cmake)
 include(../../../../../src/meshTools/include.cmake)
 
 add_library(libDPMTurbulenceModels ${SOURCES})

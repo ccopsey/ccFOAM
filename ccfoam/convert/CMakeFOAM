@@ -423,32 +423,37 @@ subdirectory() {
   then
     for CHILD in $CHILDREN
     do
-      if [ $CHILD == "chtMultiRegionFoam" ] \
-        || [ $CHILD == "chtMultiRegionSimpleFoam" ] \
-      || [ $CHILD == "sonicFoam" ] \
-        || [ $CHILD == "sonicDyMFoam" ] \
-        || [ $CHILD == "sonicLiquidFoam" ] \
-      || [ $CHILD == "reactingFoam" ] \
-      || [ $CHILD == "rhoReactingFoam" ] \
-      || [ $CHILD == "rhoReactingBuoyantFoam" ] \
-      || [ $CHILD == "LTSReactingFoam" ] \
-      || [ $CHILD == "reactingParcelFoam" ] \
-      || [ $CHILD == "DPMFoam" ] \
-      || [ $CHILD == "MPPICFoam" ] \
-      || [ $CHILD == "DPMTurbulenceModels" ] \
-      || [ $CHILD == "twoPhaseEulerFoam" ] \
-        || [ $CHILD == "phaseCompressibleTurbulenceModels" ] \
-        || [ $CHILD == "twoPhaseSystem" ] \
-      || [ $CHILD == "ccm26ToFoam" ] \
-      || [ $CHILD == "cellSizeAndAlignmentGrid" ] \
-      || [ $CHILD == "foamyHexMeshBackgroundMesh" ] \
-      || [ $CHILD == "foamyHexMeshSurfaceSimplify" ] \
-      || [ $CHILD == "foamToTecplot360" ]
+      if [ $DIR != "./applications/solvers/multiphase/reactingTwoPhaseEulerFoam" ]
       then
-        echo "#add_subdirectory($CHILD)" >> $CMAKELISTS
+        if [ $CHILD == "chtMultiRegionFoam" ] \
+          || [ $CHILD == "chtMultiRegionSimpleFoam" ] \
+          || [ $CHILD == "sonicFoam" ] \
+          || [ $CHILD == "sonicDyMFoam" ] \
+          || [ $CHILD == "sonicLiquidFoam" ] \
+          || [ $CHILD == "reactingFoam" ] \
+          || [ $CHILD == "rhoReactingFoam" ] \
+          || [ $CHILD == "rhoReactingBuoyantFoam" ] \
+          || [ $CHILD == "LTSReactingFoam" ] \
+          || [ $CHILD == "reactingParcelFoam" ] \
+          || [ $CHILD == "DPMFoam" ] \
+          || [ $CHILD == "MPPICFoam" ] \
+          || [ $CHILD == "DPMTurbulenceModels" ] \
+          || [ $CHILD == "twoPhaseEulerFoam" ] \
+          || [ $CHILD == "twoPhaseSystem" ] \
+          || [ $CHILD == "phaseCompressibleTurbulenceModels" ] \
+          || [ $CHILD == "ccm26ToFoam" ] \
+          || [ $CHILD == "cellSizeAndAlignmentGrid" ] \
+          || [ $CHILD == "foamyHexMeshBackgroundMesh" ] \
+          || [ $CHILD == "foamyHexMeshSurfaceSimplify" ] \
+          || [ $CHILD == "foamToTecplot360" ]
+        then
+          echo "#add_subdirectory($CHILD)" >> $CMAKELISTS
+        else
+          echo "add_subdirectory($CHILD)" >> $CMAKELISTS
+        fi
       else
         echo "add_subdirectory($CHILD)" >> $CMAKELISTS
-     fi
+      fi
     done
   fi
 
@@ -477,6 +482,26 @@ assemble() {
   rm -f CMakeLists.txt.target
 
   cd $ROOT_DIR
+}
+
+create_include_cmake() {
+  INCLUDES=""
+  FOLDERS=`find . -type d`
+  for FOLDER in $FOLDERS
+  do
+    COUNT=`find $FOLDER -maxdepth 1 -name "*.C" -o -name "*.H" -o -name "*.L" | wc -w`
+    if [ "$COUNT" -gt 0 ]
+    then
+      INCLUDES="$INCLUDES
+`echo $FOLDER | sed -e 's|^\./||g'`"
+    fi
+  done
+  cat $ROOT_DIR/ccfoam/convert/licence.txt > include.cmake
+  echo >> include.cmake
+  for INCLUDE in `echo "$INCLUDES" | sort`
+  do
+    echo "include_directories(\${PROJECT_SOURCE_DIR}/$DIR/$INCLUDE)" >> include.cmake
+  done
 }
 
 ROOT_DIR=$PWD/$1
@@ -508,25 +533,28 @@ do
     then
       echo "$MAKE_DIR"
       cd $MAKE_DIR/..
-      INCLUDES=""
-      FOLDERS=`find . -type d`
-      for FOLDER in $FOLDERS
-      do
-        COUNT=`find $FOLDER -maxdepth 1 -name "*.C" -o -name "*.H" -o -name "*.L" | wc -w`
-        if [ "$COUNT" -gt 0 ]
-        then
-          INCLUDES="$INCLUDES
-`echo $FOLDER | sed -e 's|^\./||g'`"
-        fi
-      done
-      cat $ROOT_DIR/ccfoam/convert/licence.txt > include.cmake
-      echo >> include.cmake
-      for INCLUDE in `echo "$INCLUDES" | sort`
-      do
-        echo "include_directories(\${PROJECT_SOURCE_DIR}/$DIR/$INCLUDE)" >> include.cmake
-      done
+      create_include_cmake
       cd $ROOT_DIR
     fi
+  done
+
+  ALLWMAKES=`find $PASS -type f -name "Allwmake"`
+  for ALLWMAKE in $ALLWMAKES
+  do
+    DIRNAME=`dirname $ALLWMAKE`
+    DIRS=`grep "^wmakeLnInclude " $ALLWMAKE | awk '{print $2}'`
+    for DIR2 in $DIRS
+    do
+      DIR3=`eval echo \"$DIR2\"`
+      DIR="$DIRNAME/$DIR3"
+      cd $DIR
+      if [ ! -f include.cmake ]
+      then
+        echo "$DIR/$DIR3"
+        create_include_cmake
+      fi
+      cd $ROOT_DIR
+    done
   done
 done
 

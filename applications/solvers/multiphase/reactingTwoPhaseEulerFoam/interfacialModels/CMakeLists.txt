@@ -91,6 +91,7 @@ include(../../../../../src/thermophysicalModels/basic/include.cmake)
 include_directories(../../../../../src/transportModels/incompressible/transportModel)
 include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
 include(../../../../../src/TurbulenceModels/compressible/include.cmake)
+include(../../../../../src/TurbulenceModels/phaseCompressible/include.cmake)
 include(../../../../../src/meshTools/include.cmake)
 
 add_library(libreactingEulerianInterfacialModels ${SOURCES})

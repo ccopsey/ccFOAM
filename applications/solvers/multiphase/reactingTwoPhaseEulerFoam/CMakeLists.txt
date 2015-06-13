@@ -19,7 +19,7 @@
 
 add_subdirectory(interfacialCompositionModels)
 add_subdirectory(interfacialModels)
-#add_subdirectory(phaseCompressibleTurbulenceModels)
+add_subdirectory(phaseCompressibleTurbulenceModels)
 add_subdirectory(phaseSystems)
 
 set(SOURCES
@@ -50,6 +50,7 @@ include(../../../../src/thermophysicalModels/basic/include.cmake)
 include(../../../../src/transportModels/compressible/include.cmake)
 include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
 include(../../../../src/TurbulenceModels/compressible/include.cmake)
+include(../../../../src/TurbulenceModels/phaseCompressible/include.cmake)
 include(../../../../src/fvOptions/include.cmake)
 include(../../../../src/meshTools/include.cmake)
 include(../../../../src/sampling/include.cmake)

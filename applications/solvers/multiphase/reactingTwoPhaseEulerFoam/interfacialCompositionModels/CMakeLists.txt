@@ -62,6 +62,7 @@ include(../../../../../src/transportModels/incompressible/include.cmake)
 include(../../../../../src/transportModels/compressible/include.cmake)
 include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
 include(../../../../../src/TurbulenceModels/compressible/include.cmake)
+include(../../../../../src/TurbulenceModels/phaseCompressible/include.cmake)
 include(../../../../../src/meshTools/include.cmake)
 
 add_library(libreactingEulerianInterfacialCompositionModels ${SOURCES})
