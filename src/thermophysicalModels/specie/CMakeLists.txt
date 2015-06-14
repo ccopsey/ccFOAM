@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  atomicWeights/atomicWeights.C
-  specie/specie.C
-  reaction/reactions/makeReactions.C
-  reaction/reactions/makeLangmuirHinshelwoodReactions.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-
-add_library(libspecie ${SOURCES})
-set_target_properties(libspecie PROPERTIES PREFIX "")
-
-target_link_libraries(libspecie ${LIBRARIES})
-
-install(TARGETS libspecie DESTINATION lib OPTIONAL)
+include(target.cmake)

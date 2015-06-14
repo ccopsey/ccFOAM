@@ -17,48 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  chemistryReaders/chemkinReader/chemkinReader.C
-  ${CMAKE_CURRENT_BINARY_DIR}/chemistryReaders/chemkinReader/chemkinLexer.C
-  chemistryReaders/chemistryReader/makeChemistryReaders.C
-  mixtures/basicMultiComponentMixture/basicMultiComponentMixture.C
-  mixtures/basicSpecieMixture/basicSpecieMixture.C
-  mixtures/basicCombustionMixture/basicCombustionMixture.C
-  psiReactionThermo/psiReactionThermo.C
-  psiReactionThermo/psiReactionThermos.C
-  psiuReactionThermo/psiuReactionThermo.C
-  psiuReactionThermo/psiuReactionThermos.C
-  rhoReactionThermo/rhoReactionThermo.C
-  rhoReactionThermo/rhoReactionThermos.C
-  derivedFvPatchFields/fixedUnburntEnthalpy/fixedUnburntEnthalpyFvPatchScalarField.C
-  derivedFvPatchFields/gradientUnburntEnthalpy/gradientUnburntEnthalpyFvPatchScalarField.C
-  derivedFvPatchFields/mixedUnburntEnthalpy/mixedUnburntEnthalpyFvPatchScalarField.C
-)
-
-set(LIBRARIES
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libspecie
-  libsolidSpecie
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-include(../../../src/transportModels/compressible/include.cmake)
-include(../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../src/thermophysicalModels/specie/include.cmake)
-include(../../../src/thermophysicalModels/solidSpecie/include.cmake)
-include_directories(${FLEX_INCLUDE_DIR})
-
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/chemistryReaders/chemkinReader)
-flex_target(chemkinLexer chemistryReaders/chemkinReader/chemkinLexer.L ${CMAKE_CURRENT_BINARY_DIR}/chemistryReaders/chemkinReader/chemkinLexer.C COMPILE_FLAGS -+)
-
-add_library(libreactionThermophysicalModels ${SOURCES})
-set_target_properties(libreactionThermophysicalModels PROPERTIES PREFIX "")
-
-target_link_libraries(libreactionThermophysicalModels ${LIBRARIES})
-
-install(TARGETS libreactionThermophysicalModels DESTINATION lib OPTIONAL)
+include(target.cmake)

@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  star4ToFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libconversion
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/conversion/include.cmake)
-include(../../../../../src/fileFormats/include.cmake)
-
-add_executable(star4ToFoam ${SOURCES})
-
-target_link_libraries(star4ToFoam ${LIBRARIES})
-
-install(TARGETS star4ToFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

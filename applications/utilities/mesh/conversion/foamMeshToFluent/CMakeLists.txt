@@ -17,23 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  fluentFvMesh.C
-  foamMeshToFluent.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-
-add_executable(foamMeshToFluent ${SOURCES})
-
-target_link_libraries(foamMeshToFluent ${LIBRARIES})
-
-install(TARGETS foamMeshToFluent DESTINATION applications OPTIONAL)
+include(target.cmake)

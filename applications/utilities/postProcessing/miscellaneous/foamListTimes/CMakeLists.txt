@@ -17,20 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  foamListTimes.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-
-add_executable(foamListTimes ${SOURCES})
-
-target_link_libraries(foamListTimes ${LIBRARIES})
-
-install(TARGETS foamListTimes DESTINATION applications OPTIONAL)
+include(target.cmake)

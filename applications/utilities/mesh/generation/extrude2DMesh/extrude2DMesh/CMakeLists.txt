@@ -17,30 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  extrude2DMesh/extrude2DMesh.C
-  patchToPoly2DMesh/patchToPoly2DMesh.C
-)
-
-set(LIBRARIES
-  libmeshTools
-  libdynamicMesh
-  libsurfMesh
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../../src/finiteVolume/include.cmake)
-include(../../../../../../src/meshTools/include.cmake)
-include(../../../../../../src/dynamicMesh/include.cmake)
-include(../../../../../../src/surfMesh/include.cmake)
-include(../../../../../../src/mesh/extrudeModel/include.cmake)
-
-add_library(libextrude2DMesh ${SOURCES})
-set_target_properties(libextrude2DMesh PROPERTIES PREFIX "")
-
-target_link_libraries(libextrude2DMesh ${LIBRARIES})
-
-install(TARGETS libextrude2DMesh DESTINATION lib OPTIONAL)
+include(target.cmake)

@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  ${CMAKE_CURRENT_BINARY_DIR}/gambitToFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include_directories(${FLEX_INCLUDE_DIR})
-
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/.)
-flex_target(gambitToFoam gambitToFoam.L ${CMAKE_CURRENT_BINARY_DIR}/gambitToFoam.C COMPILE_FLAGS -+)
-
-add_executable(gambitToFoam ${SOURCES})
-
-target_link_libraries(gambitToFoam ${LIBRARIES})
-
-install(TARGETS gambitToFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

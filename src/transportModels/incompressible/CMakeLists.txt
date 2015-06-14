@@ -17,35 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  viscosityModels/viscosityModel/viscosityModel.C
-  viscosityModels/viscosityModel/viscosityModelNew.C
-  viscosityModels/Newtonian/Newtonian.C
-  viscosityModels/powerLaw/powerLaw.C
-  viscosityModels/CrossPowerLaw/CrossPowerLaw.C
-  viscosityModels/BirdCarreau/BirdCarreau.C
-  viscosityModels/HerschelBulkley/HerschelBulkley.C
-  transportModel/transportModel.C
-  singlePhaseTransportModel/singlePhaseTransportModel.C
-  incompressibleTwoPhaseMixture/incompressibleTwoPhaseMixture.C
-)
-
-set(LIBRARIES
-  libtwoPhaseMixture
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include_directories(..)
-include(../../../src/finiteVolume/include.cmake)
-include(../twoPhaseMixture/include.cmake)
-include(../../../src/meshTools/include.cmake)
-
-add_library(libincompressibleTransportModels ${SOURCES})
-set_target_properties(libincompressibleTransportModels PROPERTIES PREFIX "")
-
-target_link_libraries(libincompressibleTransportModels ${LIBRARIES})
-
-install(TARGETS libincompressibleTransportModels DESTINATION lib OPTIONAL)
+include(target.cmake)

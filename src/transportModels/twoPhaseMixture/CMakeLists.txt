@@ -17,22 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  twoPhaseMixture/twoPhaseMixture.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-
-add_library(libtwoPhaseMixture ${SOURCES})
-set_target_properties(libtwoPhaseMixture PROPERTIES PREFIX "")
-
-target_link_libraries(libtwoPhaseMixture ${LIBRARIES})
-
-install(TARGETS libtwoPhaseMixture DESTINATION lib OPTIONAL)
+include(target.cmake)

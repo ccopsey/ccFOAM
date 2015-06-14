@@ -17,29 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  Kmesh/Kmesh.C
-  fft/fft.C
-  fft/fftRenumber.C
-  fft/calcEk.C
-  fft/kShellIntegration.C
-  processes/UOprocess/UOprocess.C
-  turbulence/turbGen.C
-  noise/noiseFFT.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../src/OpenFOAM/include.cmake)
-include(../../src/OSspecific/POSIX/include.cmake)
-include(../../src/finiteVolume/include.cmake)
-
-add_library(librandomProcesses ${SOURCES})
-set_target_properties(librandomProcesses PROPERTIES PREFIX "")
-
-target_link_libraries(librandomProcesses ${LIBRARIES})
-
-install(TARGETS librandomProcesses DESTINATION lib OPTIONAL)
+include(target.cmake)

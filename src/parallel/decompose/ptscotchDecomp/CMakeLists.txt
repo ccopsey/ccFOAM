@@ -17,32 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  ptscotchDecomp.C
-)
-
-set(LIBRARIES
-  ${PTSCOTCH_LIBRARY}
-  ${SCOTCH_LIBRARY}
-  ${PTSCOTCH_ERREXIT_LIBRARY}
-  ${SCOTCH_LIBRARY}
-  ${RT_LIBRARY}
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include_directories(${MPI_CXX_INCLUDE_PATH})
-include_directories(${SCOTCH_INCLUDE_DIR})
-include(../decompositionMethods/include.cmake)
-
-add_definitions(
-  -DOMPI_SKIP_MPICXX
-)
-
-add_library(libptscotchDecomp ${SOURCES})
-set_target_properties(libptscotchDecomp PROPERTIES PREFIX "")
-
-target_link_libraries(libptscotchDecomp ${LIBRARIES})
-
-install(TARGETS libptscotchDecomp DESTINATION lib OPTIONAL)
+include(target.cmake)

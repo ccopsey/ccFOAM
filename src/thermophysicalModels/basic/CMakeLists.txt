@@ -17,37 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  basicThermo/basicThermo.C
-  fluidThermo/fluidThermo.C
-  psiThermo/psiThermo.C
-  psiThermo/psiThermos.C
-  rhoThermo/rhoThermo.C
-  rhoThermo/rhoThermos.C
-  derivedFvPatchFields/fixedEnergy/fixedEnergyFvPatchScalarField.C
-  derivedFvPatchFields/gradientEnergy/gradientEnergyFvPatchScalarField.C
-  derivedFvPatchFields/mixedEnergy/mixedEnergyFvPatchScalarField.C
-  derivedFvPatchFields/energyJump/energyJump/energyJumpFvPatchScalarField.C
-  derivedFvPatchFields/energyJump/energyJumpAMI/energyJumpAMIFvPatchScalarField.C
-)
-
-set(LIBRARIES
-  libcompressibleTransportModels
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-include(../../../src/transportModels/compressible/include.cmake)
-include(../../../src/thermophysicalModels/specie/include.cmake)
-include(../../../src/meshTools/include.cmake)
-
-add_library(libfluidThermophysicalModels ${SOURCES})
-set_target_properties(libfluidThermophysicalModels PROPERTIES PREFIX "")
-
-target_link_libraries(libfluidThermophysicalModels ${LIBRARIES})
-
-install(TARGETS libfluidThermophysicalModels DESTINATION lib OPTIONAL)
+include(target.cmake)

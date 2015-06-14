@@ -17,4 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-#add_subdirectory(ccm26ToFoam)
+add_subdirectory(ccm26ToFoam)

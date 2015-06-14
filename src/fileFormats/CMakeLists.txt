@@ -17,26 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  vtk/vtkUnstructuredReader.C
-  nas/NASCore.C
-  starcd/STARCDCore.C
-  coordSet/coordSet.C
-  sampledSetWriters/writers.C
-  sampledSetWriters/ensight/ensightSetWriterRunTime.C
-  sampledSetWriters/gnuplot/gnuplotSetWriterRunTime.C
-  sampledSetWriters/jplot/jplotSetWriterRunTime.C
-  sampledSetWriters/raw/rawSetWriterRunTime.C
-  sampledSetWriters/vtk/vtkSetWriterRunTime.C
-  sampledSetWriters/xmgrace/xmgraceSetWriterRunTime.C
-  sampledSetWriters/csv/csvSetWriterRunTime.C
-)
-
-include(include.cmake)
-include(../../src/OpenFOAM/include.cmake)
-include(../../src/OSspecific/POSIX/include.cmake)
-
-add_library(libfileFormats ${SOURCES})
-set_target_properties(libfileFormats PROPERTIES PREFIX "")
-
-install(TARGETS libfileFormats DESTINATION lib OPTIONAL)
+include(target.cmake)

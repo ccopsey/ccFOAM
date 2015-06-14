@@ -22,41 +22,4 @@ add_subdirectory(interfacialModels)
 add_subdirectory(phaseCompressibleTurbulenceModels)
 add_subdirectory(phaseSystems)
 
-set(SOURCES
-  reactingTwoPhaseEulerFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libreactingTwoPhaseSystem
-  libreactingEulerianInterfacialModels
-  libreactingEulerianInterfacialCompositionModels
-  libphaseReactingTurbulenceModels
-  libfiniteVolume
-  libfvOptions
-  libmeshTools
-  libsampling
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(phaseSystems/include.cmake)
-include(interfacialModels/include.cmake)
-include(interfacialCompositionModels/include.cmake)
-include(phaseCompressibleTurbulenceModels/include.cmake)
-include(../../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../../src/transportModels/compressible/include.cmake)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/compressible/include.cmake)
-include(../../../../src/TurbulenceModels/phaseCompressible/include.cmake)
-include(../../../../src/fvOptions/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/sampling/include.cmake)
-
-add_executable(reactingTwoPhaseEulerFoam ${SOURCES})
-
-target_link_libraries(reactingTwoPhaseEulerFoam ${LIBRARIES})
-
-install(TARGETS reactingTwoPhaseEulerFoam DESTINATION applications OPTIONAL)
+#include(target.cmake)

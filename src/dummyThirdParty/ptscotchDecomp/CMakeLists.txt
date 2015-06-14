@@ -17,17 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  dummyPtscotchDecomp.C
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/parallel/decompose/decompositionMethods/include.cmake)
-include(../../../src/parallel/decompose/ptscotchDecomp/include.cmake)
-
-add_library(libdummyptscotchDecomp ${SOURCES})
-set_target_properties(libdummyptscotchDecomp PROPERTIES PREFIX "")
-
-install(TARGETS libdummyptscotchDecomp DESTINATION lib OPTIONAL)
+include(target.cmake)

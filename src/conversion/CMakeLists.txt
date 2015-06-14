@@ -17,43 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  ensight/file/ensightFile.C
-  ensight/file/ensightGeoFile.C
-  ensight/part/ensightPart.C
-  ensight/part/ensightPartIO.C
-  ensight/part/ensightPartCells.C
-  ensight/part/ensightPartFaces.C
-  ensight/part/ensightParts.C
-  meshTables/boundaryRegion.C
-  meshTables/cellTable.C
-  meshReader/meshReader.C
-  meshReader/meshReaderAux.C
-  meshReader/calcPointCells.C
-  meshReader/createPolyCells.C
-  meshReader/createPolyBoundary.C
-  meshReader/starcd/STARCDMeshReader.C
-  meshWriter/meshWriter.C
-  meshWriter/starcd/STARCDMeshWriter.C
-  polyDualMesh/polyDualMesh.C
-)
-
-set(LIBRARIES
-  libfileFormats
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../src/OpenFOAM/include.cmake)
-include(../../src/OSspecific/POSIX/include.cmake)
-include(../../src/finiteVolume/include.cmake)
-include(../../src/fileFormats/include.cmake)
-include(../../src/meshTools/include.cmake)
-
-add_library(libconversion ${SOURCES})
-set_target_properties(libconversion PROPERTIES PREFIX "")
-
-target_link_libraries(libconversion ${LIBRARIES})
-
-install(TARGETS libconversion DESTINATION lib OPTIONAL)
+include(target.cmake)

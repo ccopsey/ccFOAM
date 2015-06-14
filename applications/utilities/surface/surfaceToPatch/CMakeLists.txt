@@ -17,26 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceToPatch.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libtriSurface
-  libmeshTools
-  libdynamicMesh
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/triSurface/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/dynamicMesh/include.cmake)
-
-add_executable(surfaceToPatch ${SOURCES})
-
-target_link_libraries(surfaceToPatch ${LIBRARIES})
-
-install(TARGETS surfaceToPatch DESTINATION applications OPTIONAL)
+include(target.cmake)

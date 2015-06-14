@@ -20,37 +20,4 @@
 add_subdirectory(BCs)
 add_subdirectory(rhoCentralDyMFoam)
 
-set(SOURCES
-  rhoCentralFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libspecie
-  librhoCentralFoam
-  libturbulenceModels
-  libcompressibleTurbulenceModels
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(BCs/include.cmake)
-include(../../../../src/transportModels/compressible/include.cmake)
-include(../../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../../src/thermophysicalModels/specie/include.cmake)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/compressible/include.cmake)
-include(../../../../src/dynamicMesh/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-
-add_executable(rhoCentralFoam ${SOURCES})
-
-target_link_libraries(rhoCentralFoam ${LIBRARIES})
-
-install(TARGETS rhoCentralFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

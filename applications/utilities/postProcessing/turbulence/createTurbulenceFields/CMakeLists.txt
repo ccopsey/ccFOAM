@@ -17,32 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  createTurbulenceFields.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libincompressibleTransportModels
-  libgenericPatchFields
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../../src/TurbulenceModels/incompressible/include.cmake)
-include_directories(../../../../../src/transportModels)
-include_directories(../../../../../src/transportModels/incompressible/singlePhaseTransportModel)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(createTurbulenceFields ${SOURCES})
-
-target_link_libraries(createTurbulenceFields ${LIBRARIES})
-
-install(TARGETS createTurbulenceFields DESTINATION applications OPTIONAL)
+include(target.cmake)

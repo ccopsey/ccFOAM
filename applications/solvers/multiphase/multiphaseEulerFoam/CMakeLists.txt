@@ -20,39 +20,4 @@
 add_subdirectory(interfacialModels)
 add_subdirectory(multiphaseSystem)
 
-set(SOURCES
-  multiphaseEulerFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmultiphaseSystem
-  libinterfaceProperties
-  libincompressibleTransportModels
-  libcompressibleMultiphaseEulerianInterfacialModels
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(multiphaseSystem/include.cmake)
-include(interfacialModels/include.cmake)
-include_directories(../../../../src/transportModels)
-include(../../../../src/transportModels/incompressible/include.cmake)
-include(../../../../src/transportModels/interfaceProperties/include.cmake)
-include(../../../../src/transportModels/incompressible/include.cmake)
-include_directories(../../../../src/transportModels/incompressible/singlePhaseTransportModel)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/incompressible/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-
-add_executable(multiphaseEulerFoam ${SOURCES})
-
-target_link_libraries(multiphaseEulerFoam ${LIBRARIES})
-
-install(TARGETS multiphaseEulerFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

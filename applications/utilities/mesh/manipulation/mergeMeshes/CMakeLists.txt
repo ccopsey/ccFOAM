@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  mergePolyMesh.C
-  mergeMeshes.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libdynamicMesh
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-
-add_executable(mergeMeshes ${SOURCES})
-
-target_link_libraries(mergeMeshes ${LIBRARIES})
-
-install(TARGETS mergeMeshes DESTINATION applications OPTIONAL)
+include(target.cmake)

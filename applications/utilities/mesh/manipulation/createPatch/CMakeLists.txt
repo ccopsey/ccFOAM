@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  createPatch.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libdynamicMesh
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(createPatch ${SOURCES})
-
-target_link_libraries(createPatch ${LIBRARIES})
-
-install(TARGETS createPatch DESTINATION applications OPTIONAL)
+include(target.cmake)

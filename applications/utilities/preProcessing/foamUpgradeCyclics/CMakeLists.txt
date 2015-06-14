@@ -17,23 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  foamUpgradeCyclics.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  libgenericPatchFields
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-
-add_executable(foamUpgradeCyclics ${SOURCES})
-
-target_link_libraries(foamUpgradeCyclics ${LIBRARIES})
-
-install(TARGETS foamUpgradeCyclics DESTINATION applications OPTIONAL)
+include(target.cmake)

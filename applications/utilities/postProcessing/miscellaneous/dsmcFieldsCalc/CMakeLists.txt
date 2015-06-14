@@ -17,32 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  dsmcFieldsCalc.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libpostCalc
-  libmeshTools
-  libfiniteVolume
-  libutilityFunctionObjects
-  liblagrangian
-  libDSMC
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include_directories(../../../../../src/postProcessing/postCalc)
-include(../../../../../src/lagrangian/basic/include.cmake)
-include(../../../../../src/postProcessing/functionObjects/utilities/include.cmake)
-include(../../../../../src/lagrangian/DSMC/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(dsmcFieldsCalc ${SOURCES})
-
-target_link_libraries(dsmcFieldsCalc ${LIBRARIES})
-
-install(TARGETS dsmcFieldsCalc DESTINATION applications OPTIONAL)
+include(target.cmake)

@@ -18,9 +18,9 @@
 #
 
 add_subdirectory(coalChemistryFoam)
-#add_subdirectory(DPMFoam)
+add_subdirectory(DPMFoam)
 add_subdirectory(icoUncoupledKinematicParcelFoam)
 add_subdirectory(reactingParcelFilmFoam)
-#add_subdirectory(reactingParcelFoam)
+add_subdirectory(reactingParcelFoam)
 add_subdirectory(sprayFoam)
 add_subdirectory(uncoupledKinematicParcelFoam)

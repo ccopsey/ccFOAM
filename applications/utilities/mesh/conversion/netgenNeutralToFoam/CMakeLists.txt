@@ -17,20 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  netgenNeutralToFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-
-add_executable(netgenNeutralToFoam ${SOURCES})
-
-target_link_libraries(netgenNeutralToFoam ${LIBRARIES})
-
-install(TARGETS netgenNeutralToFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

@@ -17,41 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  decomposePar.C
-  domainDecomposition.C
-  domainDecompositionMesh.C
-  domainDecompositionDistribute.C
-  dimFieldDecomposer.C
-  pointFieldDecomposer.C
-  lagrangianFieldDecomposer.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  libdecompose
-  libgenericPatchFields
-  libdecompositionMethods
-  libmetisDecomp
-  libscotchDecomp
-  liblagrangian
-  libmeshTools
-  libregionModels
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/parallel/decompose/decompose/include.cmake)
-include(../../../../src/parallel/decompose/decompositionMethods/include.cmake)
-include(../../../../src/lagrangian/basic/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/regionModels/regionModel/include.cmake)
-
-add_executable(decomposePar ${SOURCES})
-
-target_link_libraries(decomposePar ${LIBRARIES})
-
-install(TARGETS decomposePar DESTINATION applications OPTIONAL)
+include(target.cmake)

@@ -17,33 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  renumberMesh.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libdynamicMesh
-  libfiniteVolume
-  libgenericPatchFields
-  librenumberMethods
-  libdecompositionMethods
-  libmetisDecomp
-  libscotchDecomp
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-include(../../../../../src/renumber/renumberMethods/include.cmake)
-include(../../../../../src/parallel/decompose/decompositionMethods/include.cmake)
-
-add_executable(renumberMesh ${SOURCES})
-
-target_link_libraries(renumberMesh ${LIBRARIES})
-
-install(TARGETS renumberMesh DESTINATION applications OPTIONAL)
+include(target.cmake)

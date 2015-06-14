@@ -20,43 +20,4 @@
 add_subdirectory(mixtureViscosityModels)
 add_subdirectory(relativeVelocityModels)
 
-set(SOURCES
-  incompressibleTwoPhaseInteractingMixture/incompressibleTwoPhaseInteractingMixture.C
-  compressibleTurbulenceModels.C
-  driftFluxFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libdriftFluxTransportModels
-  libdriftFluxRelativeVelocityModels
-  libfiniteVolume
-  libmeshTools
-  libsampling
-  libfvOptions
-  libcompressibleTransportModels
-  libturbulenceModels
-  libcompressibleTurbulenceModels
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include_directories(incompressibleTwoPhaseInteractingMixture)
-include(mixtureViscosityModels/include.cmake)
-include(./relativeVelocityModels/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/sampling/include.cmake)
-include(../../../../src/fvOptions/include.cmake)
-include_directories(../../../../src/transportModels)
-include(../../../../src/transportModels/compressible/include.cmake)
-include(../../../../src/transportModels/twoPhaseMixture/include.cmake)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/compressible/include.cmake)
-
-add_executable(driftFluxFoam ${SOURCES})
-
-target_link_libraries(driftFluxFoam ${LIBRARIES})
-
-install(TARGETS driftFluxFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

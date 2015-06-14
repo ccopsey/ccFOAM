@@ -17,22 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  compressibleTransportModel/compressibleTransportModel.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-
-add_library(libcompressibleTransportModels ${SOURCES})
-set_target_properties(libcompressibleTransportModels PROPERTIES PREFIX "")
-
-target_link_libraries(libcompressibleTransportModels ${LIBRARIES})
-
-install(TARGETS libcompressibleTransportModels DESTINATION lib OPTIONAL)
+include(target.cmake)

@@ -17,22 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  datToFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(datToFoam ${SOURCES})
-
-target_link_libraries(datToFoam ${LIBRARIES})
-
-install(TARGETS datToFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

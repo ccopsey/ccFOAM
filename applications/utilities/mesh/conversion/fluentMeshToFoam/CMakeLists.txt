@@ -17,31 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  extrudedTriangleCellShape.C
-  extrudedQuadCellShape.C
-  create3DCellShape.C
-  ${CMAKE_CURRENT_BINARY_DIR}/fluentMeshToFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libdynamicMesh
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-include_directories(${FLEX_INCLUDE_DIR})
-
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/.)
-flex_target(fluentMeshToFoam fluentMeshToFoam.L ${CMAKE_CURRENT_BINARY_DIR}/fluentMeshToFoam.C COMPILE_FLAGS -+)
-
-add_executable(fluentMeshToFoam ${SOURCES})
-
-target_link_libraries(fluentMeshToFoam ${LIBRARIES})
-
-install(TARGETS fluentMeshToFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

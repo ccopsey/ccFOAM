@@ -20,40 +20,4 @@
 add_subdirectory(multiphaseInterDyMFoam)
 add_subdirectory(multiphaseMixture)
 
-set(SOURCES
-  multiphaseInterFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmultiphaseInterFoam
-  libinterfaceProperties
-  libincompressibleTransportModels
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libfiniteVolume
-  libfvOptions
-  libmeshTools
-  libsampling
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include_directories(../interFoam)
-include(multiphaseMixture/include.cmake)
-include_directories(../../../../src/transportModels)
-include(../../../../src/transportModels/incompressible/include.cmake)
-include(../../../../src/transportModels/interfaceProperties/include.cmake)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/incompressible/include.cmake)
-include(../../../../src/fvOptions/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/sampling/include.cmake)
-
-add_executable(multiphaseInterFoam ${SOURCES})
-
-target_link_libraries(multiphaseInterFoam ${LIBRARIES})
-
-install(TARGETS multiphaseInterFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

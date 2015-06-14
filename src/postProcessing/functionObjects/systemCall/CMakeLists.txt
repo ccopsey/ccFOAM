@@ -17,16 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  systemCall.C
-  systemCallFunctionObject.C
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-
-add_library(libsystemCall ${SOURCES})
-set_target_properties(libsystemCall PROPERTIES PREFIX "")
-
-install(TARGETS libsystemCall DESTINATION lib OPTIONAL)
+include(target.cmake)

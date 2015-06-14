@@ -19,31 +19,4 @@
 
 add_subdirectory(helpTypes)
 
-set(SOURCES
-  foamHelp.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libhelpTypes
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libcompressibleTurbulenceModels
-  libradiationModels
-  libfluidThermophysicalModels
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(helpTypes/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-
-add_executable(foamHelp ${SOURCES})
-
-target_link_libraries(foamHelp ${LIBRARIES})
-
-install(TARGETS foamHelp DESTINATION applications OPTIONAL)
+include(target.cmake)

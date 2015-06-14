@@ -17,15 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  dummyMGridGen.C
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-
-add_library(libdummyMGridGen ${SOURCES})
-set_target_properties(libdummyMGridGen PROPERTIES PREFIX "")
-
-install(TARGETS libdummyMGridGen DESTINATION lib OPTIONAL)
+include(target.cmake)

@@ -17,22 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  reaction/reactions/makeSolidReactions.C
-)
-
-set(LIBRARIES
-  libspecie
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/thermophysicalModels/specie/include.cmake)
-
-add_library(libsolidSpecie ${SOURCES})
-set_target_properties(libsolidSpecie PROPERTIES PREFIX "")
-
-target_link_libraries(libsolidSpecie ${LIBRARIES})
-
-install(TARGETS libsolidSpecie DESTINATION lib OPTIONAL)
+include(target.cmake)

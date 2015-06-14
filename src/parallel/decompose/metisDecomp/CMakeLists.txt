@@ -17,23 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  metisDecomp.C
-)
-
-set(LIBRARIES
-  ${METIS_LIBRARY}
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include_directories(${METIS_INCLUDE_DIR})
-include(../decompositionMethods/include.cmake)
-
-add_library(libmetisDecomp ${SOURCES})
-set_target_properties(libmetisDecomp PROPERTIES PREFIX "")
-
-target_link_libraries(libmetisDecomp ${LIBRARIES})
-
-install(TARGETS libmetisDecomp DESTINATION lib OPTIONAL)
+include(target.cmake)

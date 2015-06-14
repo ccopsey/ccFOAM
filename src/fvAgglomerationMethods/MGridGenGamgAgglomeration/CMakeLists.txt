@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  MGridGenGAMGAgglomeration.C
-  MGridGenGAMGAgglomerate.C
-)
-
-set(LIBRARIES
-  ${MGRIDGEN_LIBRARY}
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-include_directories(${MGRIDGEN_INCLUDE_DIR})
-
-add_library(libMGridGenGAMGAgglomeration ${SOURCES})
-set_target_properties(libMGridGenGAMGAgglomeration PROPERTIES PREFIX "")
-
-target_link_libraries(libMGridGenGAMGAgglomeration ${LIBRARIES})
-
-install(TARGETS libMGridGenGAMGAgglomeration DESTINATION lib OPTIONAL)
+include(target.cmake)

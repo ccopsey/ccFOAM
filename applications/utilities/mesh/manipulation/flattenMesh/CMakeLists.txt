@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  flattenMesh.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libdynamicMesh
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(flattenMesh ${SOURCES})
-
-target_link_libraries(flattenMesh ${LIBRARIES})
-
-install(TARGETS flattenMesh DESTINATION applications OPTIONAL)
+include(target.cmake)

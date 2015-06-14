@@ -17,28 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  meshDualiser.C
-  polyDualMeshApp.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  libgenericPatchFields
-  libdynamicMesh
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-
-add_executable(polyDualMesh ${SOURCES})
-
-target_link_libraries(polyDualMesh ${LIBRARIES})
-
-install(TARGETS polyDualMesh DESTINATION applications OPTIONAL)
+include(target.cmake)

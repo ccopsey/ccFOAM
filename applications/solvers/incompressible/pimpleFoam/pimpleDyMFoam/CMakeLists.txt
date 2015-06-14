@@ -17,41 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  pimpleDyMFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libincompressibleTransportModels
-  libfiniteVolume
-  libfvOptions
-  libsampling
-  libdynamicFvMesh
-  libtopoChangerFvMesh
-  libdynamicMesh
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include_directories(..)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../../src/TurbulenceModels/incompressible/include.cmake)
-include_directories(../../../../../src/transportModels)
-include_directories(../../../../../src/transportModels/incompressible/singlePhaseTransportModel)
-include(../../../../../src/fvOptions/include.cmake)
-include(../../../../../src/sampling/include.cmake)
-include(../../../../../src/dynamicFvMesh/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(pimpleDyMFoam ${SOURCES})
-
-target_link_libraries(pimpleDyMFoam ${LIBRARIES})
-
-install(TARGETS pimpleDyMFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

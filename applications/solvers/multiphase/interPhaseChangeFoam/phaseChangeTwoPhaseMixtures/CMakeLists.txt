@@ -17,32 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixture.C
-  phaseChangeTwoPhaseMixture/newPhaseChangeTwoPhaseMixture.C
-  Kunz/Kunz.C
-  Merkle/Merkle.C
-  SchnerrSauer/SchnerrSauer.C
-)
-
-set(LIBRARIES
-  libtwoPhaseMixture
-  libtwoPhaseProperties
-  libincompressibleTransportModels
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/transportModels/twoPhaseMixture/include.cmake)
-include_directories(../../../../../src/transportModels)
-include(../../../../../src/transportModels/incompressible/include.cmake)
-
-add_library(libphaseChangeTwoPhaseMixtures ${SOURCES})
-set_target_properties(libphaseChangeTwoPhaseMixtures PROPERTIES PREFIX "")
-
-target_link_libraries(libphaseChangeTwoPhaseMixtures ${LIBRARIES})
-
-install(TARGETS libphaseChangeTwoPhaseMixtures DESTINATION lib OPTIONAL)
+include(target.cmake)

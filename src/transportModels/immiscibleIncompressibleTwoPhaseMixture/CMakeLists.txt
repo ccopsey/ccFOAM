@@ -17,30 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  immiscibleIncompressibleTwoPhaseMixture.C
-)
-
-set(LIBRARIES
-  libtwoPhaseMixture
-  libincompressibleTransportModels
-  libinterfaceProperties
-  libtwoPhaseProperties
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include_directories(..)
-include(../../../src/finiteVolume/include.cmake)
-include(../incompressible/include.cmake)
-include(../interfaceProperties/include.cmake)
-include(../twoPhaseMixture/include.cmake)
-
-add_library(libimmiscibleIncompressibleTwoPhaseMixture ${SOURCES})
-set_target_properties(libimmiscibleIncompressibleTwoPhaseMixture PROPERTIES PREFIX "")
-
-target_link_libraries(libimmiscibleIncompressibleTwoPhaseMixture ${LIBRARIES})
-
-install(TARGETS libimmiscibleIncompressibleTwoPhaseMixture DESTINATION lib OPTIONAL)
+include(target.cmake)

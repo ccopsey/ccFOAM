@@ -20,35 +20,4 @@
 add_subdirectory(pimpleDyMFoam)
 add_subdirectory(SRFPimpleFoam)
 
-set(SOURCES
-  pimpleFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libincompressibleTransportModels
-  libfiniteVolume
-  libmeshTools
-  libfvOptions
-  libsampling
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/incompressible/include.cmake)
-include_directories(../../../../src/transportModels)
-include_directories(../../../../src/transportModels/incompressible/singlePhaseTransportModel)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/fvOptions/include.cmake)
-include(../../../../src/sampling/include.cmake)
-
-add_executable(pimpleFoam ${SOURCES})
-
-target_link_libraries(pimpleFoam ${LIBRARIES})
-
-install(TARGETS pimpleFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

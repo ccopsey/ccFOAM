@@ -17,34 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  twoLiquidMixingFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libtwoPhaseMixture
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include_directories(../interFoam)
-include(../../../../src/transportModels/twoPhaseMixture/include.cmake)
-include_directories(../../../../src/transportModels)
-include(../../../../src/transportModels/incompressible/include.cmake)
-include(../../../../src/transportModels/interfaceProperties/include.cmake)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/incompressible/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-
-add_executable(twoLiquidMixingFoam ${SOURCES})
-
-target_link_libraries(twoLiquidMixingFoam ${LIBRARIES})
-
-install(TARGETS twoLiquidMixingFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

@@ -17,34 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  mdInitialise.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libdynamicMesh
-  libfiniteVolume
-  liblagrangian
-  libmolecule
-  libpotential
-  libmolecularMeasurements
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/dynamicMesh/include.cmake)
-include(../../../../src/lagrangian/molecularDynamics/molecule/include.cmake)
-include(../../../../src/lagrangian/molecularDynamics/potential/include.cmake)
-include(../../../../src/lagrangian/molecularDynamics/molecularMeasurements/include.cmake)
-include(../../../../src/lagrangian/basic/include.cmake)
-
-add_executable(mdInitialise ${SOURCES})
-
-target_link_libraries(mdInitialise ${LIBRARIES})
-
-install(TARGETS mdInitialise DESTINATION applications OPTIONAL)
+include(target.cmake)

@@ -17,43 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  coldEngineFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libengine
-  libturbulenceModels
-  libcompressibleTurbulenceModels
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libspecie
-  libfiniteVolume
-  libmeshTools
-  libfvOptions
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include_directories(../engineFoam)
-include_directories(../XiFoam)
-include_directories(../../compressible/rhoPimpleFoam)
-include(../../../../src/engine/include.cmake)
-include(../../../../src/thermophysicalModels/specie/include.cmake)
-include(../../../../src/transportModels/compressible/include.cmake)
-include(../../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../../src/thermophysicalModels/reactionThermo/include.cmake)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/compressible/include.cmake)
-include(../../../../src/sampling/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/fvOptions/include.cmake)
-
-add_executable(coldEngineFoam ${SOURCES})
-
-target_link_libraries(coldEngineFoam ${LIBRARIES})
-
-install(TARGETS coldEngineFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

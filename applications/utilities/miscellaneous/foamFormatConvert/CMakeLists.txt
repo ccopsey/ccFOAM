@@ -17,27 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  foamFormatConvert.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libfiniteVolume
-  libgenericPatchFields
-  liblagrangian
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/lagrangian/basic/include.cmake)
-
-add_executable(foamFormatConvert ${SOURCES})
-
-target_link_libraries(foamFormatConvert ${LIBRARIES})
-
-install(TARGETS foamFormatConvert DESTINATION applications OPTIONAL)
+include(target.cmake)

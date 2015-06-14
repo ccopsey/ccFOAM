@@ -17,27 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  particle/particle.C
-  particle/particleIO.C
-  passiveParticle/passiveParticleCloud.C
-  indexedParticle/indexedParticleCloud.C
-  InteractionLists/referredWallFace/referredWallFace.C
-)
-
-set(LIBRARIES
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-include(../../../src/meshTools/include.cmake)
-
-add_library(liblagrangian ${SOURCES})
-set_target_properties(liblagrangian PROPERTIES PREFIX "")
-
-target_link_libraries(liblagrangian ${LIBRARIES})
-
-install(TARGETS liblagrangian DESTINATION lib OPTIONAL)
+include(target.cmake)

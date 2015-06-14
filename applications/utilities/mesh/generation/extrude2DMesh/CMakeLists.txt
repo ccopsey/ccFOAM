@@ -19,29 +19,4 @@
 
 add_subdirectory(extrude2DMesh)
 
-set(SOURCES
-  extrude2DMeshApp.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libsurfMesh
-  libdynamicMesh
-  libextrude2DMesh
-  libextrudeModel
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/surfMesh/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-include(extrude2DMesh/include.cmake)
-include(../../../../../src/mesh/extrudeModel/include.cmake)
-
-add_executable(extrude2DMeshApp ${SOURCES})
-
-target_link_libraries(extrude2DMeshApp ${LIBRARIES})
-
-install(TARGETS extrude2DMeshApp DESTINATION applications OPTIONAL)
+include(target.cmake)

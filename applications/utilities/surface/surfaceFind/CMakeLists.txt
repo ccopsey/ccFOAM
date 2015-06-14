@@ -17,23 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceFind.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libsurfMesh
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/surfMesh/include.cmake)
-
-add_executable(surfaceFind ${SOURCES})
-
-target_link_libraries(surfaceFind ${LIBRARIES})
-
-install(TARGETS surfaceFind DESTINATION applications OPTIONAL)
+include(target.cmake)

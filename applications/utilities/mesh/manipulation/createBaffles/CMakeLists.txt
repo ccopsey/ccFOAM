@@ -17,31 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  faceSelection/faceSelection.C
-  faceSelection/faceZoneSelection.C
-  faceSelection/searchableSurfaceSelection.C
-  createBaffles.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libdynamicMesh
-  libmeshTools
-  libfiniteVolume
-  libgenericPatchFields
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include_directories(faceSelection)
-include(../../../../../src/dynamicMesh/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(createBaffles ${SOURCES})
-
-target_link_libraries(createBaffles ${LIBRARIES})
-
-install(TARGETS createBaffles DESTINATION applications OPTIONAL)
+include(target.cmake)

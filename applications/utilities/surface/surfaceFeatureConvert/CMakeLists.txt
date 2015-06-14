@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceFeatureConvert.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libedgeMesh
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/edgeMesh/include.cmake)
-
-add_executable(surfaceFeatureConvert ${SOURCES})
-
-target_link_libraries(surfaceFeatureConvert ${LIBRARIES})
-
-install(TARGETS surfaceFeatureConvert DESTINATION applications OPTIONAL)
+include(target.cmake)

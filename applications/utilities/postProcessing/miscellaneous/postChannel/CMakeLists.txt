@@ -17,28 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  postChannel.C
-  channelIndex.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libfiniteVolume
-  libgenericPatchFields
-  libsampling
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/sampling/include.cmake)
-
-add_executable(postChannel ${SOURCES})
-
-target_link_libraries(postChannel ${LIBRARIES})
-
-install(TARGETS postChannel DESTINATION applications OPTIONAL)
+include(target.cmake)

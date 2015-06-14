@@ -17,27 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  faceAgglomerate.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  libpairPatchAgglomeration
-  libtriSurface
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/fvAgglomerationMethods/pairPatchAgglomeration/include.cmake)
-
-add_executable(faceAgglomerate ${SOURCES})
-
-target_link_libraries(faceAgglomerate ${LIBRARIES})
-
-install(TARGETS faceAgglomerate DESTINATION applications OPTIONAL)
+include(target.cmake)

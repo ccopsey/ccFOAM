@@ -17,30 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  PDRMesh.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libturbulenceModels
-  libcompressibleTurbulenceModels
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libmeshTools
-  libdynamicMesh
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-
-add_executable(PDRMesh ${SOURCES})
-
-target_link_libraries(PDRMesh ${LIBRARIES})
-
-install(TARGETS PDRMesh DESTINATION applications OPTIONAL)
+include(target.cmake)

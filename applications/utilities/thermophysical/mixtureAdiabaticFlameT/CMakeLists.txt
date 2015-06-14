@@ -17,22 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  mixtureAdiabaticFlameT.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libspecie
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/thermophysicalModels/specie/include.cmake)
-
-add_executable(mixtureAdiabaticFlameT ${SOURCES})
-
-target_link_libraries(mixtureAdiabaticFlameT ${LIBRARIES})
-
-install(TARGETS mixtureAdiabaticFlameT DESTINATION applications OPTIONAL)
+include(target.cmake)

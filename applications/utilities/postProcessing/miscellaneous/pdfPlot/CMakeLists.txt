@@ -17,28 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  pdfPlot.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libdistributionModels
-  libsampling
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/lagrangian/distributionModels/include.cmake)
-include(../../../../../src/sampling/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(pdfPlot ${SOURCES})
-
-target_link_libraries(pdfPlot ${LIBRARIES})
-
-install(TARGETS pdfPlot DESTINATION applications OPTIONAL)
+include(target.cmake)

@@ -17,27 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  stressComponents.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libgenericPatchFields
-  libincompressibleTransportModels
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include_directories(../../../../../src/transportModels)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(stressComponents ${SOURCES})
-
-target_link_libraries(stressComponents ${LIBRARIES})
-
-install(TARGETS stressComponents DESTINATION applications OPTIONAL)
+include(target.cmake)

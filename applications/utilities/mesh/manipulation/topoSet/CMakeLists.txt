@@ -17,22 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  topoSet.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(topoSet ${SOURCES})
-
-target_link_libraries(topoSet ${LIBRARIES})
-
-install(TARGETS topoSet DESTINATION applications OPTIONAL)
+include(target.cmake)

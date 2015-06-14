@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceMeshConvertTesting.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libtriSurface
-  libsurfMesh
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/triSurface/include.cmake)
-include(../../../../src/surfMesh/include.cmake)
-
-add_executable(surfaceMeshConvertTesting ${SOURCES})
-
-target_link_libraries(surfaceMeshConvertTesting ${LIBRARIES})
-
-install(TARGETS surfaceMeshConvertTesting DESTINATION applications OPTIONAL)
+include(target.cmake)

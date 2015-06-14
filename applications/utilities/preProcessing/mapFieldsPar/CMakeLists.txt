@@ -17,30 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  mapLagrangian.C
-  mapFieldsPar.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libsampling
-  libmeshTools
-  liblagrangian
-  libfiniteVolume
-  libgenericPatchFields
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/lagrangian/basic/include.cmake)
-include(../../../../src/sampling/include.cmake)
-
-add_executable(mapFieldsPar ${SOURCES})
-
-target_link_libraries(mapFieldsPar ${LIBRARIES})
-
-install(TARGETS mapFieldsPar DESTINATION applications OPTIONAL)
+include(target.cmake)

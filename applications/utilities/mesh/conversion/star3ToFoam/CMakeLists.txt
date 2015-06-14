@@ -17,35 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  coupledFacePair.C
-  starMesh.C
-  readPoints.C
-  readCells.C
-  readBoundary.C
-  fixCollapsedEdges.C
-  readCouples.C
-  createCoupleMatches.C
-  mergeCoupleFacePoints.C
-  calcPointCells.C
-  createPolyCells.C
-  createBoundaryFaces.C
-  createPolyBoundary.C
-  purgeCellShapes.C
-  writeMesh.C
-  star3ToFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-
-add_executable(star3ToFoam ${SOURCES})
-
-target_link_libraries(star3ToFoam ${LIBRARIES})
-
-install(TARGETS star3ToFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

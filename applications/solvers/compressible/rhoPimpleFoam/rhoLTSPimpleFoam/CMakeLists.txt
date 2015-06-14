@@ -17,39 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  rhoLTSPimpleFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libspecie
-  libturbulenceModels
-  libcompressibleTurbulenceModels
-  libfiniteVolume
-  libmeshTools
-  libsampling
-  libfvOptions
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include_directories(..)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/transportModels/compressible/include.cmake)
-include(../../../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../../src/TurbulenceModels/compressible/include.cmake)
-include_directories(../../../../../src/finiteVolume/cfdTools)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/sampling/include.cmake)
-include(../../../../../src/fvOptions/include.cmake)
-
-add_executable(rhoLTSPimpleFoam ${SOURCES})
-
-target_link_libraries(rhoLTSPimpleFoam ${LIBRARIES})
-
-install(TARGETS rhoLTSPimpleFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

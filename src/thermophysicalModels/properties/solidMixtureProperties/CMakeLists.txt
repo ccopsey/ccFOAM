@@ -17,17 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  solidMixtureProperties/solidMixtureProperties.C
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/thermophysicalModels/properties/solidProperties/include.cmake)
-include(../../../../src/thermophysicalModels/specie/include.cmake)
-
-add_library(libsolidMixtureProperties ${SOURCES})
-set_target_properties(libsolidMixtureProperties PROPERTIES PREFIX "")
-
-install(TARGETS libsolidMixtureProperties DESTINATION lib OPTIONAL)
+include(target.cmake)

@@ -17,27 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  cloudInfo/cloudInfo.C
-  cloudInfo/cloudInfoFunctionObject.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-  liblagrangian
-  liblagrangianIntermediate
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/lagrangian/basic/include.cmake)
-include(../../../../src/lagrangian/intermediate/include.cmake)
-
-add_library(libcloudFunctionObjects ${SOURCES})
-set_target_properties(libcloudFunctionObjects PROPERTIES PREFIX "")
-
-target_link_libraries(libcloudFunctionObjects ${LIBRARIES})
-
-install(TARGETS libcloudFunctionObjects DESTINATION lib OPTIONAL)
+include(target.cmake)

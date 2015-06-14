@@ -17,26 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceBooleanFeatures.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libtriSurface
-  libedgeMesh
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/triSurface/include.cmake)
-include(../../../../src/edgeMesh/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-
-add_executable(surfaceBooleanFeatures ${SOURCES})
-
-target_link_libraries(surfaceBooleanFeatures ${LIBRARIES})
-
-install(TARGETS surfaceBooleanFeatures DESTINATION applications OPTIONAL)
+include(target.cmake)

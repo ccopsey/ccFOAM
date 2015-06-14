@@ -17,34 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  adjointOutletPressure/adjointOutletPressureFvPatchScalarField.C
-  adjointOutletVelocity/adjointOutletVelocityFvPatchVectorField.C
-  adjointShapeOptimizationFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libincompressibleTransportModels
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/incompressible/include.cmake)
-include(../../../../src/TurbulenceModels/compressible/include.cmake)
-include_directories(../../../../src/transportModels)
-include_directories(../../../../src/transportModels/incompressible/singlePhaseTransportModel)
-include(../../../../src/meshTools/include.cmake)
-
-add_executable(adjointShapeOptimizationFoam ${SOURCES})
-
-target_link_libraries(adjointShapeOptimizationFoam ${LIBRARIES})
-
-install(TARGETS adjointShapeOptimizationFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

@@ -17,28 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  dsmcFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libfiniteVolume
-  liblagrangian
-  libDSMC
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/lagrangian/basic/include.cmake)
-include(../../../../../src/lagrangian/DSMC/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(dsmcFoam ${SOURCES})
-
-target_link_libraries(dsmcFoam ${LIBRARIES})
-
-install(TARGETS dsmcFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

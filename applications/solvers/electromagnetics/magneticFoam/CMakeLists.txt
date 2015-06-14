@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  magneticFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-
-add_executable(magneticFoam ${SOURCES})
-
-target_link_libraries(magneticFoam ${LIBRARIES})
-
-install(TARGETS magneticFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

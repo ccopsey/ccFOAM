@@ -17,27 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  nonNewtonianIcoFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libincompressibleTransportModels
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include_directories(../../../../src/transportModels)
-include_directories(../../../../src/transportModels/incompressible/singlePhaseTransportModel)
-include(../../../../src/meshTools/include.cmake)
-
-add_executable(nonNewtonianIcoFoam ${SOURCES})
-
-target_link_libraries(nonNewtonianIcoFoam ${LIBRARIES})
-
-install(TARGETS nonNewtonianIcoFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

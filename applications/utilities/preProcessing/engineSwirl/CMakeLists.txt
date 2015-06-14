@@ -17,25 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  engineSwirl.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libgenericPatchFields
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-
-add_executable(engineSwirl ${SOURCES})
-
-target_link_libraries(engineSwirl ${LIBRARIES})
-
-install(TARGETS engineSwirl DESTINATION applications OPTIONAL)
+include(target.cmake)

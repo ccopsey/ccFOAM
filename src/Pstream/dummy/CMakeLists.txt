@@ -17,17 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  UPstream.C
-  UIPread.C
-  UOPwrite.C
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-
-add_library(libdummyPstream ${SOURCES})
-set_target_properties(libdummyPstream PROPERTIES PREFIX "")
-
-install(TARGETS libdummyPstream DESTINATION lib OPTIONAL)
+include(target.cmake)

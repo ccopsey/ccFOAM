@@ -17,23 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceConvert.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libtriSurface
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/triSurface/include.cmake)
-
-add_executable(surfaceConvert ${SOURCES})
-
-target_link_libraries(surfaceConvert ${LIBRARIES})
-
-install(TARGETS surfaceConvert DESTINATION applications OPTIONAL)
+include(target.cmake)

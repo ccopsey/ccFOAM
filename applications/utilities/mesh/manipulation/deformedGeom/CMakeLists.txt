@@ -17,23 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  deformedGeom.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-
-add_executable(deformedGeom ${SOURCES})
-
-target_link_libraries(deformedGeom ${LIBRARIES})
-
-install(TARGETS deformedGeom DESTINATION applications OPTIONAL)
+include(target.cmake)

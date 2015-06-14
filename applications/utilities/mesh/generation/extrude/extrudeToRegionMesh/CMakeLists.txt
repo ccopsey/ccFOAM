@@ -17,30 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  extrudeToRegionMesh.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libsurfMesh
-  libfiniteVolume
-  libmeshTools
-  libdynamicMesh
-  libextrudeModel
-)
-
-include(include.cmake)
-include(../../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../../src/finiteVolume/include.cmake)
-include(../../../../../../src/surfMesh/include.cmake)
-include(../../../../../../src/meshTools/include.cmake)
-include(../../../../../../src/dynamicMesh/include.cmake)
-include(../../../../../../src/mesh/extrudeModel/include.cmake)
-
-add_executable(extrudeToRegionMesh ${SOURCES})
-
-target_link_libraries(extrudeToRegionMesh ${LIBRARIES})
-
-install(TARGETS extrudeToRegionMesh DESTINATION applications OPTIONAL)
+include(target.cmake)

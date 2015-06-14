@@ -17,40 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  yPlus.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libcompressibleTurbulenceModels
-  libincompressibleTransportModels
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libspecie
-  libfiniteVolume
-  libgenericPatchFields
-  libmeshTools
-  libsampling
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include_directories(../../../../../src/transportModels)
-include_directories(../../../../../src/transportModels/incompressible/singlePhaseTransportModel)
-include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../../src/TurbulenceModels/incompressible/include.cmake)
-include(../../../../../src/TurbulenceModels/compressible/include.cmake)
-include(../../../../../src/transportModels/compressible/include.cmake)
-include(../../../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(yPlus ${SOURCES})
-
-target_link_libraries(yPlus ${LIBRARIES})
-
-install(TARGETS yPlus DESTINATION applications OPTIONAL)
+include(target.cmake)

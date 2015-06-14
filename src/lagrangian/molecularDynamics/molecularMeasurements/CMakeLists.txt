@@ -17,15 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  distribution/distribution.C
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-
-add_library(libmolecularMeasurements ${SOURCES})
-set_target_properties(libmolecularMeasurements PROPERTIES PREFIX "")
-
-install(TARGETS libmolecularMeasurements DESTINATION lib OPTIONAL)
+include(target.cmake)

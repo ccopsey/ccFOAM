@@ -17,31 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  renumberMethod/renumberMethod.C
-  manualRenumber/manualRenumber.C
-  CuthillMcKeeRenumber/CuthillMcKeeRenumber.C
-  randomRenumber/randomRenumber.C
-  springRenumber/springRenumber.C
-  structuredRenumber/structuredRenumber.C
-)
-
-set(LIBRARIES
-  libdecompositionMethods
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-include(../../../src/parallel/decompose/decompositionMethods/include.cmake)
-include(../../../src/meshTools/include.cmake)
-
-add_library(librenumberMethods ${SOURCES})
-set_target_properties(librenumberMethods PROPERTIES PREFIX "")
-
-target_link_libraries(librenumberMethods ${LIBRARIES})
-
-install(TARGETS librenumberMethods DESTINATION lib OPTIONAL)
+include(target.cmake)

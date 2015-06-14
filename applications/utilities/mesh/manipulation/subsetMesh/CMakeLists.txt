@@ -17,27 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  subsetMesh.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  libdynamicMesh
-  libmeshTools
-  libgenericPatchFields
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(subsetMesh ${SOURCES})
-
-target_link_libraries(subsetMesh ${LIBRARIES})
-
-install(TARGETS subsetMesh DESTINATION applications OPTIONAL)
+include(target.cmake)

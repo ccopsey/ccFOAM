@@ -53,25 +53,24 @@ To build select components of the toolkit, for example only the libraries and ex
 
   2. The following compilation units fail to build:
 
-    * chtMultiRegionFoam
-      * chtMultiRegionSimpleFoam
-    * sonicFoam
-      * sonicDyMFoam
-      * sonicLiquidFoam
-    * reactingFoam
-      * rhoReactingFoam
-      * rhoReactingBuoyantFoam
-      * LTSReactingFoam
-    * reactingParcelFoam
-    * DPMFoam
-      * DPMTurbulenceModels
-      * MPPICFoam
-    * twoPhaseEulerFoam
-      * twoPhaseSystem
-      * interfacialModels
-      * phaseCompressibleTurbulenceModels
     * ccm26ToFoam
     * foamToTecplot360
+    * libcompressibleTwoPhaseSystem
+      * libcompressibleEulerianInterfacialModels
+      * libphaseCompressibleTurbulenceModels
+      * twoPhaseEulerFoam
+    * compressibleInterFoam
+      * compressibleInterDyMFoam
+      * libtwoPhaseMixtureThermo
+    * libreactingTwoPhaseSystem
+      * libreactingEulerianInterfacialModels
+      * libreactingEulerianInterfacialCompositionModels
+      * reactingTwoPhaseEulerFoam
+    * chtMultiRegionFoam
+      * chtMultiRegionSimpleFoam
+    * foamyHexMeshBackgroundMesh
+    * foamyHexMeshSurfaceSimplify
+    * cellSizeAndAlignmentGrid
 
 ## License
 

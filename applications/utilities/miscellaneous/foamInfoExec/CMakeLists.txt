@@ -17,20 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  foamInfoExec.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-
-add_executable(foamInfoExec ${SOURCES})
-
-target_link_libraries(foamInfoExec ${LIBRARIES})
-
-install(TARGETS foamInfoExec DESTINATION applications OPTIONAL)
+include(target.cmake)

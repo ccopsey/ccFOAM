@@ -17,32 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  mixtureViscosityModel/mixtureViscosityModel.C
-  mixtureViscosityModel/mixtureViscosityModelNew.C
-  plastic/plastic.C
-  BinghamPlastic/BinghamPlastic.C
-  slurry/slurry.C
-)
-
-set(LIBRARIES
-  libtwoPhaseMixture
-  libincompressibleTransportModels
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include_directories(../incompressibleTwoPhaseInteractingMixture)
-include_directories(../../../../../src/transportModels)
-include(../../../../../src/transportModels/twoPhaseMixture/include.cmake)
-include(../../../../../src/transportModels/incompressible/include.cmake)
-
-add_library(libdriftFluxTransportModels ${SOURCES})
-set_target_properties(libdriftFluxTransportModels PROPERTIES PREFIX "")
-
-target_link_libraries(libdriftFluxTransportModels ${LIBRARIES})
-
-install(TARGETS libdriftFluxTransportModels DESTINATION lib OPTIONAL)
+include(target.cmake)

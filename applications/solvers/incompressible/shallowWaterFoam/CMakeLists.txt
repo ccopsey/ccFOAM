@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  shallowWaterFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-
-add_executable(shallowWaterFoam ${SOURCES})
-
-target_link_libraries(shallowWaterFoam ${LIBRARIES})
-
-install(TARGETS shallowWaterFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

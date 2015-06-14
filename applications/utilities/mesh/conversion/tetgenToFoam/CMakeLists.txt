@@ -17,20 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  tetgenToFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-
-add_executable(tetgenToFoam ${SOURCES})
-
-target_link_libraries(tetgenToFoam ${LIBRARIES})
-
-install(TARGETS tetgenToFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

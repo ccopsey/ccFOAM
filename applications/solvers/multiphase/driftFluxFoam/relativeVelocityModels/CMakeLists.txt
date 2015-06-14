@@ -17,32 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  relativeVelocityModel/relativeVelocityModel.C
-  simple/simple.C
-  general/general.C
-)
-
-set(LIBRARIES
-  libincompressibleTransportModels
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include_directories(../incompressibleTwoPhaseInteractingMixture)
-include(../mixtureViscosityModels/include.cmake)
-include_directories(../../../../../src/transportModels)
-include(../../../../../src/transportModels/compressible/include.cmake)
-include(../../../../../src/transportModels/twoPhaseMixture/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_library(libdriftFluxRelativeVelocityModels ${SOURCES})
-set_target_properties(libdriftFluxRelativeVelocityModels PROPERTIES PREFIX "")
-
-target_link_libraries(libdriftFluxRelativeVelocityModels ${LIBRARIES})
-
-install(TARGETS libdriftFluxRelativeVelocityModels DESTINATION lib OPTIONAL)
+include(target.cmake)

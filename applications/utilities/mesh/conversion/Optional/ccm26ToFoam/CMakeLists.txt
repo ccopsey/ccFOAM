@@ -17,25 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  ccm26ToFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  libmeshTools
-  libccmio
-)
-
-include(include.cmake)
-include(../../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../../src/finiteVolume/include.cmake)
-include(../../../../../../src/meshTools/include.cmake)
-
-add_executable(ccm26ToFoam ${SOURCES})
-
-target_link_libraries(ccm26ToFoam ${LIBRARIES})
-
-install(TARGETS ccm26ToFoam DESTINATION applications OPTIONAL)
+#include(target.cmake)

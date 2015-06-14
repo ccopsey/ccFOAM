@@ -17,27 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  chemkinToFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libreactionThermophysicalModels
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libspecie
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/thermophysicalModels/specie/include.cmake)
-include(../../../../src/thermophysicalModels/reactionThermo/include.cmake)
-include_directories(${FLEX_INCLUDE_DIR})
-
-add_executable(chemkinToFoam ${SOURCES})
-
-target_link_libraries(chemkinToFoam ${LIBRARIES})
-
-install(TARGETS chemkinToFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

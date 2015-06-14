@@ -17,25 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  thermophysicalFunction/thermophysicalFunction.C
-  NSRDSfunctions/NSRDSfunc0/NSRDSfunc0.C
-  NSRDSfunctions/NSRDSfunc1/NSRDSfunc1.C
-  NSRDSfunctions/NSRDSfunc2/NSRDSfunc2.C
-  NSRDSfunctions/NSRDSfunc3/NSRDSfunc3.C
-  NSRDSfunctions/NSRDSfunc4/NSRDSfunc4.C
-  NSRDSfunctions/NSRDSfunc5/NSRDSfunc5.C
-  NSRDSfunctions/NSRDSfunc6/NSRDSfunc6.C
-  NSRDSfunctions/NSRDSfunc7/NSRDSfunc7.C
-  NSRDSfunctions/NSRDSfunc14/NSRDSfunc14.C
-  APIfunctions/APIdiffCoefFunc/APIdiffCoefFunc.C
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-
-add_library(libthermophysicalFunctions ${SOURCES})
-set_target_properties(libthermophysicalFunctions PROPERTIES PREFIX "")
-
-install(TARGETS libthermophysicalFunctions DESTINATION lib OPTIONAL)
+include(target.cmake)

@@ -21,38 +21,4 @@ add_subdirectory(interDyMFoam)
 add_subdirectory(interMixingFoam)
 add_subdirectory(LTSInterFoam)
 
-set(SOURCES
-  interFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libimmiscibleIncompressibleTwoPhaseMixture
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libfiniteVolume
-  libfvOptions
-  libmeshTools
-  libsampling
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/transportModels/twoPhaseMixture/include.cmake)
-include_directories(../../../../src/transportModels)
-include(../../../../src/transportModels/incompressible/include.cmake)
-include(../../../../src/transportModels/interfaceProperties/include.cmake)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/incompressible/include.cmake)
-include(../../../../src/transportModels/immiscibleIncompressibleTwoPhaseMixture/include.cmake)
-include(../../../../src/fvOptions/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/sampling/include.cmake)
-
-add_executable(interFoam ${SOURCES})
-
-target_link_libraries(interFoam ${LIBRARIES})
-
-install(TARGETS interFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

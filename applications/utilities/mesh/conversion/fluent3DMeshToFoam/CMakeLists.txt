@@ -17,28 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  ${CMAKE_CURRENT_BINARY_DIR}/fluent3DMeshToFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libdynamicMesh
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-include_directories(${FLEX_INCLUDE_DIR})
-
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/.)
-flex_target(fluent3DMeshToFoam fluent3DMeshToFoam.L ${CMAKE_CURRENT_BINARY_DIR}/fluent3DMeshToFoam.C COMPILE_FLAGS -+)
-
-add_executable(fluent3DMeshToFoam ${SOURCES})
-
-target_link_libraries(fluent3DMeshToFoam ${LIBRARIES})
-
-install(TARGETS fluent3DMeshToFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

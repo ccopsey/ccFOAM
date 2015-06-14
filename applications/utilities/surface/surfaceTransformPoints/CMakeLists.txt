@@ -17,22 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceTransformPoints.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libsurfMesh
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/surfMesh/include.cmake)
-
-add_executable(surfaceTransformPoints ${SOURCES})
-
-target_link_libraries(surfaceTransformPoints ${LIBRARIES})
-
-install(TARGETS surfaceTransformPoints DESTINATION applications OPTIONAL)
+include(target.cmake)

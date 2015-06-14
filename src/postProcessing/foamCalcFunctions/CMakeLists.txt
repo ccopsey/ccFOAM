@@ -17,33 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  calcType/calcType.C
-  calcType/calcTypeNew.C
-  field/components/components.C
-  field/mag/mag.C
-  field/magSqr/magSqr.C
-  field/magGrad/magGrad.C
-  field/div/div.C
-  field/randomise/randomise.C
-  field/interpolate/interpolate.C
-  basic/addSubtract/addSubtract.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-include(../../../src/meshTools/include.cmake)
-
-add_library(libfoamCalcFunctions ${SOURCES})
-set_target_properties(libfoamCalcFunctions PROPERTIES PREFIX "")
-
-target_link_libraries(libfoamCalcFunctions ${LIBRARIES})
-
-install(TARGETS libfoamCalcFunctions DESTINATION lib OPTIONAL)
+include(target.cmake)

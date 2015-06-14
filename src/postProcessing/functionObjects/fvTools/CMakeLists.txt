@@ -17,27 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  calcFvcDiv/calcFvcDiv.C
-  calcFvcDiv/calcFvcDivFunctionObject.C
-  calcFvcGrad/calcFvcGrad.C
-  calcFvcGrad/calcFvcGradFunctionObject.C
-  calcMag/calcMag.C
-  calcMag/calcMagFunctionObject.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-
-add_library(libFVFunctionObjects ${SOURCES})
-set_target_properties(libFVFunctionObjects PROPERTIES PREFIX "")
-
-target_link_libraries(libFVFunctionObjects ${LIBRARIES})
-
-install(TARGETS libFVFunctionObjects DESTINATION lib OPTIONAL)
+include(target.cmake)

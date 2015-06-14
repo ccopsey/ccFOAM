@@ -17,26 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  fvFieldDecomposer.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-  libmeshTools
-  liblagrangian
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/lagrangian/basic/include.cmake)
-
-add_library(libdecompose ${SOURCES})
-set_target_properties(libdecompose PROPERTIES PREFIX "")
-
-target_link_libraries(libdecompose ${LIBRARIES})
-
-install(TARGETS libdecompose DESTINATION lib OPTIONAL)
+include(target.cmake)

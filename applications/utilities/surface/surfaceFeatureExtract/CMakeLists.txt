@@ -17,30 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceFeatureExtract.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libedgeMesh
-  libtriSurface
-  libsampling
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/edgeMesh/include.cmake)
-include(../../../../src/triSurface/include.cmake)
-include(../../../../src/surfMesh/include.cmake)
-include(../../../../src/sampling/include.cmake)
-
-add_executable(surfaceFeatureExtract ${SOURCES})
-
-target_link_libraries(surfaceFeatureExtract ${LIBRARIES})
-
-install(TARGETS surfaceFeatureExtract DESTINATION applications OPTIONAL)
+include(target.cmake)

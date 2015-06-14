@@ -20,11 +20,11 @@
 
 LC_ALL=en_GB
 
-cmakelists () {
-  echo $MAKE_DIR
+target_cmake () {
+  echo "target_cmake $MAKE_DIR"
   cd $MAKE_DIR/..
 
-  CMAKELISTS="CMakeLists.txt.target"
+  CMAKELISTS="target.cmake.temp"
 
   LIB_SRC="src"
   FOAM_APP="applications"
@@ -88,7 +88,12 @@ cmakelists () {
   done
   INCLUDES="$INCLUDES $INCLUDES3"
 
-  INCLUDES2="include.cmake"
+  INCLUDES2="."
+  if [ -f "include.cmake" ]
+  then
+    INCLUDES2="$INCLUDES2
+include.cmake"
+  fi
   for INCLUDE in $INCLUDES
   do
     if [ ${INCLUDE:0:1} == "$" ]
@@ -409,7 +414,15 @@ $SOURCE"
     echo "install(TARGETS $LIB DESTINATION lib OPTIONAL)" >> $CMAKELISTS
   fi
 
- cd $ROOT_DIR
+  if [ -f $CMAKELISTS ]
+  then
+    cat $ROOT_DIR/ccfoam/convert/licence.txt > target.cmake
+    echo >> target.cmake
+    cat $CMAKELISTS >> target.cmake
+    rm -f $CMAKELISTS
+  fi
+ 
+cd $ROOT_DIR
 }
 
 subdirectory() {
@@ -423,37 +436,7 @@ subdirectory() {
   then
     for CHILD in $CHILDREN
     do
-      if [ $DIR != "./applications/solvers/multiphase/reactingTwoPhaseEulerFoam" ]
-      then
-        if [ $CHILD == "chtMultiRegionFoam" ] \
-          || [ $CHILD == "chtMultiRegionSimpleFoam" ] \
-          || [ $CHILD == "sonicFoam" ] \
-          || [ $CHILD == "sonicDyMFoam" ] \
-          || [ $CHILD == "sonicLiquidFoam" ] \
-          || [ $CHILD == "reactingFoam" ] \
-          || [ $CHILD == "rhoReactingFoam" ] \
-          || [ $CHILD == "rhoReactingBuoyantFoam" ] \
-          || [ $CHILD == "LTSReactingFoam" ] \
-          || [ $CHILD == "reactingParcelFoam" ] \
-          || [ $CHILD == "DPMFoam" ] \
-          || [ $CHILD == "MPPICFoam" ] \
-          || [ $CHILD == "DPMTurbulenceModels" ] \
-          || [ $CHILD == "twoPhaseEulerFoam" ] \
-          || [ $CHILD == "twoPhaseSystem" ] \
-          || [ $CHILD == "phaseCompressibleTurbulenceModels" ] \
-          || [ $CHILD == "ccm26ToFoam" ] \
-          || [ $CHILD == "cellSizeAndAlignmentGrid" ] \
-          || [ $CHILD == "foamyHexMeshBackgroundMesh" ] \
-          || [ $CHILD == "foamyHexMeshSurfaceSimplify" ] \
-          || [ $CHILD == "foamToTecplot360" ]
-        then
-          echo "#add_subdirectory($CHILD)" >> $CMAKELISTS
-        else
-          echo "add_subdirectory($CHILD)" >> $CMAKELISTS
-        fi
-      else
-        echo "add_subdirectory($CHILD)" >> $CMAKELISTS
-      fi
+      echo "add_subdirectory($CHILD)" >> $CMAKELISTS
     done
   fi
 
@@ -463,7 +446,7 @@ subdirectory() {
 assemble() {
   cd $DIR
 
-  if [ -f CMakeLists.txt.subdirectory ] || [ -f CMakeLists.txt.target ]
+  if [ -f CMakeLists.txt.subdirectory ] || [ -f target.cmake ]
   then
     cat $ROOT_DIR/ccfoam/convert/licence.txt > CMakeLists.txt
     if [ -f CMakeLists.txt.subdirectory ]
@@ -471,15 +454,32 @@ assemble() {
       echo >> CMakeLists.txt
       cat CMakeLists.txt.subdirectory >> CMakeLists.txt
     fi
-    if [ -f CMakeLists.txt.target ]
+    if [ -f target.cmake ]
     then
       echo >> CMakeLists.txt
-      cat CMakeLists.txt.target >> CMakeLists.txt
+      if [ $DIR == "./applications/utilities/mesh/conversion/Optional/ccm26ToFoam" ] \
+        || [ $DIR == "./applications/utilities/postProcessing/dataConversion/foamToTecplot360" ] \
+        || [ $DIR == "./applications/solvers/multiphase/twoPhaseEulerFoam" ] \
+        || [ $DIR == "./applications/solvers/multiphase/twoPhaseEulerFoam/twoPhaseSystem" ] \
+        || [ $DIR == "./applications/solvers/multiphase/twoPhaseEulerFoam/interfacialModels" ] \
+        || [ $DIR == "./applications/solvers/multiphase/compressibleInterFoam" ] \
+        || [ $DIR == "./applications/solvers/multiphase/reactingTwoPhaseEulerFoam/phaseSystems" ] \
+        || [ $DIR == "./applications/solvers/multiphase/reactingTwoPhaseEulerFoam/interfacialCompositionModels" ] \
+        || [ $DIR == "./applications/solvers/multiphase/reactingTwoPhaseEulerFoam/interfacialModels" ] \
+        || [ $DIR == "./applications/solvers/multiphase/reactingTwoPhaseEulerFoam" ] \
+        || [ $DIR == "./applications/solvers/heatTransfer/chtMultiRegionFoam" ] \
+        || [ $DIR == "./applications/utilities/mesh/generation/foamyMesh/foamyHexMeshBackgroundMesh" ] \
+        || [ $DIR == "./applications/utilities/mesh/generation/foamyMesh/cellSizeAndAlignmentGrid" ] \
+        || [ $DIR == "./applications/utilities/mesh/generation/foamyMesh/foamyHexMeshSurfaceSimplify" ]
+      then
+        echo "#include(target.cmake)" >> CMakeLists.txt
+      else
+        echo "include(target.cmake)" >> CMakeLists.txt
+      fi
     fi
   fi
 
   rm -f CMakeLists.txt.subdirectory
-  rm -f CMakeLists.txt.target
 
   cd $ROOT_DIR
 }
@@ -504,26 +504,22 @@ create_include_cmake() {
   done
 }
 
-ROOT_DIR=$PWD/$1
-cd $ROOT_DIR
+reset_cmakefoam() {
+  TEMP=`find . -name "CMakeLists.txt" -o -name "CMakeLists.txt.subdirectory" -o -name "CMakeLists.txt.target"`
+  for T in $TEMP
+  do
+    if [[ ! $T == */PV3* ]] \
+    && [[ ! $T == */PV4* ]]
+    then
+      rm -rf $T
+    fi
+  done
+  find . -name "lnInclude" -exec rm -rf {} \;
+  find . -name "include.cmake" -exec rm -rf {} \;
+  find . -name "target.cmake" -exec rm -rf {} \;
+}
 
-TEMP=`find . -name "CMakeLists.txt"`
-for T in $TEMP
-do
-  if [[ ! $T == */PV3* ]] \
-  && [[ ! $T == */PV4* ]]
-  then
-    rm -rf $T
-  fi
-done
-find . -name "lnInclude" -exec rm -rf {} \;
-find . -name "include.cmake" -exec rm -rf {} \;
-
-
-PASSES="src applications/solvers applications/utilities"
-
-for PASS in $PASSES
-do
+include_cmake_lib() {
   MAKE_DIRS=`find $PASS -type d -name "Make"`
   for MAKE_DIR in $MAKE_DIRS
   do
@@ -531,13 +527,18 @@ do
     DIR2=`basename $DIR`
     if [[ ! $DIR == */PV3* ]] && [[ ! $DIR == */PV4* ]] && [ ! $DIR == "src/Pstream/gamma" ] && [ ! $DIR == "src/renumber/zoltanRenumber" ] && [ ! $DIR == "src/renumber/SloanRenumber" ]
     then
-      echo "$MAKE_DIR"
-      cd $MAKE_DIR/..
-      create_include_cmake
-      cd $ROOT_DIR
+      if [ `grep -c "LIB =" $MAKE_DIR/files` -gt 0 ]
+      then
+        echo "include_cmake_lib $MAKE_DIR"
+        cd $MAKE_DIR/..
+        create_include_cmake
+        cd $ROOT_DIR
+      fi
     fi
   done
+}
 
+include_cmake_allwmake() {
   ALLWMAKES=`find $PASS -type f -name "Allwmake"`
   for ALLWMAKE in $ALLWMAKES
   do
@@ -550,12 +551,27 @@ do
       cd $DIR
       if [ ! -f include.cmake ]
       then
-        echo "$DIR/$DIR3"
+        echo "include_cmake_allwmake $DIR/$DIR3"
         create_include_cmake
       fi
       cd $ROOT_DIR
     done
   done
+}
+
+
+
+ROOT_DIR=$PWD/$1
+cd $ROOT_DIR
+
+reset_cmakefoam
+
+PASSES="src applications/solvers applications/utilities"
+
+for PASS in $PASSES
+do
+  include_cmake_lib
+  include_cmake_allwmake
 done
 
 #PASSES="applications/utilities/postProcessing/velocityField"
@@ -569,7 +585,7 @@ do
     DIR2=`basename $DIR`
     if [[ ! $DIR == */PV3* ]] && [[ ! $DIR == */PV4* ]] && [ ! $DIR == "src/Pstream/gamma" ] && [ ! $DIR == "src/renumber/zoltanRenumber" ] && [ ! $DIR == "src/renumber/SloanRenumber" ]
     then
-      cmakelists $MAKE_DIR
+      target_cmake $MAKE_DIR
     fi
   done
 done

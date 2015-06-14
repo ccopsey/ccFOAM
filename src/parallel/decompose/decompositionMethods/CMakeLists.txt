@@ -17,31 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  decompositionMethod/decompositionMethod.C
-  geomDecomp/geomDecomp.C
-  simpleGeomDecomp/simpleGeomDecomp.C
-  hierarchGeomDecomp/hierarchGeomDecomp.C
-  manualDecomp/manualDecomp.C
-  multiLevelDecomp/multiLevelDecomp.C
-  structuredDecomp/structuredDecomp.C
-  noDecomp/noDecomp.C
-)
-
-set(LIBRARIES
-  libmeshTools
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-
-add_library(libdecompositionMethods ${SOURCES})
-set_target_properties(libdecompositionMethods PROPERTIES PREFIX "")
-
-target_link_libraries(libdecompositionMethods ${LIBRARIES})
-
-install(TARGETS libdecompositionMethods DESTINATION lib OPTIONAL)
+include(target.cmake)

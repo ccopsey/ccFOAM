@@ -17,27 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  Q.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libpostCalc
-  libgenericPatchFields
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include_directories(../../../../../src/postProcessing/postCalc)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(Q ${SOURCES})
-
-target_link_libraries(Q ${LIBRARIES})
-
-install(TARGETS Q DESTINATION applications OPTIONAL)
+include(target.cmake)

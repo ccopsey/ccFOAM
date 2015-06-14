@@ -17,30 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  alphaContactAngle/alphaContactAngle/alphaContactAngleFvPatchScalarField.C
-  alphaContactAngle/constantAlphaContactAngle/constantAlphaContactAngleFvPatchScalarField.C
-  alphaContactAngle/dynamicAlphaContactAngle/dynamicAlphaContactAngleFvPatchScalarField.C
-  alphaContactAngle/timeVaryingAlphaContactAngle/timeVaryingAlphaContactAngleFvPatchScalarField.C
-  alphaFixedPressure/alphaFixedPressureFvPatchScalarField.C
-)
-
-set(LIBRARIES
-  libtwoPhaseMixture
-  libinterfaceProperties
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-include(../../../src/transportModels/twoPhaseMixture/include.cmake)
-include(../../../src/transportModels/interfaceProperties/include.cmake)
-
-add_library(libtwoPhaseProperties ${SOURCES})
-set_target_properties(libtwoPhaseProperties PROPERTIES PREFIX "")
-
-target_link_libraries(libtwoPhaseProperties ${LIBRARIES})
-
-install(TARGETS libtwoPhaseProperties DESTINATION lib OPTIONAL)
+include(target.cmake)

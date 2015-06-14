@@ -17,28 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  potentialFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  libmeshTools
-  libfvOptions
-  libsampling
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/fvOptions/include.cmake)
-include(../../../../src/sampling/include.cmake)
-
-add_executable(potentialFoam ${SOURCES})
-
-target_link_libraries(potentialFoam ${LIBRARIES})
-
-install(TARGETS potentialFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

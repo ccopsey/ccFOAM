@@ -17,35 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  phaseModel/phaseModel.C
-  diameterModels/diameterModel/diameterModel.C
-  diameterModels/diameterModel/newDiameterModel.C
-  diameterModels/constantDiameter/constantDiameter.C
-  diameterModels/isothermalDiameter/isothermalDiameter.C
-  alphaContactAngle/alphaContactAngleFvPatchScalarField.C
-  multiphaseSystem.C
-)
-
-set(LIBRARIES
-  libinterfaceProperties
-  libincompressibleTransportModels
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../interfacialModels/include.cmake)
-include_directories(alphaContactAngle)
-include_directories(../../../../../src/transportModels)
-include(../../../../../src/transportModels/incompressible/include.cmake)
-include(../../../../../src/transportModels/interfaceProperties/include.cmake)
-
-add_library(libmultiphaseSystem ${SOURCES})
-set_target_properties(libmultiphaseSystem PROPERTIES PREFIX "")
-
-target_link_libraries(libmultiphaseSystem ${LIBRARIES})
-
-install(TARGETS libmultiphaseSystem DESTINATION lib OPTIONAL)
+include(target.cmake)

@@ -17,26 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  moveMesh.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  libdynamicMesh
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(moveMesh ${SOURCES})
-
-target_link_libraries(moveMesh ${LIBRARIES})
-
-install(TARGETS moveMesh DESTINATION applications OPTIONAL)
+include(target.cmake)

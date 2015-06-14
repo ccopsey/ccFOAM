@@ -17,22 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  foamToSurface.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libsurfMesh
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/surfMesh/include.cmake)
-
-add_executable(foamToSurface ${SOURCES})
-
-target_link_libraries(foamToSurface ${LIBRARIES})
-
-install(TARGETS foamToSurface DESTINATION applications OPTIONAL)
+include(target.cmake)

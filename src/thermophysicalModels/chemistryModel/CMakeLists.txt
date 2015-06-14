@@ -17,39 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  chemistryModel/basicChemistryModel/basicChemistryModel.C
-  chemistryModel/psiChemistryModel/psiChemistryModel.C
-  chemistryModel/psiChemistryModel/psiChemistryModels.C
-  chemistryModel/rhoChemistryModel/rhoChemistryModel.C
-  chemistryModel/rhoChemistryModel/rhoChemistryModels.C
-  chemistrySolver/chemistrySolver/makeChemistrySolvers.C
-)
-
-set(LIBRARIES
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libreactionThermophysicalModels
-  libspecie
-  libthermophysicalFunctions
-  libODE
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-include(../../../src/transportModels/compressible/include.cmake)
-include(../../../src/thermophysicalModels/reactionThermo/include.cmake)
-include(../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../src/thermophysicalModels/specie/include.cmake)
-include(../../../src/thermophysicalModels/thermophysicalFunctions/include.cmake)
-include(../../../src/ODE/include.cmake)
-
-add_library(libchemistryModel ${SOURCES})
-set_target_properties(libchemistryModel PROPERTIES PREFIX "")
-
-target_link_libraries(libchemistryModel ${LIBRARIES})
-
-install(TARGETS libchemistryModel DESTINATION lib OPTIONAL)
+include(target.cmake)

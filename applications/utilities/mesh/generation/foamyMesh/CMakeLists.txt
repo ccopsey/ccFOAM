@@ -17,10 +17,10 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-#add_subdirectory(cellSizeAndAlignmentGrid)
+add_subdirectory(cellSizeAndAlignmentGrid)
 add_subdirectory(conformalVoronoi2DMesh)
 add_subdirectory(conformalVoronoiMesh)
 add_subdirectory(foamyHexMesh)
-#add_subdirectory(foamyHexMeshBackgroundMesh)
-#add_subdirectory(foamyHexMeshSurfaceSimplify)
+add_subdirectory(foamyHexMeshBackgroundMesh)
+add_subdirectory(foamyHexMeshSurfaceSimplify)
 add_subdirectory(foamyQuadMesh)

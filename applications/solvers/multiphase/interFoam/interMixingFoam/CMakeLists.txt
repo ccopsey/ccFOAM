@@ -17,46 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  incompressibleThreePhaseMixture/incompressibleThreePhaseMixture.C
-  threePhaseInterfaceProperties/threePhaseInterfaceProperties.C
-  immiscibleIncompressibleThreePhaseMixture/immiscibleIncompressibleThreePhaseMixture.C
-  interMixingFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libtwoPhaseMixture
-  libtwoPhaseProperties
-  libincompressibleTransportModels
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libfiniteVolume
-  libmeshTools
-  libfvOptions
-  libsampling
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include_directories(..)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/transportModels/twoPhaseMixture/include.cmake)
-include_directories(immiscibleIncompressibleThreePhaseMixture)
-include_directories(incompressibleThreePhaseMixture)
-include_directories(threePhaseInterfaceProperties)
-include(../../../../../src/transportModels/interfaceProperties/include.cmake)
-include_directories(../../../../../src/transportModels/twoPhaseProperties/alphaContactAngle/alphaContactAngle)
-include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../../src/TurbulenceModels/incompressible/include.cmake)
-include_directories(../../../../../src/transportModels)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/fvOptions/include.cmake)
-include(../../../../../src/sampling/include.cmake)
-
-add_executable(interMixingFoam ${SOURCES})
-
-target_link_libraries(interMixingFoam ${LIBRARIES})
-
-install(TARGETS interMixingFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

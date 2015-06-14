@@ -17,37 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceMeshWriter.C
-  foamToVTK.C
-  internalWriter.C
-  lagrangianWriter.C
-  patchWriter.C
-  writeFuns.C
-  writeFaceSet.C
-  writePointSet.C
-  writeSurfFields.C
-  vtkMesh.C
-  vtkTopo.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  liblagrangian
-  libgenericPatchFields
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/lagrangian/basic/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(foamToVTK ${SOURCES})
-
-target_link_libraries(foamToVTK ${LIBRARIES})
-
-install(TARGETS foamToVTK DESTINATION applications OPTIONAL)
+include(target.cmake)

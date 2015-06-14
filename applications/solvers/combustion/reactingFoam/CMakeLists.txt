@@ -17,50 +17,8 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-#add_subdirectory(LTSReactingFoam)
-#add_subdirectory(rhoReactingBuoyantFoam)
-#add_subdirectory(rhoReactingFoam)
+add_subdirectory(LTSReactingFoam)
+add_subdirectory(rhoReactingBuoyantFoam)
+add_subdirectory(rhoReactingFoam)
 
-set(SOURCES
-  reactingFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  libfvOptions
-  libmeshTools
-  libsampling
-  libturbulenceModels
-  libcompressibleTurbulenceModels
-  libreactionThermophysicalModels
-  libspecie
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libchemistryModel
-  libODE
-  libcombustionModels
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/fvOptions/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/sampling/include.cmake)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/compressible/include.cmake)
-include(../../../../src/thermophysicalModels/specie/include.cmake)
-include(../../../../src/thermophysicalModels/reactionThermo/include.cmake)
-include(../../../../src/transportModels/compressible/include.cmake)
-include(../../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../../src/thermophysicalModels/chemistryModel/include.cmake)
-include(../../../../src/ODE/include.cmake)
-include(../../../../src/combustionModels/include.cmake)
-
-add_executable(reactingFoam ${SOURCES})
-
-target_link_libraries(reactingFoam ${LIBRARIES})
-
-install(TARGETS reactingFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

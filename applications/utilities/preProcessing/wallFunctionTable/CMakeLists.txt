@@ -19,26 +19,4 @@
 
 add_subdirectory(tabulatedWallFunction)
 
-set(SOURCES
-  wallFunctionTableApp.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libtabulatedWallFunctions
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(./tabulatedWallFunction/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-
-add_executable(wallFunctionTable ${SOURCES})
-
-target_link_libraries(wallFunctionTable ${LIBRARIES})
-
-install(TARGETS wallFunctionTable DESTINATION applications OPTIONAL)
+include(target.cmake)

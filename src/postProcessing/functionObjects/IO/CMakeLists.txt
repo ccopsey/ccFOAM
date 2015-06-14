@@ -17,31 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  partialWrite/partialWrite.C
-  partialWrite/partialWriteFunctionObject.C
-  removeRegisteredObject/removeRegisteredObject.C
-  removeRegisteredObject/removeRegisteredObjectFunctionObject.C
-  writeDictionary/writeDictionary.C
-  writeDictionary/writeDictionaryFunctionObject.C
-  writeRegisteredObject/writeRegisteredObject.C
-  writeRegisteredObject/writeRegisteredObjectFunctionObject.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-
-add_library(libIOFunctionObjects ${SOURCES})
-set_target_properties(libIOFunctionObjects PROPERTIES PREFIX "")
-
-target_link_libraries(libIOFunctionObjects ${LIBRARIES})
-
-install(TARGETS libIOFunctionObjects DESTINATION lib OPTIONAL)
+include(target.cmake)

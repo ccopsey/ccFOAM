@@ -17,31 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  helpType/helpType.C
-  helpType/helpTypeNew.C
-  helpBoundary/helpBoundary.C
-  helpFunctionObject/helpFunctionObject.C
-  doxygenXmlParser/doxygenXmlParser.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libcompressibleTurbulenceModels
-  libradiationModels
-  libfluidThermophysicalModels
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-
-add_library(libhelpTypes ${SOURCES})
-set_target_properties(libhelpTypes PROPERTIES PREFIX "")
-
-target_link_libraries(libhelpTypes ${LIBRARIES})
-
-install(TARGETS libhelpTypes DESTINATION lib OPTIONAL)
+include(target.cmake)

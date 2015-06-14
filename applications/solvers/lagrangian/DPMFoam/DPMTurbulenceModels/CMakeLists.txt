@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  DPMTurbulenceModels.C
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/transportModels/compressible/include.cmake)
-include(../../../../../src/thermophysicalModels/basic/include.cmake)
-include_directories(../../../../../src/transportModels)
-include_directories(../../../../../src/transportModels/incompressible/singlePhaseTransportModel)
-include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../../src/TurbulenceModels/incompressible/include.cmake)
-include(../../../../../src/TurbulenceModels/phaseIncompressible/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_library(libDPMTurbulenceModels ${SOURCES})
-set_target_properties(libDPMTurbulenceModels PROPERTIES PREFIX "")
-
-install(TARGETS libDPMTurbulenceModels DESTINATION lib OPTIONAL)
+include(target.cmake)

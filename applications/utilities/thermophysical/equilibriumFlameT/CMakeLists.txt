@@ -17,22 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  equilibriumFlameT.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libspecie
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/thermophysicalModels/specie/include.cmake)
-
-add_executable(equilibriumFlameT ${SOURCES})
-
-target_link_libraries(equilibriumFlameT ${LIBRARIES})
-
-install(TARGETS equilibriumFlameT DESTINATION applications OPTIONAL)
+include(target.cmake)

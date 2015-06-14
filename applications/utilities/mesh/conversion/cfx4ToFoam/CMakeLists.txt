@@ -17,21 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  hexBlock.C
-  cfx4ToFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-
-add_executable(cfx4ToFoam ${SOURCES})
-
-target_link_libraries(cfx4ToFoam ${LIBRARIES})
-
-install(TARGETS cfx4ToFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

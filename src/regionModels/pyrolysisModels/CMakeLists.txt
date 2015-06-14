@@ -17,47 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  pyrolysisModel/pyrolysisModel.C
-  pyrolysisModel/pyrolysisModelNew.C
-  reactingOneDim/reactingOneDim.C
-  noPyrolysis/noPyrolysis.C
-  pyrolysisModel/pyrolysisModelCollection.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-  libmeshTools
-  libchemistryModel
-  libspecie
-  libfluidThermophysicalModels
-  libsolidChemistryModel
-  libsolidThermo
-  libturbulenceModels
-  libcompressibleTurbulenceModels
-  libregionModels
-  libradiationModels
-  libreactionThermophysicalModels
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-include(../../../src/meshTools/include.cmake)
-include(../../../src/thermophysicalModels/chemistryModel/include.cmake)
-include(../../../src/thermophysicalModels/specie/include.cmake)
-include(../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../src/thermophysicalModels/solidThermo/include.cmake)
-include(../../../src/thermophysicalModels/solidChemistryModel/include.cmake)
-include(../../../src/thermophysicalModels/reactionThermo/include.cmake)
-include(../../../src/thermophysicalModels/radiation/include.cmake)
-include(../../../src/TurbulenceModels/compressible/include.cmake)
-include(../../../src/regionModels/regionModel/include.cmake)
-
-add_library(libpyrolysisModels ${SOURCES})
-set_target_properties(libpyrolysisModels PROPERTIES PREFIX "")
-
-target_link_libraries(libpyrolysisModels ${LIBRARIES})
-
-install(TARGETS libpyrolysisModels DESTINATION lib OPTIONAL)
+include(target.cmake)

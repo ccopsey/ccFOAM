@@ -17,23 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceAdd.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libtriSurface
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/triSurface/include.cmake)
-
-add_executable(surfaceAdd ${SOURCES})
-
-target_link_libraries(surfaceAdd ${LIBRARIES})
-
-install(TARGETS surfaceAdd DESTINATION applications OPTIONAL)
+include(target.cmake)

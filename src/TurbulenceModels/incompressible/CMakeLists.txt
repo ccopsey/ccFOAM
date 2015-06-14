@@ -17,36 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  incompressibleTurbulenceModel.C
-  turbulentTransportModels/turbulentTransportModels.C
-  turbulentTransportModels/RAS/qZeta/qZeta.C
-  turbulentTransportModels/RAS/kkLOmega/kkLOmega.C
-  turbulentTransportModels/RAS/LamBremhorstKE/LamBremhorstKE.C
-  turbulentTransportModels/RAS/LienLeschziner/LienLeschziner.C
-  turbulentTransportModels/RAS/ShihQuadraticKE/ShihQuadraticKE.C
-  turbulentTransportModels/RAS/LienCubicKE/LienCubicKE.C
-  turbulentTransportModels/derivedFvPatchFields/wallFunctions/alphatWallFunctions/alphatJayatillekeWallFunction/alphatJayatillekeWallFunctionFvPatchScalarField.C
-)
-
-set(LIBRARIES
-  libincompressibleTransportModels
-  libturbulenceModels
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-include(../turbulenceModels/include.cmake)
-include_directories(../../../src/transportModels)
-include(../../../src/meshTools/include.cmake)
-
-add_library(libincompressibleTurbulenceModels ${SOURCES})
-set_target_properties(libincompressibleTurbulenceModels PROPERTIES PREFIX "")
-
-target_link_libraries(libincompressibleTurbulenceModels ${LIBRARIES})
-
-install(TARGETS libincompressibleTurbulenceModels DESTINATION lib OPTIONAL)
+include(target.cmake)

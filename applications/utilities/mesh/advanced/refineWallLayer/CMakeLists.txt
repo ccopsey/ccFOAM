@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  refineWallLayer.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libdynamicMesh
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-
-add_executable(refineWallLayer ${SOURCES})
-
-target_link_libraries(refineWallLayer ${LIBRARIES})
-
-install(TARGETS refineWallLayer DESTINATION applications OPTIONAL)
+include(target.cmake)

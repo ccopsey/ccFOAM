@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  noise.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  librandomProcesses
-  libsampling
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/randomProcesses/include.cmake)
-include(../../../../src/sampling/include.cmake)
-
-add_executable(noise ${SOURCES})
-
-target_link_libraries(noise ${LIBRARIES})
-
-install(TARGETS noise DESTINATION applications OPTIONAL)
+include(target.cmake)

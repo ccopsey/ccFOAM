@@ -17,26 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  barotropicCompressibilityModel/barotropicCompressibilityModel.C
-  barotropicCompressibilityModel/barotropicCompressibilityModelNew.C
-  linear/linear.C
-  Wallis/Wallis.C
-  Chung/Chung.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-
-add_library(libbarotropicCompressibilityModel ${SOURCES})
-set_target_properties(libbarotropicCompressibilityModel PROPERTIES PREFIX "")
-
-target_link_libraries(libbarotropicCompressibilityModel ${LIBRARIES})
-
-install(TARGETS libbarotropicCompressibilityModel DESTINATION lib OPTIONAL)
+include(target.cmake)

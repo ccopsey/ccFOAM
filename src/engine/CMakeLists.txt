@@ -17,39 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  engineTime/engineTime.C
-  ignition/ignition.C
-  ignition/ignitionIO.C
-  ignition/ignitionSite.C
-  ignition/ignitionSiteIO.C
-  engineValve/engineValve.C
-  enginePiston/enginePiston.C
-  engineMesh/engineMesh/engineMesh.C
-  engineMesh/engineMesh/engineMeshNew.C
-  engineMesh/staticEngineMesh/staticEngineMesh.C
-  engineMesh/layeredEngineMesh/layeredEngineMesh.C
-  engineMesh/fvMotionSolverEngineMesh/fvMotionSolverEngineMesh.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-  libmeshTools
-  libdynamicMesh
-  libfvMotionSolvers
-)
-
-include(include.cmake)
-include(../../src/OpenFOAM/include.cmake)
-include(../../src/OSspecific/POSIX/include.cmake)
-include(../../src/finiteVolume/include.cmake)
-include(../../src/meshTools/include.cmake)
-include(../../src/dynamicMesh/include.cmake)
-include(../../src/fvMotionSolver/include.cmake)
-
-add_library(libengine ${SOURCES})
-set_target_properties(libengine PROPERTIES PREFIX "")
-
-target_link_libraries(libengine ${LIBRARIES})
-
-install(TARGETS libengine DESTINATION lib OPTIONAL)
+include(target.cmake)

@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceSplitNonManifolds.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libtriSurface
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/triSurface/include.cmake)
-
-add_executable(surfaceSplitNonManifolds ${SOURCES})
-
-target_link_libraries(surfaceSplitNonManifolds ${LIBRARIES})
-
-install(TARGETS surfaceSplitNonManifolds DESTINATION applications OPTIONAL)
+include(target.cmake)

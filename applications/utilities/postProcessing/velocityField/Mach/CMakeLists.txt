@@ -17,31 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  Mach.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libpostCalc
-  libgenericPatchFields
-  libcompressibleTransportModels
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libspecie
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include_directories(../../../../../src/postProcessing/postCalc)
-include(../../../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../../../src/transportModels/compressible/include.cmake)
-
-add_executable(Mach ${SOURCES})
-
-target_link_libraries(Mach ${LIBRARIES})
-
-install(TARGETS Mach DESTINATION applications OPTIONAL)
+include(target.cmake)

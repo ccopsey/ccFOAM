@@ -17,41 +17,7 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-#add_subdirectory(sonicDyMFoam)
-#add_subdirectory(sonicLiquidFoam)
+add_subdirectory(sonicDyMFoam)
+add_subdirectory(sonicLiquidFoam)
 
-set(SOURCES
-  sonicFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libspecie
-  libturbulenceModels
-  libcompressibleTurbulenceModels
-  libmeshTools
-  libsampling
-  libfvOptions
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/transportModels/compressible/include.cmake)
-include(../../../../src/transportModels/compressible/include.cmake)
-include(../../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/compressible/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/sampling/include.cmake)
-include(../../../../src/fvOptions/include.cmake)
-
-add_executable(sonicFoam ${SOURCES})
-
-target_link_libraries(sonicFoam ${LIBRARIES})
-
-install(TARGETS sonicFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

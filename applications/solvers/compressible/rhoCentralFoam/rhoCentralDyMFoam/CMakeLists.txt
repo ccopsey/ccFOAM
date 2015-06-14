@@ -17,42 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  rhoCentralDyMFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libspecie
-  librhoCentralFoam
-  libturbulenceModels
-  libcompressibleTurbulenceModels
-  libdynamicMesh
-  libdynamicFvMesh
-  libtopoChangerFvMesh
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include_directories(..)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../BCs/include.cmake)
-include(../../../../../src/transportModels/compressible/include.cmake)
-include(../../../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../../../src/thermophysicalModels/specie/include.cmake)
-include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../../src/TurbulenceModels/compressible/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-include(../../../../../src/dynamicFvMesh/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(rhoCentralDyMFoam ${SOURCES})
-
-target_link_libraries(rhoCentralDyMFoam ${LIBRARIES})
-
-install(TARGETS rhoCentralDyMFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

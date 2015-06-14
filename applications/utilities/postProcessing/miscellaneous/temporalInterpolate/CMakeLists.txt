@@ -17,22 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  temporalInterpolate.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-
-add_executable(temporalInterpolate ${SOURCES})
-
-target_link_libraries(temporalInterpolate ${LIBRARIES})
-
-install(TARGETS temporalInterpolate DESTINATION applications OPTIONAL)
+include(target.cmake)

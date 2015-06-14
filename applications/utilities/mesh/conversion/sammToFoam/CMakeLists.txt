@@ -17,34 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  sammMesh.C
-  fillSammCellShapeTable.C
-  fillSammAddressingTable.C
-  readPoints.C
-  readCells.C
-  readBoundary.C
-  fixCollapsedEdges.C
-  readCouples.C
-  calcPointCells.C
-  createPolyCells.C
-  createBoundaryFaces.C
-  createPolyBoundary.C
-  purgeCellShapes.C
-  writeMesh.C
-  sammToFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-
-add_executable(sammToFoam ${SOURCES})
-
-target_link_libraries(sammToFoam ${LIBRARIES})
-
-install(TARGETS sammToFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

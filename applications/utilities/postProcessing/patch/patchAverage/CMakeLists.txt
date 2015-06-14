@@ -17,25 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  patchAverage.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libgenericPatchFields
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(patchAverage ${SOURCES})
-
-target_link_libraries(patchAverage ${LIBRARIES})
-
-install(TARGETS patchAverage DESTINATION applications OPTIONAL)
+include(target.cmake)

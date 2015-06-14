@@ -17,20 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  solidProperties/solidProperties.C
-  solidProperties/solidPropertiesNew.C
-  ash/ash.C
-  C/C.C
-  CaCO3/CaCO3.C
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/thermophysicalModels/specie/include.cmake)
-
-add_library(libsolidProperties ${SOURCES})
-set_target_properties(libsolidProperties PROPERTIES PREFIX "")
-
-install(TARGETS libsolidProperties DESTINATION lib OPTIONAL)
+include(target.cmake)

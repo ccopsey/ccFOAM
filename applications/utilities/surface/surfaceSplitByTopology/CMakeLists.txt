@@ -17,23 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceSplitByTopology.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libtriSurface
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/triSurface/include.cmake)
-
-add_executable(surfaceSplitByTopology ${SOURCES})
-
-target_link_libraries(surfaceSplitByTopology ${LIBRARIES})
-
-install(TARGETS surfaceSplitByTopology DESTINATION applications OPTIONAL)
+include(target.cmake)

@@ -17,45 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  compressibleInterDyMFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libtwoPhaseMixtureThermo
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libspecie
-  libtwoPhaseMixture
-  libtwoPhaseProperties
-  libinterfaceProperties
-  libturbulenceModels
-  libcompressibleTurbulenceModels
-  libdynamicMesh
-  libmeshTools
-  libdynamicFvMesh
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include_directories(..)
-include(../../../../../src/finiteVolume/include.cmake)
-include_directories(../twoPhaseMixtureThermo)
-include(../../../../../src/transportModels/compressible/include.cmake)
-include(../../../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../../../src/transportModels/twoPhaseMixture/include.cmake)
-include(../../../../../src/transportModels/interfaceProperties/include.cmake)
-include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../../src/TurbulenceModels/compressible/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/dynamicFvMesh/include.cmake)
-
-add_executable(compressibleInterDyMFoam ${SOURCES})
-
-target_link_libraries(compressibleInterDyMFoam ${LIBRARIES})
-
-install(TARGETS compressibleInterDyMFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

@@ -17,31 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  SLGThermo/SLGThermo.C
-)
-
-set(LIBRARIES
-  libcompressibleTransportModels
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-include(../../../src/transportModels/compressible/include.cmake)
-include(../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../src/thermophysicalModels/specie/include.cmake)
-include(../../../src/thermophysicalModels/properties/liquidProperties/include.cmake)
-include(../../../src/thermophysicalModels/properties/liquidMixtureProperties/include.cmake)
-include(../../../src/thermophysicalModels/properties/solidProperties/include.cmake)
-include(../../../src/thermophysicalModels/properties/solidMixtureProperties/include.cmake)
-include(../../../src/thermophysicalModels/reactionThermo/include.cmake)
-
-add_library(libSLGThermo ${SOURCES})
-set_target_properties(libSLGThermo PROPERTIES PREFIX "")
-
-target_link_libraries(libSLGThermo ${LIBRARIES})
-
-install(TARGETS libSLGThermo DESTINATION lib OPTIONAL)
+include(target.cmake)

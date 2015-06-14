@@ -17,26 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  orientFaceZone.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libautoMesh
-  libtriSurface
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/mesh/autoMesh/include.cmake)
-include(../../../../../src/triSurface/include.cmake)
-
-add_executable(orientFaceZone ${SOURCES})
-
-target_link_libraries(orientFaceZone ${LIBRARIES})
-
-install(TARGETS orientFaceZone DESTINATION applications OPTIONAL)
+include(target.cmake)

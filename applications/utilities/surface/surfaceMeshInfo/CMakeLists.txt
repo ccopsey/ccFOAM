@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceMeshInfo.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libsurfMesh
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/surfMesh/include.cmake)
-
-add_executable(surfaceMeshInfo ${SOURCES})
-
-target_link_libraries(surfaceMeshInfo ${LIBRARIES})
-
-install(TARGETS surfaceMeshInfo DESTINATION applications OPTIONAL)
+include(target.cmake)

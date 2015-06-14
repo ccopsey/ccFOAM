@@ -17,22 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  postCalc.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-
-add_library(libpostCalc ${SOURCES})
-set_target_properties(libpostCalc PROPERTIES PREFIX "")
-
-target_link_libraries(libpostCalc ${LIBRARIES})
-
-install(TARGETS libpostCalc DESTINATION lib OPTIONAL)
+include(target.cmake)

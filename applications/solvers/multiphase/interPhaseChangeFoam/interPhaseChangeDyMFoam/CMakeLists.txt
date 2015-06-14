@@ -17,48 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  interPhaseChangeDyMFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libphaseChangeTwoPhaseMixtures
-  libtwoPhaseMixture
-  libinterfaceProperties
-  libtwoPhaseProperties
-  libincompressibleTransportModels
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libfiniteVolume
-  libdynamicMesh
-  libdynamicFvMesh
-  libtopoChangerFvMesh
-  libmeshTools
-  libfvOptions
-  libsampling
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include_directories(..)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/transportModels/twoPhaseMixture/include.cmake)
-include_directories(../../../../../src/transportModels)
-include(../../../../../src/transportModels/incompressible/include.cmake)
-include(../../../../../src/transportModels/interfaceProperties/include.cmake)
-include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../../src/TurbulenceModels/incompressible/include.cmake)
-include(../phaseChangeTwoPhaseMixtures/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-include(../../../../../src/dynamicFvMesh/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/fvOptions/include.cmake)
-include(../../../../../src/sampling/include.cmake)
-
-add_executable(interPhaseChangeDyMFoam ${SOURCES})
-
-target_link_libraries(interPhaseChangeDyMFoam ${LIBRARIES})
-
-install(TARGETS interPhaseChangeDyMFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

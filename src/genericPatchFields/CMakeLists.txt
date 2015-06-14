@@ -17,23 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  genericFvPatchField/genericFvPatchFields.C
-  genericPointPatchField/genericPointPatchFields.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../src/OpenFOAM/include.cmake)
-include(../../src/OSspecific/POSIX/include.cmake)
-include(../../src/finiteVolume/include.cmake)
-
-add_library(libgenericPatchFields ${SOURCES})
-set_target_properties(libgenericPatchFields PROPERTIES PREFIX "")
-
-target_link_libraries(libgenericPatchFields ${LIBRARIES})
-
-install(TARGETS libgenericPatchFields DESTINATION lib OPTIONAL)
+include(target.cmake)

@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceMeshExport.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libsurfMesh
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/surfMesh/include.cmake)
-
-add_executable(surfaceMeshExport ${SOURCES})
-
-target_link_libraries(surfaceMeshExport ${LIBRARIES})
-
-install(TARGETS surfaceMeshExport DESTINATION applications OPTIONAL)
+include(target.cmake)

@@ -17,32 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  itoa.C
-  ensightMesh.C
-  ensightParticlePositions.C
-  foamToEnsight.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  libmeshTools
-  libsampling
-  libgenericPatchFields
-  liblagrangian
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/sampling/include.cmake)
-include(../../../../../src/lagrangian/basic/include.cmake)
-
-add_executable(foamToEnsight ${SOURCES})
-
-target_link_libraries(foamToEnsight ${LIBRARIES})
-
-install(TARGETS foamToEnsight DESTINATION applications OPTIONAL)
+include(target.cmake)

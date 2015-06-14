@@ -17,26 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  tabulatedWallFunction/tabulatedWallFunction.C
-  tabulatedWallFunction/tabulatedWallFunctionNew.C
-  SpaldingsLaw/SpaldingsLaw.C
-  general/general.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include_directories(../../../../../src/transportModels)
-
-add_library(libtabulatedWallFunctions ${SOURCES})
-set_target_properties(libtabulatedWallFunctions PROPERTIES PREFIX "")
-
-target_link_libraries(libtabulatedWallFunctions ${LIBRARIES})
-
-install(TARGETS libtabulatedWallFunctions DESTINATION lib OPTIONAL)
+include(target.cmake)

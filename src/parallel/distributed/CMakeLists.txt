@@ -17,26 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  distributedTriSurfaceMesh/distributedTriSurfaceMesh.C
-)
-
-set(LIBRARIES
-  libtriSurface
-  libdecompositionMethods
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/triSurface/include.cmake)
-include(../../../src/parallel/decompose/decompositionMethods/include.cmake)
-include(../../../src/meshTools/include.cmake)
-
-add_library(libdistributed ${SOURCES})
-set_target_properties(libdistributed PROPERTIES PREFIX "")
-
-target_link_libraries(libdistributed ${LIBRARIES})
-
-install(TARGETS libdistributed DESTINATION lib OPTIONAL)
+include(target.cmake)

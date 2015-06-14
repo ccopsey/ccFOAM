@@ -17,16 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  abortCalculation/abortCalculation.C
-  abortCalculation/abortCalculationFunctionObject.C
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-
-add_library(libjobControl ${SOURCES})
-set_target_properties(libjobControl PROPERTIES PREFIX "")
-
-install(TARGETS libjobControl DESTINATION lib OPTIONAL)
+include(target.cmake)

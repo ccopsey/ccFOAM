@@ -17,31 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  viewFactorsGen.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libfiniteVolume
-  libmeshTools
-  libtriSurface
-  libdistributed
-  libradiationModels
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/triSurface/include.cmake)
-include(../../../../src/parallel/distributed/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-
-add_executable(viewFactorsGen ${SOURCES})
-
-target_link_libraries(viewFactorsGen ${LIBRARIES})
-
-install(TARGETS viewFactorsGen DESTINATION applications OPTIONAL)
+include(target.cmake)

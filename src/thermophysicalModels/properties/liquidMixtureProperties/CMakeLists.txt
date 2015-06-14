@@ -17,26 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  liquidMixtureProperties/liquidMixtureProperties.C
-)
-
-set(LIBRARIES
-  libliquidProperties
-  libthermophysicalFunctions
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../../src/thermophysicalModels/specie/include.cmake)
-include(../../../../src/thermophysicalModels/properties/liquidProperties/include.cmake)
-include(../../../../src/thermophysicalModels/thermophysicalFunctions/include.cmake)
-
-add_library(libliquidMixtureProperties ${SOURCES})
-set_target_properties(libliquidMixtureProperties PROPERTIES PREFIX "")
-
-target_link_libraries(libliquidMixtureProperties ${LIBRARIES})
-
-install(TARGETS libliquidMixtureProperties DESTINATION lib OPTIONAL)
+include(target.cmake)

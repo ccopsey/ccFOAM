@@ -17,25 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  writePointSet.C
-  writeFuns.C
-  writePatch.C
-  setSet.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(setSet ${SOURCES})
-
-target_link_libraries(setSet ${LIBRARIES})
-
-install(TARGETS setSet DESTINATION applications OPTIONAL)
+include(target.cmake)

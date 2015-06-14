@@ -17,28 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceCheck.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libsampling
-  libtriSurface
-  libsurfMesh
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/sampling/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/surfMesh/include.cmake)
-include(../../../../src/triSurface/include.cmake)
-
-add_executable(surfaceCheck ${SOURCES})
-
-target_link_libraries(surfaceCheck ${LIBRARIES})
-
-install(TARGETS surfaceCheck DESTINATION applications OPTIONAL)
+include(target.cmake)

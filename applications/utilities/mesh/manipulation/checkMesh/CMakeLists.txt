@@ -17,29 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  printMeshStats.C
-  checkTopology.C
-  checkGeometry.C
-  checkMeshQuality.C
-  checkMesh.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libdynamicMesh
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-
-add_executable(checkMesh ${SOURCES})
-
-target_link_libraries(checkMesh ${LIBRARIES})
-
-install(TARGETS checkMesh DESTINATION applications OPTIONAL)
+include(target.cmake)

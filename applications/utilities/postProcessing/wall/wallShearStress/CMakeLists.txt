@@ -17,38 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  wallShearStress.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libcompressibleTurbulenceModels
-  libincompressibleTransportModels
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libspecie
-  libgenericPatchFields
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../../src/TurbulenceModels/incompressible/include.cmake)
-include(../../../../../src/TurbulenceModels/compressible/include.cmake)
-include_directories(../../../../../src/transportModels)
-include(../../../../../src/transportModels/compressible/include.cmake)
-include(../../../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(wallShearStress ${SOURCES})
-
-target_link_libraries(wallShearStress ${LIBRARIES})
-
-install(TARGETS wallShearStress DESTINATION applications OPTIONAL)
+include(target.cmake)

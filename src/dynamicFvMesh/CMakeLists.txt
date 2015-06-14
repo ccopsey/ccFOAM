@@ -17,46 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  dynamicFvMesh/dynamicFvMesh.C
-  dynamicFvMesh/dynamicFvMeshNew.C
-  staticFvMesh/staticFvMesh.C
-  dynamicMotionSolverFvMesh/dynamicMotionSolverFvMesh.C
-  dynamicInkJetFvMesh/dynamicInkJetFvMesh.C
-  dynamicRefineFvMesh/dynamicRefineFvMesh.C
-  solidBodyMotionFvMesh/solidBodyMotionFvMesh.C
-  solidBodyMotionFvMesh/multiSolidBodyMotionFvMesh.C
-  solidBodyMotionFvMesh/solidBodyMotionFunctions/solidBodyMotionFunction/solidBodyMotionFunction.C
-  solidBodyMotionFvMesh/solidBodyMotionFunctions/solidBodyMotionFunction/solidBodyMotionFunctionNew.C
-  solidBodyMotionFvMesh/solidBodyMotionFunctions/SDA/SDA.C
-  solidBodyMotionFvMesh/solidBodyMotionFunctions/tabulated6DoFMotion/tabulated6DoFMotion.C
-  solidBodyMotionFvMesh/solidBodyMotionFunctions/linearMotion/linearMotion.C
-  solidBodyMotionFvMesh/solidBodyMotionFunctions/rotatingMotion/rotatingMotion.C
-  solidBodyMotionFvMesh/solidBodyMotionFunctions/axisRotationMotion/axisRotationMotion.C
-  solidBodyMotionFvMesh/solidBodyMotionFunctions/multiMotion/multiMotion.C
-  solidBodyMotionFvMesh/solidBodyMotionFunctions/oscillatingLinearMotion/oscillatingLinearMotion.C
-  solidBodyMotionFvMesh/solidBodyMotionFunctions/oscillatingRotatingMotion/oscillatingRotatingMotion.C
-  solidBodyMotionFvMesh/pointPatchFields/derived/solidBodyMotionDisplacement/solidBodyMotionDisplacementPointPatchVectorField.C
-)
-
-set(LIBRARIES
-  libtriSurface
-  libmeshTools
-  libdynamicMesh
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../src/OpenFOAM/include.cmake)
-include(../../src/OSspecific/POSIX/include.cmake)
-include(../../src/finiteVolume/include.cmake)
-include(../../src/triSurface/include.cmake)
-include(../../src/meshTools/include.cmake)
-include(../../src/dynamicMesh/include.cmake)
-
-add_library(libdynamicFvMesh ${SOURCES})
-set_target_properties(libdynamicFvMesh PROPERTIES PREFIX "")
-
-target_link_libraries(libdynamicFvMesh ${LIBRARIES})
-
-install(TARGETS libdynamicFvMesh DESTINATION lib OPTIONAL)
+include(target.cmake)

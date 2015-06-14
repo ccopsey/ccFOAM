@@ -17,27 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  tecplotWriter.C
-  vtkMesh.C
-  foamToTecplot360.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  liblagrangian
-  libfiniteVolume
-  libgenericPatchFields
-  libmeshTools
-  libtecio
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-
-add_executable(foamToTecplot360 ${SOURCES})
-
-target_link_libraries(foamToTecplot360 ${LIBRARIES})
-
-install(TARGETS foamToTecplot360 DESTINATION applications OPTIONAL)
+#include(target.cmake)

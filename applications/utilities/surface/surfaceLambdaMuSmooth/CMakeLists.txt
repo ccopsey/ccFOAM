@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceLambdaMuSmooth.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libedgeMesh
-  libsurfMesh
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/surfMesh/include.cmake)
-include(../../../../src/edgeMesh/include.cmake)
-
-add_executable(surfaceLambdaMuSmooth ${SOURCES})
-
-target_link_libraries(surfaceLambdaMuSmooth ${LIBRARIES})
-
-install(TARGETS surfaceLambdaMuSmooth DESTINATION applications OPTIONAL)
+include(target.cmake)

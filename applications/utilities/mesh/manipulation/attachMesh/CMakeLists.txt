@@ -17,23 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  attachMesh.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libdynamicMesh
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-
-add_executable(attachMesh ${SOURCES})
-
-target_link_libraries(attachMesh ${LIBRARIES})
-
-install(TARGETS attachMesh DESTINATION applications OPTIONAL)
+include(target.cmake)

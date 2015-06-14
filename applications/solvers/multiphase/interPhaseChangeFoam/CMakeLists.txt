@@ -20,42 +20,4 @@
 add_subdirectory(interPhaseChangeDyMFoam)
 add_subdirectory(phaseChangeTwoPhaseMixtures)
 
-set(SOURCES
-  interPhaseChangeFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libphaseChangeTwoPhaseMixtures
-  libtwoPhaseMixture
-  libinterfaceProperties
-  libtwoPhaseProperties
-  libincompressibleTransportModels
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libfiniteVolume
-  libmeshTools
-  libfvOptions
-  libsampling
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/transportModels/twoPhaseMixture/include.cmake)
-include_directories(../../../../src/transportModels)
-include(../../../../src/transportModels/incompressible/include.cmake)
-include(../../../../src/transportModels/interfaceProperties/include.cmake)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/incompressible/include.cmake)
-include(phaseChangeTwoPhaseMixtures/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/fvOptions/include.cmake)
-include(../../../../src/sampling/include.cmake)
-
-add_executable(interPhaseChangeFoam ${SOURCES})
-
-target_link_libraries(interPhaseChangeFoam ${LIBRARIES})
-
-install(TARGETS interPhaseChangeFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

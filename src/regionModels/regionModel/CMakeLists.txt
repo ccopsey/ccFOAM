@@ -17,31 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  regionModel/regionModel.C
-  singleLayerRegion/singleLayerRegion.C
-  regionModel1D/regionModel1D.C
-  derivedFvPatches/mappedVariableThicknessWall/mappedVariableThicknessWallFvPatch.C
-  regionProperties/regionProperties.C
-  regionModelFunctionObject/regionModelFunctionObject/regionModelFunctionObject.C
-  regionModelFunctionObject/regionModelFunctionObject/regionModelFunctionObjectNew.C
-  regionModelFunctionObject/regionModelFunctionObject/regionModelFunctionObjectList.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-include(../../../src/meshTools/include.cmake)
-
-add_library(libregionModels ${SOURCES})
-set_target_properties(libregionModels PROPERTIES PREFIX "")
-
-target_link_libraries(libregionModels ${LIBRARIES})
-
-install(TARGETS libregionModels DESTINATION lib OPTIONAL)
+include(target.cmake)

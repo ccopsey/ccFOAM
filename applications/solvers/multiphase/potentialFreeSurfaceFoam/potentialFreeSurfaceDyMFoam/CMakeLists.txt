@@ -17,42 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  potentialFreeSurfaceDyMFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libincompressibleTransportModels
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libfiniteVolume
-  libdynamicMesh
-  libdynamicFvMesh
-  libtopoChangerFvMesh
-  libmeshTools
-  libfvOptions
-  libsampling
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include_directories(..)
-include(../../../../../src/finiteVolume/include.cmake)
-include_directories(../../interFoam/interDyMFoam)
-include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../../src/TurbulenceModels/incompressible/include.cmake)
-include_directories(../../../../../src/transportModels)
-include_directories(../../../../../src/transportModels/incompressible/singlePhaseTransportModel)
-include(../../../../../src/dynamicMesh/include.cmake)
-include(../../../../../src/dynamicFvMesh/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/fvOptions/include.cmake)
-include(../../../../../src/sampling/include.cmake)
-
-add_executable(potentialFreeSurfaceDyMFoam ${SOURCES})
-
-target_link_libraries(potentialFreeSurfaceDyMFoam ${LIBRARIES})
-
-install(TARGETS potentialFreeSurfaceDyMFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

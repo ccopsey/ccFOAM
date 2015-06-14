@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceOrient.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libtriSurface
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/triSurface/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-
-add_executable(surfaceOrient ${SOURCES})
-
-target_link_libraries(surfaceOrient ${LIBRARIES})
-
-install(TARGETS surfaceOrient DESTINATION applications OPTIONAL)
+include(target.cmake)

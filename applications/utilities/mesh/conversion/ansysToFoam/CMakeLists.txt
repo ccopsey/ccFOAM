@@ -17,24 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  ${CMAKE_CURRENT_BINARY_DIR}/ansysToFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include_directories(${FLEX_INCLUDE_DIR})
-
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/.)
-flex_target(ansysToFoam ansysToFoam.L ${CMAKE_CURRENT_BINARY_DIR}/ansysToFoam.C COMPILE_FLAGS -+)
-
-add_executable(ansysToFoam ${SOURCES})
-
-target_link_libraries(ansysToFoam ${LIBRARIES})
-
-install(TARGETS ansysToFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

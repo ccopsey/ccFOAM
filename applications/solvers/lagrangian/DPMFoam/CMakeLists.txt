@@ -17,55 +17,7 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-#add_subdirectory(DPMTurbulenceModels)
-#add_subdirectory(MPPICFoam)
+add_subdirectory(DPMTurbulenceModels)
+add_subdirectory(MPPICFoam)
 
-set(SOURCES
-  DPMFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  liblagrangian
-  liblagrangianIntermediate
-  liblagrangianTurbulence
-  libthermophysicalFunctions
-  libspecie
-  libradiationModels
-  libincompressibleTransportModels
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libDPMTurbulenceModels
-  libregionModels
-  libsurfaceFilmModels
-  libsampling
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(./DPMTurbulenceModels/include.cmake)
-include(../../../../src/lagrangian/basic/include.cmake)
-include(../../../../src/lagrangian/intermediate/include.cmake)
-include(../../../../src/thermophysicalModels/specie/include.cmake)
-include(../../../../src/transportModels/compressible/include.cmake)
-include(../../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../../src/thermophysicalModels/reactionThermo/include.cmake)
-include(../../../../src/thermophysicalModels/radiation/include.cmake)
-include_directories(../../../../src/transportModels)
-include_directories(../../../../src/transportModels/incompressible/singlePhaseTransportModel)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/incompressible/include.cmake)
-include(../../../../src/TurbulenceModels/phaseIncompressible/include.cmake)
-include(../../../../src/regionModels/regionModel/include.cmake)
-include(../../../../src/regionModels/surfaceFilmModels/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-
-add_executable(DPMFoam ${SOURCES})
-
-target_link_libraries(DPMFoam ${LIBRARIES})
-
-install(TARGETS DPMFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

@@ -17,35 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  buoyantBoussinesqSimpleFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libincompressibleTransportModels
-  libfiniteVolume
-  libsampling
-  libmeshTools
-  libfvOptions
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/incompressible/include.cmake)
-include_directories(../../../../src/transportModels)
-include_directories(../../../../src/transportModels/incompressible/singlePhaseTransportModel)
-include(../../../../src/sampling/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/fvOptions/include.cmake)
-
-add_executable(buoyantBoussinesqSimpleFoam ${SOURCES})
-
-target_link_libraries(buoyantBoussinesqSimpleFoam ${LIBRARIES})
-
-install(TARGETS buoyantBoussinesqSimpleFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

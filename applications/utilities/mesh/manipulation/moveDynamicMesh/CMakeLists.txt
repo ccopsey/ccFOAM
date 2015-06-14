@@ -17,28 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  moveDynamicMesh.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libdynamicFvMesh
-  libmeshTools
-  libsampling
-  libdynamicMesh
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/dynamicFvMesh/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/sampling/include.cmake)
-
-add_executable(moveDynamicMesh ${SOURCES})
-
-target_link_libraries(moveDynamicMesh ${LIBRARIES})
-
-install(TARGETS moveDynamicMesh DESTINATION applications OPTIONAL)
+include(target.cmake)

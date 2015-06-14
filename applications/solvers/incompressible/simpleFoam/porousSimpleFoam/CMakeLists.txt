@@ -17,36 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  porousSimpleFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libturbulenceModels
-  libincompressibleTurbulenceModels
-  libincompressibleTransportModels
-  libfiniteVolume
-  libmeshTools
-  libfvOptions
-  libsampling
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include_directories(..)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../../src/TurbulenceModels/incompressible/include.cmake)
-include_directories(../../../../../src/transportModels)
-include_directories(../../../../../src/transportModels/incompressible/singlePhaseTransportModel)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/fvOptions/include.cmake)
-include(../../../../../src/sampling/include.cmake)
-
-add_executable(porousSimpleFoam ${SOURCES})
-
-target_link_libraries(porousSimpleFoam ${LIBRARIES})
-
-install(TARGETS porousSimpleFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

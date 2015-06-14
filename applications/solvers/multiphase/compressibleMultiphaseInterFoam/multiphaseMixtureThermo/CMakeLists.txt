@@ -17,29 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  phaseModel/phaseModel.C
-  alphaContactAngle/alphaContactAngleFvPatchScalarField.C
-  multiphaseMixtureThermo.C
-)
-
-set(LIBRARIES
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libspecie
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/transportModels/compressible/include.cmake)
-include(../../../../../src/thermophysicalModels/basic/include.cmake)
-
-add_library(libmultiphaseMixtureThermo ${SOURCES})
-set_target_properties(libmultiphaseMixtureThermo PROPERTIES PREFIX "")
-
-target_link_libraries(libmultiphaseMixtureThermo ${LIBRARIES})
-
-install(TARGETS libmultiphaseMixtureThermo DESTINATION lib OPTIONAL)
+include(target.cmake)

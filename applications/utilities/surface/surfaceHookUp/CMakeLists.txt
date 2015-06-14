@@ -17,26 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  surfaceHookUp.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libfileFormats
-  libtriSurface
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/fileFormats/include.cmake)
-include(../../../../src/triSurface/include.cmake)
-
-add_executable(surfaceHookUp ${SOURCES})
-
-target_link_libraries(surfaceHookUp ${LIBRARIES})
-
-install(TARGETS surfaceHookUp DESTINATION applications OPTIONAL)
+include(target.cmake)

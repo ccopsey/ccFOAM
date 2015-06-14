@@ -17,31 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  reconstructPar.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libfiniteVolume
-  libgenericPatchFields
-  liblagrangian
-  libmeshTools
-  libreconstruct
-  libregionModels
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/lagrangian/basic/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/parallel/reconstruct/reconstruct/include.cmake)
-include(../../../../src/regionModels/regionModel/include.cmake)
-
-add_executable(reconstructPar ${SOURCES})
-
-target_link_libraries(reconstructPar ${LIBRARIES})
-
-install(TARGETS reconstructPar DESTINATION applications OPTIONAL)
+include(target.cmake)

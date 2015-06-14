@@ -17,25 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  cellSplitter.C
-  modifyMesh.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-  libdynamicMesh
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-
-add_executable(modifyMesh ${SOURCES})
-
-target_link_libraries(modifyMesh ${LIBRARIES})
-
-install(TARGETS modifyMesh DESTINATION applications OPTIONAL)
+include(target.cmake)

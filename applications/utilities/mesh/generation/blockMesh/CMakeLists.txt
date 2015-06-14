@@ -17,26 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  blockMeshApp.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libblockMesh
-  libmeshTools
-  libdynamicMesh
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/mesh/blockMesh/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-
-add_executable(blockMesh ${SOURCES})
-
-target_link_libraries(blockMesh ${LIBRARIES})
-
-install(TARGETS blockMesh DESTINATION applications OPTIONAL)
+include(target.cmake)

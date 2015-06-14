@@ -17,30 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  phase/phase.C
-  alphaContactAngle/alphaContactAngleFvPatchScalarField.C
-  multiphaseMixture.C
-)
-
-set(LIBRARIES
-  libinterfaceProperties
-  libincompressibleTransportModels
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include_directories(alphaContactAngle)
-include_directories(../../../../../src/transportModels)
-include(../../../../../src/transportModels/incompressible/include.cmake)
-include(../../../../../src/transportModels/interfaceProperties/include.cmake)
-
-add_library(libmultiphaseInterFoam ${SOURCES})
-set_target_properties(libmultiphaseInterFoam PROPERTIES PREFIX "")
-
-target_link_libraries(libmultiphaseInterFoam ${LIBRARIES})
-
-install(TARGETS libmultiphaseInterFoam DESTINATION lib OPTIONAL)
+include(target.cmake)

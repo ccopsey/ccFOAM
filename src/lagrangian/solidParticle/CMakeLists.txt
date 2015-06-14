@@ -17,28 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  solidParticle.C
-  solidParticleIO.C
-  solidParticleCloud.C
-)
-
-set(LIBRARIES
-  liblagrangian
-  libmeshTools
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-include(../../../src/meshTools/include.cmake)
-include(../../../src/lagrangian/basic/include.cmake)
-
-add_library(libsolidParticle ${SOURCES})
-set_target_properties(libsolidParticle PROPERTIES PREFIX "")
-
-target_link_libraries(libsolidParticle ${LIBRARIES})
-
-install(TARGETS libsolidParticle DESTINATION lib OPTIONAL)
+include(target.cmake)

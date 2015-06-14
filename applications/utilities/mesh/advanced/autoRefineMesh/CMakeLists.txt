@@ -17,28 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  autoRefineMesh.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libdynamicMesh
-  libmeshTools
-  libtriSurface
-  liblagrangian
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/dynamicMesh/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-include(../../../../../src/triSurface/include.cmake)
-include(../../../../../src/lagrangian/basic/include.cmake)
-
-add_executable(autoRefineMesh ${SOURCES})
-
-target_link_libraries(autoRefineMesh ${LIBRARIES})
-
-install(TARGETS autoRefineMesh DESTINATION applications OPTIONAL)
+include(target.cmake)

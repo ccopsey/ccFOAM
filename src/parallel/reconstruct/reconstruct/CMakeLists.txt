@@ -17,29 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  processorMeshes.C
-  fvFieldReconstructor.C
-  pointFieldReconstructor.C
-  reconstructLagrangianPositions.C
-)
-
-set(LIBRARIES
-  libfiniteVolume
-  libmeshTools
-  liblagrangian
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/lagrangian/basic/include.cmake)
-
-add_library(libreconstruct ${SOURCES})
-set_target_properties(libreconstruct PROPERTIES PREFIX "")
-
-target_link_libraries(libreconstruct ${LIBRARIES})
-
-install(TARGETS libreconstruct DESTINATION lib OPTIONAL)
+include(target.cmake)

@@ -17,43 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  foamyHexMeshSurfaceSimplify.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  ${CGAL_LIBRARY}
-  ${GMP_LIBRARY}
-  ${MPFR_LIBRARY}
-  ${BOOST_SYSTEM_LIBRARY}
-  ${BOOST_THREAD_LIBRARY}
-  libboost_thread
-  libmpfr
-  libperf_main
-  libGL
-  libconformalVoronoiMesh
-  libdecompositionMethods
-  libscotchDecomp
-  libedgeMesh
-  libfileFormats
-  libtriSurface
-  libmeshTools
-  libdynamicMesh
-)
-
-include(include.cmake)
-include(../../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../../src/OSspecific/POSIX/include.cmake)
-include(../conformalVoronoiMesh/include.cmake)
-include(../../../../../../src/edgeMesh/include.cmake)
-include(../../../../../../src/mesh/autoMesh/include.cmake)
-include(../../../../../../src/fileFormats/include.cmake)
-include(../../../../../../src/triSurface/include.cmake)
-include(../../../../../../src/meshTools/include.cmake)
-
-add_executable(foamyHexMeshSurfaceSimplify ${SOURCES})
-
-target_link_libraries(foamyHexMeshSurfaceSimplify ${LIBRARIES})
-
-install(TARGETS foamyHexMeshSurfaceSimplify DESTINATION applications OPTIONAL)
+#include(target.cmake)

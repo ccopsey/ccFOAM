@@ -17,20 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  expandDictionary.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-
-add_executable(expandDictionary ${SOURCES})
-
-target_link_libraries(expandDictionary ${LIBRARIES})
-
-install(TARGETS expandDictionary DESTINATION applications OPTIONAL)
+include(target.cmake)

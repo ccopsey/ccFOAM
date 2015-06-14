@@ -17,29 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  UOPwrite.C
-  UIPread.C
-  UPstream.C
-  PstreamGlobals.C
-)
-
-set(LIBRARIES
-  ${MPI_CXX_LIBRARIES}
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include_directories(${MPI_CXX_INCLUDE_PATH})
-
-add_definitions(
-  -DOMPI_SKIP_MPICXX
-)
-
-add_library(libmpiPstream ${SOURCES})
-set_target_properties(libmpiPstream PROPERTIES PREFIX "")
-
-target_link_libraries(libmpiPstream ${LIBRARIES})
-
-install(TARGETS libmpiPstream DESTINATION lib OPTIONAL)
+include(target.cmake)

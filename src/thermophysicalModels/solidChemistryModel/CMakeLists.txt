@@ -17,36 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  basicSolidChemistryModel/basicSolidChemistryModel.C
-  basicSolidChemistryModel/basicSolidChemistryModelNew.C
-  basicSolidChemistryModel/basicSolidChemistryModels.C
-  solidChemistrySolver/makeSolidChemistrySolvers.C
-)
-
-set(LIBRARIES
-  libchemistryModel
-  libfiniteVolume
-  libODE
-  libreactionThermophysicalModels
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-include(../../../src/thermophysicalModels/specie/include.cmake)
-include(../../../src/thermophysicalModels/solidSpecie/include.cmake)
-include(../../../src/ODE/include.cmake)
-include(../../../src/thermophysicalModels/chemistryModel/include.cmake)
-include(../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../src/thermophysicalModels/specie/include.cmake)
-include(../../../src/thermophysicalModels/solidThermo/include.cmake)
-include(../../../src/thermophysicalModels/reactionThermo/include.cmake)
-
-add_library(libsolidChemistryModel ${SOURCES})
-set_target_properties(libsolidChemistryModel PROPERTIES PREFIX "")
-
-target_link_libraries(libsolidChemistryModel ${LIBRARIES})
-
-install(TARGETS libsolidChemistryModel DESTINATION lib OPTIONAL)
+include(target.cmake)

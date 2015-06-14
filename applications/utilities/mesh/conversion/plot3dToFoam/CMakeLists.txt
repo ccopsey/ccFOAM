@@ -17,23 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  hexBlock.C
-  plot3dToFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/meshTools/include.cmake)
-
-add_executable(plot3dToFoam ${SOURCES})
-
-target_link_libraries(plot3dToFoam ${LIBRARIES})
-
-install(TARGETS plot3dToFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

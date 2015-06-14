@@ -17,43 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  chemFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libturbulenceModels
-  libcompressibleTurbulenceModels
-  libreactionThermophysicalModels
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libchemistryModel
-  libODE
-  libthermophysicalFunctions
-  libspecie
-  libfiniteVolume
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/compressible/include.cmake)
-include(../../../../src/thermophysicalModels/specie/include.cmake)
-include(../../../../src/thermophysicalModels/thermophysicalFunctions/include.cmake)
-include(../../../../src/thermophysicalModels/reactionThermo/include.cmake)
-include(../../../../src/transportModels/compressible/include.cmake)
-include(../../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../../src/thermophysicalModels/laminarFlameSpeed/include.cmake)
-include(../../../../src/ODE/include.cmake)
-include(../../../../src/thermophysicalModels/chemistryModel/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-
-add_executable(chemFoam ${SOURCES})
-
-target_link_libraries(chemFoam ${LIBRARIES})
-
-install(TARGETS chemFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

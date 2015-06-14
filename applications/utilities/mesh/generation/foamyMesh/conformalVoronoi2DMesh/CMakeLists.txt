@@ -17,15 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  cv2DControls/cv2DControls.C
-)
-
-include(include.cmake)
-include(../../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../../src/OSspecific/POSIX/include.cmake)
-
-add_library(libcv2DMesh ${SOURCES})
-set_target_properties(libcv2DMesh PROPERTIES PREFIX "")
-
-install(TARGETS libcv2DMesh DESTINATION lib OPTIONAL)
+include(target.cmake)

@@ -20,38 +20,4 @@
 add_subdirectory(rhoPorousSimpleFoam)
 add_subdirectory(rhoSimplecFoam)
 
-set(SOURCES
-  rhoSimpleFoam.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libspecie
-  libturbulenceModels
-  libcompressibleTurbulenceModels
-  libfiniteVolume
-  libsampling
-  libmeshTools
-  libfvOptions
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../src/finiteVolume/include.cmake)
-include(../../../../src/transportModels/compressible/include.cmake)
-include(../../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
-include(../../../../src/TurbulenceModels/compressible/include.cmake)
-include_directories(../../../../src/finiteVolume/cfdTools)
-include(../../../../src/sampling/include.cmake)
-include(../../../../src/meshTools/include.cmake)
-include(../../../../src/fvOptions/include.cmake)
-
-add_executable(rhoSimpleFoam ${SOURCES})
-
-target_link_libraries(rhoSimpleFoam ${LIBRARIES})
-
-install(TARGETS rhoSimpleFoam DESTINATION applications OPTIONAL)
+include(target.cmake)

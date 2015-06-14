@@ -17,29 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  twoPhaseMixtureThermo.C
-)
-
-set(LIBRARIES
-  libcompressibleTransportModels
-  libfluidThermophysicalModels
-  libspecie
-  libtwoPhaseMixture
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../../../src/OpenFOAM/include.cmake)
-include(../../../../../src/OSspecific/POSIX/include.cmake)
-include(../../../../../src/finiteVolume/include.cmake)
-include(../../../../../src/transportModels/compressible/include.cmake)
-include(../../../../../src/thermophysicalModels/basic/include.cmake)
-include(../../../../../src/transportModels/twoPhaseMixture/include.cmake)
-
-add_library(libtwoPhaseMixtureThermo ${SOURCES})
-set_target_properties(libtwoPhaseMixtureThermo PROPERTIES PREFIX "")
-
-target_link_libraries(libtwoPhaseMixtureThermo ${LIBRARIES})
-
-install(TARGETS libtwoPhaseMixtureThermo DESTINATION lib OPTIONAL)
+include(target.cmake)

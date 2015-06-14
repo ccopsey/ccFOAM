@@ -17,26 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  bunnylod/progmesh.C
-  bunnylod/vector.C
-  surfaceCoarsen.C
-)
-
-set(LIBRARIES
-  libOpenFOAM
-  libtriSurface
-  libmeshTools
-)
-
-include(include.cmake)
-include(../../../../src/OpenFOAM/include.cmake)
-include(../../../../src/OSspecific/POSIX/include.cmake)
-include_directories(bunnylod)
-include(../../../../src/triSurface/include.cmake)
-
-add_executable(surfaceCoarsen ${SOURCES})
-
-target_link_libraries(surfaceCoarsen ${LIBRARIES})
-
-install(TARGETS surfaceCoarsen DESTINATION applications OPTIONAL)
+include(target.cmake)

@@ -17,26 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  interfaceProperties.C
-  interfaceCompression/interfaceCompression.C
-)
-
-set(LIBRARIES
-  libtwoPhaseMixture
-  libfiniteVolume
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/finiteVolume/include.cmake)
-include(../../../src/transportModels/twoPhaseMixture/include.cmake)
-include_directories(../../../src/transportModels/twoPhaseProperties/alphaContactAngle/alphaContactAngle)
-
-add_library(libinterfaceProperties ${SOURCES})
-set_target_properties(libinterfaceProperties PROPERTIES PREFIX "")
-
-target_link_libraries(libinterfaceProperties ${LIBRARIES})
-
-install(TARGETS libinterfaceProperties DESTINATION lib OPTIONAL)
+include(target.cmake)

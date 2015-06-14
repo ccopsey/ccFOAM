@@ -17,17 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set(SOURCES
-  dummyMetisDecomp.C
-)
-
-include(include.cmake)
-include(../../../src/OpenFOAM/include.cmake)
-include(../../../src/OSspecific/POSIX/include.cmake)
-include(../../../src/parallel/decompose/decompositionMethods/include.cmake)
-include(../../../src/parallel/decompose/metisDecomp/include.cmake)
-
-add_library(libdummymetisDecomp ${SOURCES})
-set_target_properties(libdummymetisDecomp PROPERTIES PREFIX "")
-
-install(TARGETS libdummymetisDecomp DESTINATION lib OPTIONAL)
+include(target.cmake)
