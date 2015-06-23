@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 2011-2015 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2015 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -22,26 +22,29 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Application
-    LTSReactingParcelFoam
+    LTSCoalChemistryFoam
 
 Description
-    Local time stepping (LTS) solver for steady, compressible, laminar or
-    turbulent reacting and non-reacting flow with multiphase Lagrangian
-    parcels and porous media, including run-time selectable finitite volume
-    options, e.g. sources, constraints
+    Local time stepping (LTS) solver for steady simulation of:
+    - compressible,
+    - turbulent flow,
+    with
+    - coal and limestone parcel injections,
+    - energy source, and
+    - combustion.
 
 \*---------------------------------------------------------------------------*/
 
 #include "fvCFD.H"
 #include "turbulentFluidThermoModel.H"
-#include "basicReactingMultiphaseCloud.H"
-#include "rhoCombustionModel.H"
-#include "radiationModel.H"
-#include "IOporosityModelList.H"
+#include "basicThermoCloud.H"
+#include "coalCloud.H"
+#include "psiCombustionModel.H"
 #include "fvIOoptionList.H"
+#include "radiationModel.H"
 #include "SLGThermo.H"
-#include "fvcSmooth.H"
 #include "pimpleControl.H"
+#include "fvcSmooth.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -57,8 +60,8 @@ int main(int argc, char *argv[])
     #include "createFields.H"
     #include "createMRF.H"
     #include "createFvOptions.H"
-    #include "createRadiationModel.H"
     #include "createClouds.H"
+    #include "createRadiationModel.H"
     #include "initContinuityErrs.H"
     #include "createRDeltaT.H"
 
@@ -72,7 +75,11 @@ int main(int argc, char *argv[])
 
         Info<< "Time = " << runTime.timeName() << nl << endl;
 
-        parcels.evolve();
+        rhoEffLagrangian = coalParcels.rhoEff() + limestoneParcels.rhoEff();
+        pDyn = 0.5*rho*magSqr(U);
+
+        coalParcels.evolve();
+        limestoneParcels.evolve();
 
         #include "setrDeltaT.H"
 
@@ -106,7 +113,7 @@ int main(int argc, char *argv[])
 
     Info<< "End\n" << endl;
 
-    return 0;
+    return(0);
 }
 
 
