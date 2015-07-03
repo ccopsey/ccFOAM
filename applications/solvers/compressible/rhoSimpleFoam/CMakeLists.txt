@@ -18,6 +18,5 @@
 #
 
 add_subdirectory(rhoPorousSimpleFoam)
-add_subdirectory(rhoSimplecFoam)
 
 include(target.cmake)

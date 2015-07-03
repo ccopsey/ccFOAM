@@ -31,8 +31,9 @@ set(SOURCES
   sources/derived/actuationDiskSource/actuationDiskSource.C
   sources/derived/effectivenessHeatExchangerSource/effectivenessHeatExchangerSource.C
   sources/derived/explicitPorositySource/explicitPorositySource.C
-  sources/derived/pressureGradientExplicitSource/pressureGradientExplicitSource.C
-  sources/derived/pressureGradientExplicitSource/pressureGradientExplicitSourceIO.C
+  sources/derived/meanVelocityForce/meanVelocityForce.C
+  sources/derived/meanVelocityForce/meanVelocityForceIO.C
+  sources/derived/meanVelocityForce/patchMeanVelocityForce/patchMeanVelocityForce.C
   sources/derived/radialActuationDiskSource/radialActuationDiskSource.C
   sources/derived/rotorDiskSource/rotorDiskSource.C
   sources/derived/rotorDiskSource/bladeModel/bladeModel.C

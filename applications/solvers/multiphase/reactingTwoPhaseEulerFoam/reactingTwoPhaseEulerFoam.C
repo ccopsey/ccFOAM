@@ -22,7 +22,7 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Application
-    twoPhaseEulerFoam
+    reactingTwoPhaseEulerFoam
 
 Description
     Solver for a system of 2 compressible fluid phases with a common pressure,
@@ -36,10 +36,10 @@ Description
 #include "fvCFD.H"
 #include "twoPhaseSystem.H"
 #include "PhaseCompressibleTurbulenceModel.H"
-#include "pimpleControl.H"
-#include "fvIOoptionList.H"
 #include "fixedFluxPressureFvPatchScalarField.H"
-#include "HashPtrTable.H"
+#include "pimpleControl.H"
+#include "localEulerDdtScheme.H"
+#include "fvcSmooth.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -52,13 +52,16 @@ int main(int argc, char *argv[])
 
     pimpleControl pimple(mesh);
 
+    #include "createRDeltaT.H"
     #include "createFields.H"
-    #include "createMRF.H"
-    #include "createFvOptions.H"
     #include "initContinuityErrs.H"
-    #include "readTimeControls.H"
-    #include "CourantNos.H"
-    #include "setInitialDeltaT.H"
+
+    if (!LTS)
+    {
+        #include "readTimeControls.H"
+        #include "CourantNo.H"
+        #include "setInitialDeltaT.H"
+    }
 
     Switch faceMomentum
     (
@@ -82,8 +85,16 @@ int main(int argc, char *argv[])
     while (runTime.run())
     {
         #include "readTimeControls.H"
-        #include "CourantNos.H"
-        #include "setDeltaT.H"
+
+        if (LTS)
+        {
+            #include "setRDeltaT.H"
+        }
+        else
+        {
+            #include "CourantNos.H"
+            #include "setDeltaT.H"
+        }
 
         runTime++;
         Info<< "Time = " << runTime.timeName() << nl << endl;
@@ -93,8 +104,6 @@ int main(int argc, char *argv[])
         {
             fluid.solve();
             fluid.correct();
-
-            #include "correctContErrs.H"
 
             #include "YEqns.H"
 

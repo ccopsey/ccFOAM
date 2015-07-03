@@ -31,6 +31,7 @@ set(LIBRARIES
   libinterfaceProperties
   libincompressibleTransportModels
   libfiniteVolume
+  libmeshTools
 )
 
 include_directories(.)
@@ -43,6 +44,7 @@ include_directories(alphaContactAngle)
 include_directories(../../../../../src/transportModels)
 include(../../../../../src/transportModels/incompressible/include.cmake)
 include(../../../../../src/transportModels/interfaceProperties/include.cmake)
+include(../../../../../src/meshTools/include.cmake)
 
 add_library(libmultiphaseSystem ${SOURCES})
 set_target_properties(libmultiphaseSystem PROPERTIES PREFIX "")

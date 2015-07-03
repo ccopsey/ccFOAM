@@ -28,6 +28,7 @@ set(LIBRARIES
   libfluidThermophysicalModels
   libspecie
   libfiniteVolume
+  libmeshTools
 )
 
 include_directories(.)
@@ -37,6 +38,7 @@ include(../../../../../src/OSspecific/POSIX/include.cmake)
 include(../../../../../src/finiteVolume/include.cmake)
 include(../../../../../src/transportModels/compressible/include.cmake)
 include(../../../../../src/thermophysicalModels/basic/include.cmake)
+include(../../../../../src/meshTools/include.cmake)
 
 add_library(libmultiphaseMixtureThermo ${SOURCES})
 set_target_properties(libmultiphaseMixtureThermo PROPERTIES PREFIX "")

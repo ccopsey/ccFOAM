@@ -17,7 +17,6 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-add_subdirectory(LTSReactingParcelFoam)
 add_subdirectory(simpleReactingParcelFoam)
 
 include(target.cmake)

@@ -22,5 +22,6 @@ include_directories(${PROJECT_SOURCE_DIR}/src/TurbulenceModels/phaseCompressible
 include_directories(${PROJECT_SOURCE_DIR}/src/TurbulenceModels/phaseCompressible/LES/SmagorinskyZhang)
 include_directories(${PROJECT_SOURCE_DIR}/src/TurbulenceModels/phaseCompressible/PhaseCompressibleTurbulenceModel)
 include_directories(${PROJECT_SOURCE_DIR}/src/TurbulenceModels/phaseCompressible/RAS/continuousGasKEpsilon)
+include_directories(${PROJECT_SOURCE_DIR}/src/TurbulenceModels/phaseCompressible/RAS/kOmegaSSTSato)
 include_directories(${PROJECT_SOURCE_DIR}/src/TurbulenceModels/phaseCompressible/RAS/LaheyKEpsilon)
 include_directories(${PROJECT_SOURCE_DIR}/src/TurbulenceModels/phaseCompressible/RAS/mixtureKEpsilon)

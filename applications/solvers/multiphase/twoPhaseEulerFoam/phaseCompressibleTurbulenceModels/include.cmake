@@ -40,5 +40,4 @@ include_directories(${PROJECT_SOURCE_DIR}/applications/solvers/multiphase/twoPha
 include_directories(${PROJECT_SOURCE_DIR}/applications/solvers/multiphase/twoPhaseEulerFoam/phaseCompressibleTurbulenceModels/kineticTheoryModels/viscosityModel/none)
 include_directories(${PROJECT_SOURCE_DIR}/applications/solvers/multiphase/twoPhaseEulerFoam/phaseCompressibleTurbulenceModels/kineticTheoryModels/viscosityModel/Syamlal)
 include_directories(${PROJECT_SOURCE_DIR}/applications/solvers/multiphase/twoPhaseEulerFoam/phaseCompressibleTurbulenceModels/kineticTheoryModels/viscosityModel/viscosityModel)
-include_directories(${PROJECT_SOURCE_DIR}/applications/solvers/multiphase/twoPhaseEulerFoam/phaseCompressibleTurbulenceModels/kOmegaSSTSato)
 include_directories(${PROJECT_SOURCE_DIR}/applications/solvers/multiphase/twoPhaseEulerFoam/phaseCompressibleTurbulenceModels/phasePressureModel)

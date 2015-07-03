@@ -290,6 +290,7 @@ set(SOURCES
   finiteVolume/ddtSchemes/EulerDdtScheme/EulerDdtSchemes.C
   finiteVolume/ddtSchemes/CoEulerDdtScheme/CoEulerDdtSchemes.C
   finiteVolume/ddtSchemes/SLTSDdtScheme/SLTSDdtSchemes.C
+  finiteVolume/ddtSchemes/localEulerDdtScheme/localEulerDdt.C
   finiteVolume/ddtSchemes/localEulerDdtScheme/localEulerDdtSchemes.C
   finiteVolume/ddtSchemes/backwardDdtScheme/backwardDdtSchemes.C
   finiteVolume/ddtSchemes/CrankNicolsonDdtScheme/CrankNicolsonDdtSchemes.C

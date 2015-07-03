@@ -62,6 +62,7 @@ include_directories(../../../../../src/transportModels/incompressible/transportM
 include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
 include(../../../../../src/TurbulenceModels/compressible/include.cmake)
 include(../../../../../src/TurbulenceModels/phaseCompressible/include.cmake)
+include(../../../../../src/fvOptions/include.cmake)
 include(../../../../../src/meshTools/include.cmake)
 
 add_library(libphaseReactingTurbulenceModels ${SOURCES})

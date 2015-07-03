@@ -17,6 +17,4 @@
 #   with ccFOAM.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-add_subdirectory(LTSCoalChemistryFoam)
-
 include(target.cmake)

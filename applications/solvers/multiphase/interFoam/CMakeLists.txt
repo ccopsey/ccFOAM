@@ -19,6 +19,5 @@
 
 add_subdirectory(interDyMFoam)
 add_subdirectory(interMixingFoam)
-add_subdirectory(LTSInterFoam)
 
 include(target.cmake)

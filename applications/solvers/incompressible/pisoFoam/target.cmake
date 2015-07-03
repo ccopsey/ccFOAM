@@ -28,6 +28,8 @@ set(LIBRARIES
   libincompressibleTransportModels
   libfiniteVolume
   libmeshTools
+  libfvOptions
+  libsampling
 )
 
 include_directories(.)
@@ -39,6 +41,8 @@ include(../../../../src/TurbulenceModels/incompressible/include.cmake)
 include_directories(../../../../src/transportModels)
 include_directories(../../../../src/transportModels/incompressible/singlePhaseTransportModel)
 include(../../../../src/meshTools/include.cmake)
+include(../../../../src/fvOptions/include.cmake)
+include(../../../../src/sampling/include.cmake)
 
 add_executable(pisoFoam ${SOURCES})
 

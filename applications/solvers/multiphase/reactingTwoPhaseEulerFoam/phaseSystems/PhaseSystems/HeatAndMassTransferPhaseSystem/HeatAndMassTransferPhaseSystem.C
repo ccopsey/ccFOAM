@@ -171,13 +171,10 @@ Foam::HeatAndMassTransferPhaseSystem<BasePhaseSystem>::dmdt
 
 template<class BasePhaseSystem>
 Foam::autoPtr<Foam::phaseSystem::momentumTransferTable>
-Foam::HeatAndMassTransferPhaseSystem<BasePhaseSystem>::momentumTransfer
-(
-    IOMRFZoneList& MRF
-) const
+Foam::HeatAndMassTransferPhaseSystem<BasePhaseSystem>::momentumTransfer() const
 {
     autoPtr<phaseSystem::momentumTransferTable>
-        eqnsPtr(BasePhaseSystem::momentumTransfer(MRF));
+        eqnsPtr(BasePhaseSystem::momentumTransfer());
 
     phaseSystem::momentumTransferTable& eqns = eqnsPtr();
 
@@ -289,6 +286,38 @@ Foam::HeatAndMassTransferPhaseSystem<BasePhaseSystem>::heatTransfer() const
             Swap(phase, otherPhase);
             Swap(K, otherK);
         }
+    }
+
+    // Source term due to mass trasfer
+    forAllConstIter
+    (
+        phaseSystem::phasePairTable,
+        this->phasePairs_,
+        phasePairIter
+    )
+    {
+        const phasePair& pair(phasePairIter());
+
+        if (pair.ordered())
+        {
+            continue;
+        }
+
+        const volScalarField& he1(pair.phase1().thermo().he());
+        const volScalarField& he2(pair.phase2().thermo().he());
+
+        const volScalarField& K1(pair.phase1().K());
+        const volScalarField& K2(pair.phase2().K());
+
+        const volScalarField dmdt(this->dmdt(pair));
+        const volScalarField dmdt12(dmdt*pos(dmdt));
+        const volScalarField dmdt21(dmdt*neg(dmdt));
+
+        *eqns[pair.phase1().name()] +=
+            fvm::Sp(dmdt21, he1) + dmdt21*K1 - dmdt21*(he2 + K2);
+
+        *eqns[pair.phase2().name()] +=
+            dmdt12*(he1 + K1) - fvm::Sp(dmdt12, he2) - dmdt12*K2;
     }
 
     return eqnsPtr;
