@@ -22,90 +22,108 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::saturationPressureModels::AntoineExtended
+    Foam::saturationModel
 
 Description
-    Extended Antoine equation for the vapour pressure.
-
-    \f[
-        \log (p) = A + \frac{B}{C + T} + D \log (T) + E T^F
-    \f]
-
-    Coefficients \f$A\f$, \f$B\f$, \f$C\f$, \f$D\f$, \f$E\f$ and \f$F\f$ are
-    to be supplied and should be suitable for natural logarithms and
-    temperatures in Kelvin.
 
 SourceFiles
-    AntoineExtended.C
+    saturationModel.C
+    newSaturationModel.C
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef AntoineExtended_H
-#define AntoineExtended_H
+#ifndef saturationModel_H
+#define saturationModel_H
 
-#include "Antoine.H"
+#include "volFields.H"
+#include "dictionary.H"
+#include "runTimeSelectionTables.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
-namespace saturationPressureModels
-{
 
 /*---------------------------------------------------------------------------*\
-                         Class AntoineExtended Declaration
+                         Class saturationModel Declaration
 \*---------------------------------------------------------------------------*/
 
-class AntoineExtended
-:
-    public Antoine
+class saturationModel
 {
-private:
+    // Private Member Functions
 
-    // Private data
+        //- Disallow default bitwise copy construct
+        saturationModel(const saturationModel&);
 
-        //- Constant D
-        dimensionedScalar D_;
-
-        //- Constant F
-        dimensionedScalar F_;
-
-        //- Constant E
-        //  (after F so F's dimensions can be used in the construction)
-        dimensionedScalar E_;
+        //- Disallow default bitwise assignment
+        void operator=(const saturationModel&);
 
 
 public:
 
     //- Runtime type information
-    TypeName("AntoineExtended");
+    TypeName("saturationModel");
+
+
+    //- Declare runtime construction
+    declareRunTimeSelectionTable
+    (
+        autoPtr,
+        saturationModel,
+        dictionary,
+        (
+            const dictionary& dict
+        ),
+        (dict)
+    );
+
 
     // Constructors
 
-        //- Construct from a dictionary
-        AntoineExtended(const dictionary& dict);
+        //- Construct null
+        saturationModel();
+
+
+    // Selectors
+
+        //- Select null constructed
+        static autoPtr<saturationModel> New(const dictionary& dict);
 
 
     //- Destructor
-    virtual ~AntoineExtended();
+    virtual ~saturationModel();
 
 
     // Member Functions
 
         //- Saturation pressure
-        virtual tmp<volScalarField> pSat(const volScalarField& T) const;
+        virtual tmp<volScalarField> pSat
+        (
+            const volScalarField& T
+        ) const = 0;
 
         //- Saturation pressure derivetive w.r.t. temperature
-        virtual tmp<volScalarField> pSatPrime(const volScalarField& T) const;
+        virtual tmp<volScalarField> pSatPrime
+        (
+            const volScalarField& T
+        ) const = 0;
 
         //- Natural log of the saturation pressure
-        virtual tmp<volScalarField> lnPSat(const volScalarField& T) const;
+        virtual tmp<volScalarField> lnPSat
+        (
+            const volScalarField& T
+        ) const = 0;
+
+        //- Saturation temperature
+        virtual tmp<volScalarField> Tsat
+        (
+            const volScalarField& p
+        ) const = 0;
 };
 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-} // End namespace saturationPressureModels
 } // End namespace Foam
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

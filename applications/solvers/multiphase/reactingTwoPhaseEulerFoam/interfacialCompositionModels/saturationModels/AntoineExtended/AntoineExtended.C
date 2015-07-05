@@ -30,12 +30,12 @@ License
 
 namespace Foam
 {
-namespace saturationPressureModels
+namespace saturationModels
 {
     defineTypeNameAndDebug(AntoineExtended, 0);
     addToRunTimeSelectionTable
     (
-        saturationPressureModel,
+        saturationModel,
         AntoineExtended,
         dictionary
     );
@@ -45,7 +45,7 @@ namespace saturationPressureModels
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-Foam::saturationPressureModels::AntoineExtended::AntoineExtended
+Foam::saturationModels::AntoineExtended::AntoineExtended
 (
     const dictionary& dict
 )
@@ -59,14 +59,14 @@ Foam::saturationPressureModels::AntoineExtended::AntoineExtended
 
 // * * * * * * * * * * * * * * * * Destructor  * * * * * * * * * * * * * * * //
 
-Foam::saturationPressureModels::AntoineExtended::~AntoineExtended()
+Foam::saturationModels::AntoineExtended::~AntoineExtended()
 {}
 
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
 Foam::tmp<Foam::volScalarField>
-Foam::saturationPressureModels::AntoineExtended::pSat
+Foam::saturationModels::AntoineExtended::pSat
 (
     const volScalarField& T
 ) const
@@ -79,7 +79,7 @@ Foam::saturationPressureModels::AntoineExtended::pSat
 
 
 Foam::tmp<Foam::volScalarField>
-Foam::saturationPressureModels::AntoineExtended::pSatPrime
+Foam::saturationModels::AntoineExtended::pSatPrime
 (
     const volScalarField& T
 ) const
@@ -89,7 +89,7 @@ Foam::saturationPressureModels::AntoineExtended::pSatPrime
 
 
 Foam::tmp<Foam::volScalarField>
-Foam::saturationPressureModels::AntoineExtended::lnPSat
+Foam::saturationModels::AntoineExtended::lnPSat
 (
     const volScalarField& T
 ) const
@@ -99,6 +99,21 @@ Foam::saturationPressureModels::AntoineExtended::lnPSat
       + B_/(C_ + T)
       + D_*log(T*dimensionedScalar("one", dimless/dimTemperature, 1))
       + E_*pow(T, F_);
+}
+
+
+Foam::tmp<Foam::volScalarField>
+Foam::saturationModels::AntoineExtended::Tsat
+(
+    const volScalarField& p
+) const
+{
+    notImplemented
+    (
+        "saturationModels::AntoineExtended::Tsat(const volScalarField& p)"
+    );
+
+    return volScalarField::null();
 }
 
 

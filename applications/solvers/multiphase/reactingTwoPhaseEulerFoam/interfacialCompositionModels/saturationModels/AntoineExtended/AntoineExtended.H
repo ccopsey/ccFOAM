@@ -22,113 +22,94 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::Saturated
+    Foam::saturationModels::AntoineExtended
 
 Description
-    Model which uses a saturation pressure model for a single species to
-    calculate the interface composition.
+    Extended Antoine equation for the vapour pressure.
+
+    \f[
+        \log (p) = A + \frac{B}{C + T} + D \log (T) + E T^F
+    \f]
+
+    Coefficients \f$A\f$, \f$B\f$, \f$C\f$, \f$D\f$, \f$E\f$ and \f$F\f$ are
+    to be supplied and should be suitable for natural logarithms and
+    temperatures in Kelvin.
 
 SourceFiles
-    Saturated.C
+    AntoineExtended.C
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef Saturated_H
-#define Saturated_H
+#ifndef AntoineExtended_H
+#define AntoineExtended_H
 
-#include "InterfaceCompositionModel.H"
-#include "saturationModel.H"
+#include "Antoine.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
-
-class phasePair;
-
-namespace interfaceCompositionModels
+namespace saturationModels
 {
 
 /*---------------------------------------------------------------------------*\
-                         Class Saturated Declaration
+                         Class AntoineExtended Declaration
 \*---------------------------------------------------------------------------*/
 
-template<class Thermo, class OtherThermo>
-class Saturated
+class AntoineExtended
 :
-    public InterfaceCompositionModel<Thermo, OtherThermo>
+    public Antoine
 {
-protected:
+private:
 
     // Private data
 
-        //- Saturated species name
-        word saturatedName_;
+        //- Constant D
+        dimensionedScalar D_;
 
-        //- Saturated species index
-        label saturatedIndex_;
+        //- Constant F
+        dimensionedScalar F_;
 
-        //- Saturation pressure model
-        autoPtr<saturationModel> saturationModel_;
-
-
-    // Private Member Functions
-
-        //- Constant of propotionality between partial pressure and mass
-        //  fraction
-        tmp<volScalarField> wRatioByP() const;
+        //- Constant E
+        //  (after F so F's dimensions can be used in the construction)
+        dimensionedScalar E_;
 
 
 public:
 
     //- Runtime type information
-    TypeName("Saturated");
+    TypeName("AntoineExtended");
 
     // Constructors
 
-        //- Construct from components
-        Saturated
-        (
-            const dictionary& dict,
-            const phasePair& pair
-        );
+        //- Construct from a dictionary
+        AntoineExtended(const dictionary& dict);
 
 
     //- Destructor
-    virtual ~Saturated();
+    virtual ~AntoineExtended();
 
 
     // Member Functions
 
-        //- Update the composition
-        virtual void update(const volScalarField& Tf);
+        //- Saturation pressure
+        virtual tmp<volScalarField> pSat(const volScalarField& T) const;
 
-        //- The interface species fraction
-        virtual tmp<volScalarField> Yf
-        (
-            const word& speciesName,
-            const volScalarField& Tf
-        ) const;
+        //- Saturation pressure derivetive w.r.t. temperature
+        virtual tmp<volScalarField> pSatPrime(const volScalarField& T) const;
 
-        //- The interface species fraction derivative w.r.t. temperature
-        virtual tmp<volScalarField> YfPrime
-        (
-            const word& speciesName,
-            const volScalarField& Tf
-        ) const;
+        //- Natural log of the saturation pressure
+        virtual tmp<volScalarField> lnPSat(const volScalarField& T) const;
+
+        //- Saturation temperature
+        virtual tmp<volScalarField> Tsat(const volScalarField& p) const;
 };
 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-} // End namespace interfaceCompositionModels
+} // End namespace saturationModels
 } // End namespace Foam
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-#ifdef NoRepository
-#   include "Saturated.C"
-#endif
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

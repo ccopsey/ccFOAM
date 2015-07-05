@@ -22,102 +22,78 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::saturationPressureModel
+    Foam::saturationModels::ArdenBuck
 
 Description
+    ArdenBuck equation for the vapour pressure of moist air.
 
 SourceFiles
-    saturationPressureModel.C
-    newSaturationPressureModel.C
+    ArdenBuck.C
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef saturationPressureModel_H
-#define saturationPressureModel_H
+#ifndef ArdenBuck_H
+#define ArdenBuck_H
 
-#include "volFields.H"
-#include "dictionary.H"
-#include "runTimeSelectionTables.H"
+#include "saturationModel.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
+namespace saturationModels
+{
 
 /*---------------------------------------------------------------------------*\
-                         Class saturationPressureModel Declaration
+                         Class ArdenBuck Declaration
 \*---------------------------------------------------------------------------*/
 
-class saturationPressureModel
+class ArdenBuck
+:
+    public saturationModel
 {
+private:
+
     // Private Member Functions
 
-        //- Disallow default bitwise copy construct
-        saturationPressureModel(const saturationPressureModel&);
-
-        //- Disallow default bitwise assignment
-        void operator=(const saturationPressureModel&);
+        //- Exponent divided by the temperature
+        tmp<volScalarField> xByTC(const volScalarField& TC) const;
 
 
 public:
 
     //- Runtime type information
-    TypeName("saturationPressureModel");
-
-
-    //- Declare runtime construction
-    declareRunTimeSelectionTable
-    (
-        autoPtr,
-        saturationPressureModel,
-        dictionary,
-        (
-            const dictionary& dict
-        ),
-        (dict)
-    );
-
+    TypeName("ArdenBuck");
 
     // Constructors
 
-        //- Construct null
-        saturationPressureModel();
-
-
-    // Selectors
-
-        //- Select null constructed
-        static autoPtr<saturationPressureModel> New(const dictionary& dict);
+        //- Construct from a dictionary
+        ArdenBuck(const dictionary& dict);
 
 
     //- Destructor
-    virtual ~saturationPressureModel();
+    virtual ~ArdenBuck();
 
 
     // Member Functions
 
         //- Saturation pressure
-        virtual tmp<volScalarField> pSat
-        (
-            const volScalarField& T
-        ) const = 0;
+        virtual tmp<volScalarField> pSat(const volScalarField& T) const;
 
         //- Saturation pressure derivetive w.r.t. temperature
-        virtual tmp<volScalarField> pSatPrime
-        (
-            const volScalarField& T
-        ) const = 0;
+        virtual tmp<volScalarField> pSatPrime(const volScalarField& T) const;
 
         //- Natural log of the saturation pressure
-        virtual tmp<volScalarField> lnPSat
-        (
-            const volScalarField& T
-        ) const = 0;
+        virtual tmp<volScalarField> lnPSat(const volScalarField& T) const;
+
+        //- Saturation temperature
+        virtual tmp<volScalarField> Tsat(const volScalarField& p) const;
 };
 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+} // End namespace saturationModels
 } // End namespace Foam
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

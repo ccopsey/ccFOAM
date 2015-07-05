@@ -30,10 +30,10 @@ License
 
 namespace Foam
 {
-namespace saturationPressureModels
+namespace saturationModels
 {
     defineTypeNameAndDebug(ArdenBuck, 0);
-    addToRunTimeSelectionTable(saturationPressureModel, ArdenBuck, dictionary);
+    addToRunTimeSelectionTable(saturationModel, ArdenBuck, dictionary);
 }
 }
 
@@ -46,7 +46,7 @@ static const Foam::dimensionedScalar D("", Foam::dimTemperature, 257.14);
 // * * * * * * * * * * * * * Private Member Functions  * * * * * * * * * * * //
 
 Foam::tmp<Foam::volScalarField>
-Foam::saturationPressureModels::ArdenBuck::xByTC
+Foam::saturationModels::ArdenBuck::xByTC
 (
     const volScalarField& TC
 ) const
@@ -57,22 +57,22 @@ Foam::saturationPressureModels::ArdenBuck::xByTC
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-Foam::saturationPressureModels::ArdenBuck::ArdenBuck(const dictionary& dict)
+Foam::saturationModels::ArdenBuck::ArdenBuck(const dictionary& dict)
 :
-    saturationPressureModel()
+    saturationModel()
 {}
 
 
 // * * * * * * * * * * * * * * * * Destructor  * * * * * * * * * * * * * * * //
 
-Foam::saturationPressureModels::ArdenBuck::~ArdenBuck()
+Foam::saturationModels::ArdenBuck::~ArdenBuck()
 {}
 
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
 Foam::tmp<Foam::volScalarField>
-Foam::saturationPressureModels::ArdenBuck::pSat
+Foam::saturationModels::ArdenBuck::pSat
 (
     const volScalarField& T
 ) const
@@ -84,7 +84,7 @@ Foam::saturationPressureModels::ArdenBuck::pSat
 
 
 Foam::tmp<Foam::volScalarField>
-Foam::saturationPressureModels::ArdenBuck::pSatPrime
+Foam::saturationModels::ArdenBuck::pSatPrime
 (
     const volScalarField& T
 ) const
@@ -98,7 +98,7 @@ Foam::saturationPressureModels::ArdenBuck::pSatPrime
 
 
 Foam::tmp<Foam::volScalarField>
-Foam::saturationPressureModels::ArdenBuck::lnPSat
+Foam::saturationModels::ArdenBuck::lnPSat
 (
     const volScalarField& T
 ) const
@@ -106,6 +106,21 @@ Foam::saturationPressureModels::ArdenBuck::lnPSat
     volScalarField TC(T - zeroC);
 
     return log(A.value()) + TC*xByTC(TC);
+}
+
+
+Foam::tmp<Foam::volScalarField>
+Foam::saturationModels::ArdenBuck::Tsat
+(
+    const volScalarField& p
+) const
+{
+    notImplemented
+    (
+        "saturationModels::ArdenBuck::Tsat(const volScalarField& p)"
+    );
+
+    return volScalarField::null();
 }
 
 

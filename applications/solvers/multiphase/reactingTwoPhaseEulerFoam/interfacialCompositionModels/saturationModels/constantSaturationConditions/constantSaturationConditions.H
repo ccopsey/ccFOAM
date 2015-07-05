@@ -22,70 +22,60 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::saturationPressureModels::Antoine
+    Foam::saturationModels::constantSaturationConditions
 
 Description
-    Antoine equation for the vapour pressure.
-
-    \f[
-        \log p = A + \frac{B}{C + T}
-    \f]
-
-    Coefficients \f$A\f$, \f$B\f$ and \f$C\f$ are to be supplied and should be
-    suitable for natural logarithms and temperatures in Kelvin.
+    Constant saturation pressure and temperature.
 
 SourceFiles
-    Antoine.C
+    constantSaturationConditions.C
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef Antoine_H
-#define Antoine_H
+#ifndef constantSaturationConditions_H
+#define constantSaturationConditions_H
 
-#include "saturationPressureModel.H"
+#include "saturationModel.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
-namespace saturationPressureModels
+namespace saturationModels
 {
 
 /*---------------------------------------------------------------------------*\
-                         Class Antoine Declaration
+                         Class constantSaturationConditions Declaration
 \*---------------------------------------------------------------------------*/
 
-class Antoine
+class constantSaturationConditions
 :
-    public saturationPressureModel
+    public saturationModel
 {
 protected:
 
     // Private data
 
-        //- Constant A
-        dimensionedScalar A_;
+        //- Constant saturation pressure
+        dimensionedScalar pSat_;
 
-        //- Constant B
-        dimensionedScalar B_;
-
-        //- Constant C
-        dimensionedScalar C_;
+        //- Constant saturation temperature
+        dimensionedScalar Tsat_;
 
 
 public:
 
     //- Runtime type information
-    TypeName("Antoine");
+    TypeName("constant");
 
     // Constructors
 
         //- Construct from a dictionary
-        Antoine(const dictionary& dict);
+        constantSaturationConditions(const dictionary& dict);
 
 
     //- Destructor
-    virtual ~Antoine();
+    virtual ~constantSaturationConditions();
 
 
     // Member Functions
@@ -98,12 +88,15 @@ public:
 
         //- Natural log of the saturation pressure
         virtual tmp<volScalarField> lnPSat(const volScalarField& T) const;
+
+        //- Saturation temperature
+        virtual tmp<volScalarField> Tsat(const volScalarField& p) const;
 };
 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-} // End namespace saturationPressureModels
+} // End namespace saturationModels
 } // End namespace Foam
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

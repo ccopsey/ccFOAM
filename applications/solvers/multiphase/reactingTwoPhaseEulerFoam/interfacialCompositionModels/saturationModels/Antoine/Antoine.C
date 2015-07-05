@@ -30,19 +30,19 @@ License
 
 namespace Foam
 {
-namespace saturationPressureModels
+namespace saturationModels
 {
     defineTypeNameAndDebug(Antoine, 0);
-    addToRunTimeSelectionTable(saturationPressureModel, Antoine, dictionary);
+    addToRunTimeSelectionTable(saturationModel, Antoine, dictionary);
 }
 }
 
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-Foam::saturationPressureModels::Antoine::Antoine(const dictionary& dict)
+Foam::saturationModels::Antoine::Antoine(const dictionary& dict)
 :
-    saturationPressureModel(),
+    saturationModel(),
     A_("A", dimless, dict.lookup("A")),
     B_("B", dimTemperature, dict.lookup("B")),
     C_("C", dimTemperature, dict.lookup("C"))
@@ -51,14 +51,14 @@ Foam::saturationPressureModels::Antoine::Antoine(const dictionary& dict)
 
 // * * * * * * * * * * * * * * * * Destructor  * * * * * * * * * * * * * * * //
 
-Foam::saturationPressureModels::Antoine::~Antoine()
+Foam::saturationModels::Antoine::~Antoine()
 {}
 
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
 Foam::tmp<Foam::volScalarField>
-Foam::saturationPressureModels::Antoine::pSat
+Foam::saturationModels::Antoine::pSat
 (
     const volScalarField& T
 ) const
@@ -70,7 +70,7 @@ Foam::saturationPressureModels::Antoine::pSat
 
 
 Foam::tmp<Foam::volScalarField>
-Foam::saturationPressureModels::Antoine::pSatPrime
+Foam::saturationModels::Antoine::pSatPrime
 (
     const volScalarField& T
 ) const
@@ -80,12 +80,22 @@ Foam::saturationPressureModels::Antoine::pSatPrime
 
 
 Foam::tmp<Foam::volScalarField>
-Foam::saturationPressureModels::Antoine::lnPSat
+Foam::saturationModels::Antoine::lnPSat
 (
     const volScalarField& T
 ) const
 {
     return A_ + B_/(C_ + T);
+}
+
+
+Foam::tmp<Foam::volScalarField>
+Foam::saturationModels::Antoine::Tsat
+(
+    const volScalarField& p
+) const
+{
+    return B_/(A_ - log10(p)) - C_;
 }
 
 

@@ -22,57 +22,70 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::saturationPressureModels::ArdenBuck
+    Foam::saturationModels::Antoine
 
 Description
-    ArdenBuck equation for the vapour pressure of steam.
+    Antoine equation for the vapour pressure.
+
+    \f[
+        \log p = A + \frac{B}{C + T}
+    \f]
+
+    Coefficients \f$A\f$, \f$B\f$ and \f$C\f$ are to be supplied and should be
+    suitable for natural logarithms and temperatures in Kelvin.
 
 SourceFiles
-    ArdenBuck.C
+    Antoine.C
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef ArdenBuck_H
-#define ArdenBuck_H
+#ifndef Antoine_H
+#define Antoine_H
 
-#include "saturationPressureModel.H"
+#include "saturationModel.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
-namespace saturationPressureModels
+namespace saturationModels
 {
 
 /*---------------------------------------------------------------------------*\
-                         Class ArdenBuck Declaration
+                         Class Antoine Declaration
 \*---------------------------------------------------------------------------*/
 
-class ArdenBuck
+class Antoine
 :
-    public saturationPressureModel
+    public saturationModel
 {
-private:
+protected:
 
-    // Private Member Functions
+    // Private data
 
-        //- Exponent divided by the temperature
-        tmp<volScalarField> xByTC(const volScalarField& TC) const;
+        //- Constant A
+        dimensionedScalar A_;
+
+        //- Constant B
+        dimensionedScalar B_;
+
+        //- Constant C
+        dimensionedScalar C_;
 
 
 public:
 
     //- Runtime type information
-    TypeName("ArdenBuck");
+    TypeName("Antoine");
 
     // Constructors
 
         //- Construct from a dictionary
-        ArdenBuck(const dictionary& dict);
+        Antoine(const dictionary& dict);
 
 
     //- Destructor
-    virtual ~ArdenBuck();
+    virtual ~Antoine();
 
 
     // Member Functions
@@ -85,12 +98,15 @@ public:
 
         //- Natural log of the saturation pressure
         virtual tmp<volScalarField> lnPSat(const volScalarField& T) const;
+
+        //- Saturation temperature
+        virtual tmp<volScalarField> Tsat(const volScalarField& p) const;
 };
 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-} // End namespace saturationPressureModels
+} // End namespace saturationModels
 } // End namespace Foam
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

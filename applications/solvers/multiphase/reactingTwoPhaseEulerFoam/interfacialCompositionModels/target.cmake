@@ -28,11 +28,12 @@ set(SOURCES
   interfaceCompositionModels/interfaceCompositionModel/interfaceCompositionModel.C
   interfaceCompositionModels/interfaceCompositionModel/newInterfaceCompositionModel.C
   interfaceCompositionModels/InterfaceCompositionModel/InterfaceCompositionModels.C
-  saturationPressureModels/saturationPressureModel/saturationPressureModel.C
-  saturationPressureModels/saturationPressureModel/newSaturationPressureModel.C
-  saturationPressureModels/Antoine/Antoine.C
-  saturationPressureModels/AntoineExtended/AntoineExtended.C
-  saturationPressureModels/ArdenBuck/ArdenBuck.C
+  saturationModels/saturationModel/saturationModel.C
+  saturationModels/saturationModel/newSaturationModel.C
+  saturationModels/Antoine/Antoine.C
+  saturationModels/AntoineExtended/AntoineExtended.C
+  saturationModels/ArdenBuck/ArdenBuck.C
+  saturationModels/constantSaturationConditions/constantSaturationConditions.C
 )
 
 set(LIBRARIES
