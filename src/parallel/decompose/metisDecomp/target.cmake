@@ -26,11 +26,11 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../../src/OpenFOAM/include.cmake)
 include(../../../../src/OSspecific/POSIX/include.cmake)
 include_directories(${METIS_INCLUDE_DIR})
 include(../decompositionMethods/include.cmake)
+include(include.cmake)
 
 add_library(libmetisDecomp ${SOURCES})
 set_target_properties(libmetisDecomp PROPERTIES PREFIX "")

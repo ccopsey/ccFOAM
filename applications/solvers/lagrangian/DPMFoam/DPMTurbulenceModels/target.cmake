@@ -22,7 +22,6 @@ set(SOURCES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../../../src/OpenFOAM/include.cmake)
 include(../../../../../src/OSspecific/POSIX/include.cmake)
 include(../../../../../src/finiteVolume/include.cmake)
@@ -34,6 +33,7 @@ include(../../../../../src/TurbulenceModels/turbulenceModels/include.cmake)
 include(../../../../../src/TurbulenceModels/incompressible/include.cmake)
 include(../../../../../src/TurbulenceModels/phaseIncompressible/include.cmake)
 include(../../../../../src/meshTools/include.cmake)
+include(include.cmake)
 
 add_library(libDPMTurbulenceModels ${SOURCES})
 set_target_properties(libDPMTurbulenceModels PROPERTIES PREFIX "")

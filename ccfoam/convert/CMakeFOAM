@@ -89,11 +89,6 @@ target_cmake () {
   INCLUDES="$INCLUDES $INCLUDES3"
 
   INCLUDES2="."
-  if [ -f "include.cmake" ]
-  then
-    INCLUDES2="$INCLUDES2
-include.cmake"
-  fi
   for INCLUDE in $INCLUDES
   do
     if [ ${INCLUDE:0:1} == "$" ]
@@ -112,6 +107,11 @@ $DIRNAME"
       fi
     fi
   done
+  if [ -f "include.cmake" ]
+  then
+    INCLUDES2="$INCLUDES2
+include.cmake"
+  fi
   INCLUDES=$INCLUDES2
 
   FILES=`cat Make/files | sed -r ':a; s%(.*)/\*.*\*/%\1%; ta; /\/\*/ !b; N; ba' | sed -e ':a' -e 'N' -e '$!ba' -e 's|\\\\\n||g' -e 's|\n\n*|\n|g'`
@@ -460,13 +460,8 @@ assemble() {
       if [ $DIR == "./applications/utilities/mesh/conversion/Optional/ccm26ToFoam" ] \
         || [ $DIR == "./applications/utilities/postProcessing/dataConversion/foamToTecplot360" ] \
         || [ $DIR == "./applications/solvers/multiphase/twoPhaseEulerFoam" ] \
-        || [ $DIR == "./applications/solvers/multiphase/twoPhaseEulerFoam/twoPhaseSystem" ] \
-        || [ $DIR == "./applications/solvers/multiphase/twoPhaseEulerFoam/interfacialModels" ] \
         || [ $DIR == "./applications/solvers/multiphase/compressibleInterFoam" ] \
-        || [ $DIR == "./applications/solvers/multiphase/reactingTwoPhaseEulerFoam/phaseSystems" ] \
-        || [ $DIR == "./applications/solvers/multiphase/reactingTwoPhaseEulerFoam/interfacialCompositionModels" ] \
-        || [ $DIR == "./applications/solvers/multiphase/reactingTwoPhaseEulerFoam/interfacialModels" ] \
-        || [ $DIR == "./applications/solvers/multiphase/reactingTwoPhaseEulerFoam" ] \
+        || [ $DIR == "./applications/solvers/multiphase/compressibleInterFoam/compressibleInterDyMFoam" ] \
         || [ $DIR == "./applications/solvers/heatTransfer/chtMultiRegionFoam" ] \
         || [ $DIR == "./applications/utilities/mesh/generation/foamyMesh/foamyHexMeshBackgroundMesh" ] \
         || [ $DIR == "./applications/utilities/mesh/generation/foamyMesh/cellSizeAndAlignmentGrid" ] \

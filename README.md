@@ -1,6 +1,4 @@
-# ccFOAM
-
-[![Build Status](https://travis-ci.org/ccopsey/ccFOAM.svg?branch=CMakeFOAM)](https://travis-ci.org/ccopsey/ccFOAM)
+# ccFOAM [![Build Status](https://travis-ci.org/ccopsey/ccFOAM.svg?branch=CMakeFOAM)](https://travis-ci.org/ccopsey/ccFOAM)
 
 ccFOAM is a fork of [OpenFOAM](http://www.openfoam.org) designed to improve ease of build and use.  Without modification to any of the existing project files it intends to add the following enhancements:
 
@@ -49,28 +47,17 @@ To build select components of the toolkit, for example only the libraries and ex
 
 ## Known issues
 
-  1. Due to the large number of `include` directories for each compilation unit, the build runs slowly.
+The following compilation units fail to build:
 
-  2. The following compilation units fail to build:
-
-    * ccm26ToFoam
-    * foamToTecplot360
-    * libcompressibleTwoPhaseSystem
-      * libcompressibleEulerianInterfacialModels
-      * libphaseCompressibleTurbulenceModels
-      * twoPhaseEulerFoam
-    * compressibleInterFoam
-      * compressibleInterDyMFoam
-      * libtwoPhaseMixtureThermo
-    * libreactingTwoPhaseSystem
-      * libreactingEulerianInterfacialModels
-      * libreactingEulerianInterfacialCompositionModels
-      * reactingTwoPhaseEulerFoam
-    * chtMultiRegionFoam
-      * chtMultiRegionSimpleFoam
-    * foamyHexMeshBackgroundMesh
-    * foamyHexMeshSurfaceSimplify
-    * cellSizeAndAlignmentGrid
+  * ccm26ToFoam
+  * foamToTecplot360
+  * twoPhaseEulerFoam
+  * compressibleInterFoam
+    * compressibleInterDyMFoam
+  * chtMultiRegionFoam
+  * foamyHexMeshBackgroundMesh
+  * foamyHexMeshSurfaceSimplify
+  * cellSizeAndAlignmentGrid
 
 ## License
 

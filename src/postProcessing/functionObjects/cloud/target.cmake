@@ -29,12 +29,12 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../../src/OpenFOAM/include.cmake)
 include(../../../../src/OSspecific/POSIX/include.cmake)
 include(../../../../src/finiteVolume/include.cmake)
 include(../../../../src/lagrangian/basic/include.cmake)
 include(../../../../src/lagrangian/intermediate/include.cmake)
+include(include.cmake)
 
 add_library(libcloudFunctionObjects ${SOURCES})
 set_target_properties(libcloudFunctionObjects PROPERTIES PREFIX "")

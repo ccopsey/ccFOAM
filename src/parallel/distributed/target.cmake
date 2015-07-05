@@ -28,12 +28,12 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../src/OpenFOAM/include.cmake)
 include(../../../src/OSspecific/POSIX/include.cmake)
 include(../../../src/triSurface/include.cmake)
 include(../../../src/parallel/decompose/decompositionMethods/include.cmake)
 include(../../../src/meshTools/include.cmake)
+include(include.cmake)
 
 add_library(libdistributed ${SOURCES})
 set_target_properties(libdistributed PROPERTIES PREFIX "")

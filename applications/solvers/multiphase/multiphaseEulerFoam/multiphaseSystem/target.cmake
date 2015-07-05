@@ -35,7 +35,6 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../../../src/OpenFOAM/include.cmake)
 include(../../../../../src/OSspecific/POSIX/include.cmake)
 include(../../../../../src/finiteVolume/include.cmake)
@@ -45,6 +44,7 @@ include_directories(../../../../../src/transportModels)
 include(../../../../../src/transportModels/incompressible/include.cmake)
 include(../../../../../src/transportModels/interfaceProperties/include.cmake)
 include(../../../../../src/meshTools/include.cmake)
+include(include.cmake)
 
 add_library(libmultiphaseSystem ${SOURCES})
 set_target_properties(libmultiphaseSystem PROPERTIES PREFIX "")

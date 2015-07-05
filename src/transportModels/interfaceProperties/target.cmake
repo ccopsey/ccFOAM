@@ -28,12 +28,12 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../src/OpenFOAM/include.cmake)
 include(../../../src/OSspecific/POSIX/include.cmake)
 include(../../../src/finiteVolume/include.cmake)
 include(../../../src/transportModels/twoPhaseMixture/include.cmake)
 include_directories(../../../src/transportModels/twoPhaseProperties/alphaContactAngle/alphaContactAngle)
+include(include.cmake)
 
 add_library(libinterfaceProperties ${SOURCES})
 set_target_properties(libinterfaceProperties PROPERTIES PREFIX "")

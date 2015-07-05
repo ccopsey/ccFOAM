@@ -30,13 +30,13 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../../../src/OpenFOAM/include.cmake)
 include(../../../../../src/OSspecific/POSIX/include.cmake)
 include(../../../../../src/finiteVolume/include.cmake)
 include(../../../../../src/transportModels/compressible/include.cmake)
 include(../../../../../src/thermophysicalModels/basic/include.cmake)
 include(../../../../../src/transportModels/twoPhaseMixture/include.cmake)
+include(include.cmake)
 
 add_library(libtwoPhaseMixtureThermo ${SOURCES})
 set_target_properties(libtwoPhaseMixtureThermo PROPERTIES PREFIX "")

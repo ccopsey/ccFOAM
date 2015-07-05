@@ -29,10 +29,10 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../src/OpenFOAM/include.cmake)
 include(../../../src/OSspecific/POSIX/include.cmake)
 include_directories(${MPI_CXX_INCLUDE_PATH})
+include(include.cmake)
 
 add_definitions(
   -DOMPI_SKIP_MPICXX

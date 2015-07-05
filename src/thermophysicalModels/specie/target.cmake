@@ -29,9 +29,9 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../src/OpenFOAM/include.cmake)
 include(../../../src/OSspecific/POSIX/include.cmake)
+include(include.cmake)
 
 add_library(libspecie ${SOURCES})
 set_target_properties(libspecie PROPERTIES PREFIX "")

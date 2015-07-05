@@ -55,11 +55,11 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../src/OpenFOAM/include.cmake)
 include(../../src/OSspecific/POSIX/include.cmake)
 include(../../src/fileFormats/include.cmake)
 include(../../src/surfMesh/include.cmake)
+include(include.cmake)
 include_directories(${ZLIB_INCLUDE_DIR})
 include_directories(${FLEX_INCLUDE_DIR})
 

@@ -22,11 +22,11 @@ set(SOURCES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../../src/OpenFOAM/include.cmake)
 include(../../../../src/OSspecific/POSIX/include.cmake)
 include(../../../../src/thermophysicalModels/properties/solidProperties/include.cmake)
 include(../../../../src/thermophysicalModels/specie/include.cmake)
+include(include.cmake)
 
 add_library(libsolidMixtureProperties ${SOURCES})
 set_target_properties(libsolidMixtureProperties PROPERTIES PREFIX "")

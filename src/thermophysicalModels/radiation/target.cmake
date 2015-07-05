@@ -67,7 +67,6 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../src/OpenFOAM/include.cmake)
 include(../../../src/OSspecific/POSIX/include.cmake)
 include(../../../src/finiteVolume/include.cmake)
@@ -82,6 +81,7 @@ include(../../../src/thermophysicalModels/properties/solidProperties/include.cma
 include(../../../src/thermophysicalModels/properties/solidMixtureProperties/include.cmake)
 include(../../../src/thermophysicalModels/reactionThermo/include.cmake)
 include(../../../src/meshTools/include.cmake)
+include(include.cmake)
 
 add_library(libradiationModels ${SOURCES})
 set_target_properties(libradiationModels PROPERTIES PREFIX "")

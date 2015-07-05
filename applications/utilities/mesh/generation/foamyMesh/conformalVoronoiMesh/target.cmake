@@ -89,7 +89,6 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../../../../src/OpenFOAM/include.cmake)
 include(../../../../../../src/OSspecific/POSIX/include.cmake)
 include(../../../../../../src/finiteVolume/include.cmake)
@@ -107,6 +106,7 @@ include(../../../../../../src/triSurface/include.cmake)
 include(../../../../../../src/sampling/include.cmake)
 include(../../../../../../src/mesh/autoMesh/include.cmake)
 include_directories(PrintTable)
+include(include.cmake)
 
 add_library(libconformalVoronoiMesh ${SOURCES})
 set_target_properties(libconformalVoronoiMesh PROPERTIES PREFIX "")

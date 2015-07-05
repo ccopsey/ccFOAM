@@ -44,7 +44,6 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../src/OpenFOAM/include.cmake)
 include(../../../src/OSspecific/POSIX/include.cmake)
 include(../../../src/finiteVolume/include.cmake)
@@ -52,6 +51,7 @@ include(../../../src/transportModels/compressible/include.cmake)
 include(../../../src/thermophysicalModels/basic/include.cmake)
 include(../../../src/thermophysicalModels/specie/include.cmake)
 include(../../../src/thermophysicalModels/solidSpecie/include.cmake)
+include(include.cmake)
 include_directories(${FLEX_INCLUDE_DIR})
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/chemistryReaders/chemkinReader)

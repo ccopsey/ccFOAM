@@ -22,9 +22,9 @@ set(SOURCES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../src/OpenFOAM/include.cmake)
 include(../../../src/OSspecific/POSIX/include.cmake)
+include(include.cmake)
 
 add_library(libdummyMGridGen ${SOURCES})
 set_target_properties(libdummyMGridGen PROPERTIES PREFIX "")

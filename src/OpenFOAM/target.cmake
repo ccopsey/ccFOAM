@@ -467,8 +467,8 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../src/OSspecific/POSIX/include.cmake)
+include(include.cmake)
 include_directories(${ZLIB_INCLUDE_DIR})
 
 add_library(libOpenFOAM ${SOURCES})

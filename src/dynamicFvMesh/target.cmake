@@ -47,13 +47,13 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../src/OpenFOAM/include.cmake)
 include(../../src/OSspecific/POSIX/include.cmake)
 include(../../src/finiteVolume/include.cmake)
 include(../../src/triSurface/include.cmake)
 include(../../src/meshTools/include.cmake)
 include(../../src/dynamicMesh/include.cmake)
+include(include.cmake)
 
 add_library(libdynamicFvMesh ${SOURCES})
 set_target_properties(libdynamicFvMesh PROPERTIES PREFIX "")

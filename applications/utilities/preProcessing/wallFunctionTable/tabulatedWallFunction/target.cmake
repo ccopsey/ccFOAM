@@ -29,11 +29,11 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../../../src/OpenFOAM/include.cmake)
 include(../../../../../src/OSspecific/POSIX/include.cmake)
 include(../../../../../src/finiteVolume/include.cmake)
 include_directories(../../../../../src/transportModels)
+include(include.cmake)
 
 add_library(libtabulatedWallFunctions ${SOURCES})
 set_target_properties(libtabulatedWallFunctions PROPERTIES PREFIX "")

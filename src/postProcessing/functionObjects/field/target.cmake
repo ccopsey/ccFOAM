@@ -68,7 +68,6 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../../src/OpenFOAM/include.cmake)
 include(../../../../src/OSspecific/POSIX/include.cmake)
 include(../../../../src/finiteVolume/include.cmake)
@@ -77,6 +76,7 @@ include(../../../../src/lagrangian/basic/include.cmake)
 include(../../../../src/fileFormats/include.cmake)
 include(../../../../src/sampling/include.cmake)
 include(../../../../src/surfMesh/include.cmake)
+include(include.cmake)
 
 add_library(libfieldFunctionObjects ${SOURCES})
 set_target_properties(libfieldFunctionObjects PROPERTIES PREFIX "")

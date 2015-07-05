@@ -47,8 +47,8 @@ if(SunOS64)
 endif(SunOS64)
 
 include_directories(.)
-include(include.cmake)
 include(../../../src/OpenFOAM/include.cmake)
+include(include.cmake)
 
 add_library(libOSspecific ${SOURCES})
 set_target_properties(libOSspecific PROPERTIES PREFIX "")

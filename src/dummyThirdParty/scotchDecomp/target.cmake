@@ -22,11 +22,11 @@ set(SOURCES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../src/OpenFOAM/include.cmake)
 include(../../../src/OSspecific/POSIX/include.cmake)
 include(../../../src/parallel/decompose/decompositionMethods/include.cmake)
 include(../../../src/parallel/decompose/scotchDecomp/include.cmake)
+include(include.cmake)
 
 add_library(libdummyscotchDecomp ${SOURCES})
 set_target_properties(libdummyscotchDecomp PROPERTIES PREFIX "")

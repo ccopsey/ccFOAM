@@ -34,7 +34,6 @@ set(LIBRARIES
 )
 
 include_directories(.)
-include(include.cmake)
 include(../../../src/OpenFOAM/include.cmake)
 include(../../../src/OSspecific/POSIX/include.cmake)
 include(../../../src/finiteVolume/include.cmake)
@@ -43,6 +42,7 @@ include(../../../src/thermophysicalModels/basic/include.cmake)
 include(../../../src/thermophysicalModels/specie/include.cmake)
 include(../../../src/thermophysicalModels/solidSpecie/include.cmake)
 include(../../../src/thermophysicalModels/reactionThermo/include.cmake)
+include(include.cmake)
 
 add_library(libsolidThermo ${SOURCES})
 set_target_properties(libsolidThermo PROPERTIES PREFIX "")
