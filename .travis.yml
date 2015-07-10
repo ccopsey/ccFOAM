@@ -39,13 +39,9 @@ addons:
     packages:
     - libboost-system-dev
     - libboost-thread-dev
-    - libcgal-dev #4027
     - libgmp-dev
-    - libscotchmetis-dev #4028
-    - libscotchparmetis-dev #4029
-    - libscotch-dev #4030
-    - libopenmpi-dev # To be deleted
-    - libmpfr-dev # To be deleted
+    - libopenmpi-dev
+    - libmpfr-dev
 
 before_install:
   - export PATH=/usr/lib/ccache:$PATH
@@ -57,13 +53,14 @@ install:
   - ./ccfoam/buildscripts/parmetis-4.0.3-travis
   - ./ccfoam/buildscripts/scotch-6.0.4-travis
 
-before_script:
-  - getconf ARG_MAX
-
 script:
   - ./ccfoam/buildscripts/ccFOAM-dev-travis
 
 matrix:
+  exclude:
+    - compiler: clang
+      env: TARGET="pisoFoam blockMesh libsampling libfieldFunctionObjects"
   allow_failures:
-    - env: TARGET="all"
+    - compiler: gcc
+      env: TARGET="all"
   fast_finish: true
